@@ -1,8 +1,13 @@
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
+  important: '#root',
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: (theme) => ({
+        home: "url('/public/img/home.jpg')",
+      }),
+    },
     colors: {
       black: '#000',
       white: '#fff',

@@ -4,6 +4,7 @@ module.exports = {
   },
   parserOptions: {
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   extends: ['airbnb-typescript', 'react-app'],
 };
