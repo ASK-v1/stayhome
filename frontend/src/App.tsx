@@ -1,18 +1,13 @@
-import React from 'react';
+import * as React from 'react';
+import Home from './pages/Home';
+import { Routes, Route } from 'react-router-dom';
 
 export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
