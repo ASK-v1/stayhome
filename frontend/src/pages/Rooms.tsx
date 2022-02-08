@@ -57,9 +57,9 @@ export default function Homes() {
                       </div>
                     </div>
                     <div className="flex flex-row gap-3">
-                      <Chip label="Wifi" color="success" size="small" />
-                      <Chip label="Washer" color="success" size="small" />
-                      <Chip label="Kitchen" color="success" size="small" />
+                      <Chip label="Wifi" color="primary" size="small" />
+                      <Chip label="Washer" color="primary" size="small" />
+                      <Chip label="Kitchen" color="primary" size="small" />
                     </div>
                     <div className="flex flex-row gap-3">
                       <Rating
