@@ -13,6 +13,6 @@ export interface LoginInterface {
 }
 
 export interface UserStateInterface {
-  token: string;
-  userData: object;
+  isAuth: boolean;
+  user: string;
 }

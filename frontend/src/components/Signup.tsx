@@ -9,7 +9,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-
+import Alert from '@mui/material/Alert';
 import { SignupInterface } from '../interfaces';
 import { userSignup } from '../store/userAction';
 
@@ -34,6 +34,8 @@ export default function Signup(props: {
     email: '',
     showPassword: false,
   });
+
+  const [showError, setShowError] = useState<boolean>(false);
 
   const handleChange = (prop: keyof SignupInterface) =>
     function (event: React.ChangeEvent<HTMLInputElement>) {
@@ -60,8 +62,10 @@ export default function Signup(props: {
     };
     try {
       await userSignup(data);
+      window.location.reload();
     } catch (error) {
       console.log(error);
+      setShowError(true);
     }
   };
 
@@ -76,7 +80,7 @@ export default function Signup(props: {
         onClose={() => props.setSignup(false)}
       >
         <div style={{ display: 'flex' }}>
-          <img src={'img/dialog.jpg'} width="450" />
+          <img src={'img/dialog.jpg'} alt="dialog" width="450" />
           <div>
             <h1
               style={{
@@ -90,6 +94,11 @@ export default function Signup(props: {
               SIGN UP
             </h1>
             <DialogContent>
+              {showError && (
+                <Alert variant="filled" severity="error">
+                  <strong>Email is invalid or already taken.</strong>
+                </Alert>
+              )}
               <form
                 onSubmit={submitSignup}
                 style={{

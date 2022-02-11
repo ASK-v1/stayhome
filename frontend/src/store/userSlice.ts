@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { UserStateInterface } from '../interfaces';
 
 const initialState: UserStateInterface = {
-  token: '',
-  userData: {},
+  isAuth: !!localStorage.getItem('token'),
+  user: localStorage.getItem('user') ?? '',
 };
 
 export const userSlice = createSlice({
@@ -12,18 +12,17 @@ export const userSlice = createSlice({
 
   reducers: {
     userAuth: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
+      localStorage.setItem('token', action.payload);
     },
     userData: (state, action: PayloadAction<object>) => {
-      state.userData = action.payload;
+      localStorage.setItem('user', JSON.stringify(action.payload));
     },
-    userLogout: (state) => {
-      state.token = '';
-      state.userData = {};
+    logout: (state) => {
+      localStorage.clear();
     },
   },
 });
 
-export const { userAuth, userData, userLogout } = userSlice.actions;
+export const { userAuth, userData, logout } = userSlice.actions;
 
 export default userSlice.reducer;

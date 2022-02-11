@@ -5,9 +5,10 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-
 import Signup from './Signup';
 import Login from './Login';
+import store from '../store';
+import { userLogout } from '../store/userAction';
 
 export default function Navbar() {
   const [signup, setSignup] = useState<boolean>(false);
@@ -22,11 +23,18 @@ export default function Navbar() {
     setAnchorEl(null);
   };
 
+  const dispatch = store.useAppDispatch();
+
+  const logout = () => {
+    dispatch(userLogout);
+    window.location.reload();
+  };
+
   return (
     <div>
       <div className="flex items-center justify-around bg-orange-500 p-3">
         <Link to="/">
-          <img src={'img/logo.png'} width="200" />
+          <img src={'img/logo.png'} alt="logo" width="200" />
         </Link>
         <div className="flex gap-10 items-center">
           <Button
@@ -65,7 +73,7 @@ export default function Navbar() {
               >
                 Sign up
               </MenuItem>
-              <MenuItem>Log out</MenuItem>
+              <MenuItem onClick={logout}>Log out</MenuItem>
             </Menu>
           </div>
         </div>

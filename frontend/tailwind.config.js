@@ -7,6 +7,9 @@ module.exports = {
       backgroundImage: (theme) => ({
         home: "url('/public/img/home.jpg')",
       }),
+      fontFamily: {
+        rowdies: ['rowdies'],
+      },
     },
     colors: {
       black: '#000',
