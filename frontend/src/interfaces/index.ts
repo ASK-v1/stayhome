@@ -3,11 +3,16 @@ export interface SignupInterface {
   lastName: string;
   password: string;
   email: string;
-  showPassword: boolean;
+  showPassword?: boolean;
 }
 
 export interface LoginInterface {
   password: string;
   email: string;
-  showPassword: boolean;
+  showPassword?: boolean;
+}
+
+export interface UserStateInterface {
+  token: string;
+  userData: object;
 }

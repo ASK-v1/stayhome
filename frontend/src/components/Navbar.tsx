@@ -70,8 +70,8 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <Signup signup={signup} setSignup={setSignup} />
-      <Login login={login} setLogin={setLogin} />
+      <Signup signup={signup} setSignup={setSignup} setLogin={setLogin} />
+      <Login login={login} setLogin={setLogin} setSignup={setSignup} />
     </div>
   );
 }

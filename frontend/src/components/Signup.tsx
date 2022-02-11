@@ -10,7 +10,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { SignupInterface } from '../types';
+import { SignupInterface } from '../interfaces';
+import { userSignup } from '../store/userAction';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -24,6 +25,7 @@ const Transition = React.forwardRef(function Transition(
 export default function Signup(props: {
   signup: boolean;
   setSignup: Function;
+  setLogin: Function;
 }) {
   const [sign, setSign] = useState<SignupInterface>({
     firstName: '',
@@ -48,6 +50,21 @@ export default function Signup(props: {
     event.preventDefault();
   };
 
+  const submitSignup = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data: SignupInterface = {
+      email: sign.email,
+      password: sign.password,
+      firstName: sign.firstName,
+      lastName: sign.lastName,
+    };
+    try {
+      await userSignup(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Dialog
@@ -59,7 +76,7 @@ export default function Signup(props: {
         onClose={() => props.setSignup(false)}
       >
         <div style={{ display: 'flex' }}>
-          <img src={'img/dialog.jpg'} width="482" />
+          <img src={'img/dialog.jpg'} width="450" />
           <div>
             <h1
               style={{
@@ -73,9 +90,10 @@ export default function Signup(props: {
               SIGN UP
             </h1>
             <DialogContent>
-              <div
+              <form
+                onSubmit={submitSignup}
                 style={{
-                  padding: '20px',
+                  padding: '40px',
                   display: 'flex',
                   alignItems: 'center',
                   flexDirection: 'column',
@@ -88,6 +106,8 @@ export default function Signup(props: {
                   }}
                   required
                   placeholder="First name"
+                  onChange={handleChange('firstName')}
+                  value={sign.firstName}
                 />
                 <TextField
                   style={{
@@ -95,6 +115,8 @@ export default function Signup(props: {
                   }}
                   required
                   placeholder="Last name"
+                  onChange={handleChange('lastName')}
+                  value={sign.lastName}
                 />
                 <TextField
                   style={{
@@ -102,12 +124,15 @@ export default function Signup(props: {
                   }}
                   required
                   placeholder="Email"
+                  onChange={handleChange('email')}
+                  value={sign.email}
                 />
                 <OutlinedInput
                   style={{ width: '20rem' }}
                   type={sign.showPassword ? 'text' : 'password'}
                   value={sign.password}
                   onChange={handleChange('password')}
+                  autoComplete="false"
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -127,46 +152,47 @@ export default function Signup(props: {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '40px',
+                    gap: '35px',
                     fontSize: '20px',
-                    marginTop: '30px',
+                    marginTop: '20px',
                     color: 'gray',
                   }}
                 >
                   <h1>Already have an account?</h1>
-                  <a
+                  <button
                     style={{
                       color: 'black',
                       fontFamily: 'Rowdies',
                       textDecoration: 'underline',
                     }}
-                    href="/"
+                    onClick={() => {
+                      props.setSignup(false);
+                      props.setLogin(true);
+                    }}
                   >
                     Log in
-                  </a>
+                  </button>
                 </div>
-              </div>
+                <button
+                  type="submit"
+                  style={{
+                    backgroundColor: 'black',
+                    padding: '15px',
+                    color: 'white',
+                    fontSize: '20px',
+                    fontWeight: 'bolder',
+                    alignSelf: 'center',
+                    borderRadius: '5px',
+                    paddingLeft: '119px',
+                    paddingRight: '119px',
+                    marginTop: '40px',
+                    boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  Continue
+                </button>
+              </form>
             </DialogContent>
-            <button
-              className=" p-32"
-              style={{
-                backgroundColor: 'black',
-                padding: '15px',
-                color: 'white',
-                margin: '20px',
-                fontSize: '20px',
-                fontWeight: 'bolder',
-                alignSelf: 'center',
-                borderRadius: '5px',
-                paddingLeft: '100px',
-                paddingRight: '100px',
-                marginTop: '30px',
-                boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
-              }}
-              onClick={() => props.setSignup(false)}
-            >
-              Agree and continue
-            </button>
           </div>
         </div>
       </Dialog>

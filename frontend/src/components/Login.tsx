@@ -10,7 +10,9 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { LoginInterface } from '../types';
+import { LoginInterface } from '../interfaces';
+import { userLogin } from '../store/userAction';
+import store from '../store';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -21,7 +23,11 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Login(props: { login: boolean; setLogin: Function }) {
+export default function Login(props: {
+  login: boolean;
+  setLogin: Function;
+  setSignup: Function;
+}) {
   const [log, setLog] = useState<LoginInterface>({
     password: '',
     email: '',
@@ -43,6 +49,21 @@ export default function Login(props: { login: boolean; setLogin: Function }) {
     event.preventDefault();
   };
 
+  const dispatch = store.useAppDispatch();
+
+  const submitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data: LoginInterface = {
+      email: log.email,
+      password: log.password,
+    };
+    try {
+      await dispatch(userLogin(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Dialog
@@ -54,7 +75,7 @@ export default function Login(props: { login: boolean; setLogin: Function }) {
         onClose={() => props.setLogin(false)}
       >
         <div style={{ display: 'flex' }}>
-          <img src={'img/dialog.jpg'} width="482" />
+          <img src={'img/dialog.jpg'} width="450" />
           <div>
             <h1
               style={{
@@ -68,9 +89,10 @@ export default function Login(props: { login: boolean; setLogin: Function }) {
               LOG IN
             </h1>
             <DialogContent>
-              <div
+              <form
+                onSubmit={submitLogin}
                 style={{
-                  padding: '20px',
+                  padding: '40px',
                   display: 'flex',
                   alignItems: 'center',
                   flexDirection: 'column',
@@ -78,17 +100,20 @@ export default function Login(props: { login: boolean; setLogin: Function }) {
                 }}
               >
                 <TextField
+                  value={log.email}
                   style={{
                     width: '20rem',
                   }}
                   required
                   placeholder="Email"
+                  onChange={handleChange('email')}
                 />
                 <OutlinedInput
                   style={{ width: '20rem' }}
                   type={log.showPassword ? 'text' : 'password'}
                   value={log.password}
                   onChange={handleChange('password')}
+                  autoComplete="false"
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
@@ -108,46 +133,47 @@ export default function Login(props: { login: boolean; setLogin: Function }) {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '40px',
+                    gap: '43px',
                     fontSize: '20px',
-                    marginTop: '30px',
+                    marginTop: '20px',
                     color: 'gray',
                   }}
                 >
                   <h1>Don't have an account?</h1>
-                  <a
+                  <button
                     style={{
                       color: 'black',
                       fontFamily: 'Rowdies',
                       textDecoration: 'underline',
                     }}
-                    href="/"
+                    onClick={() => {
+                      props.setLogin(false);
+                      props.setSignup(true);
+                    }}
                   >
                     Sign up
-                  </a>
+                  </button>
                 </div>
-              </div>
+                <button
+                  type="submit"
+                  style={{
+                    backgroundColor: 'black',
+                    padding: '15px',
+                    color: 'white',
+                    fontSize: '20px',
+                    fontWeight: 'bolder',
+                    alignSelf: 'center',
+                    borderRadius: '5px',
+                    paddingLeft: '119px',
+                    paddingRight: '119px',
+                    marginTop: '40px',
+                    boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  Continue
+                </button>
+              </form>
             </DialogContent>
-            <button
-              className=" p-32"
-              style={{
-                backgroundColor: 'black',
-                padding: '15px',
-                color: 'white',
-                margin: '20px',
-                fontSize: '20px',
-                fontWeight: 'bolder',
-                alignSelf: 'center',
-                borderRadius: '5px',
-                paddingLeft: '150px',
-                paddingRight: '150px',
-                marginTop: '30px',
-                boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
-              }}
-              onClick={() => props.setLogin(false)}
-            >
-              Continue
-            </button>
           </div>
         </div>
       </Dialog>
