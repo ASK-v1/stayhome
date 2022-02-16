@@ -68,7 +68,7 @@ export default function Search() {
   }, [open]);
 
   return (
-    <div className="h-screen bg-cover flex items-center justify-center bg-home">
+    <div className="h-screen bg-center bg-cover flex items-center justify-center bg-home">
       <div className="bg-orange-500 flex flex-row items-center gap-4 p-16 rounded shadow-2xl mb-96">
         <Autocomplete
           sx={{

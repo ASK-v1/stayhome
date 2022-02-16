@@ -1258,10 +1258,10 @@
   dependencies:
     fast-deep-equal "^3.1.3"
 
-"@googlemaps/react-wrapper@^1.1.22":
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/@googlemaps/react-wrapper/-/react-wrapper-1.1.23.tgz#b2d26dcb63fd279e7537729893d2e7521900a09c"
-  integrity sha512-gZ5IEkGezpwbhXQAmnrZl5WqsvnyEgnFR8HkFK/aV1TxcASiwqF81uaChbflz3jhc4oidnYtxsmyCdXqAlmCzg==
+"@googlemaps/react-wrapper@^1.1.24":
+  version "1.1.24"
+  resolved "https://registry.yarnpkg.com/@googlemaps/react-wrapper/-/react-wrapper-1.1.24.tgz#12fc9e23c0da88666f0756dc7c56405c20ee5c8d"
+  integrity sha512-LdVyh4i8kdtTkBTrcreT9Srizz+EPJjiMRMUYv582Ye36Ua6SC0naU6anPwBS+6a7HxUcgkkTkLa2mn8Hl8bBg==
   dependencies:
     "@googlemaps/js-api-loader" "^1.13.2"
 
@@ -2057,6 +2057,11 @@
     "@types/express-serve-static-core" "^4.17.18"
     "@types/qs" "*"
     "@types/serve-static" "*"
+
+"@types/google.maps@^3.47.4":
+  version "3.47.4"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.47.4.tgz#3316cdf048706f03838431e7c394eecc02de2157"
+  integrity sha512-wgNs0Cb0SpWMBmD5WV560bQ++sdtAOqR6V6qQIA5jZFORLsxat4kVkXOOg7KDFqHwNgYpg36Vai2zXUCTmbtnQ==
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
