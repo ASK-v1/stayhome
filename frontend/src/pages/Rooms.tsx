@@ -9,7 +9,7 @@ export default function Rooms() {
       <Navbar />
       <div className="flex flex-row">
         <div>
-          {[1, 2, 3, 4, 5].map((_, index) => (
+          {[1, 2, 3, 4].map((_, index) => (
             <Card key={index} />
           ))}
         </div>

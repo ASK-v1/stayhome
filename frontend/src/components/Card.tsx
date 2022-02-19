@@ -10,7 +10,7 @@ export default function Card() {
   const [value, setValue] = useState<number | null>(2);
 
   return (
-    <a href="" className="flex group mb-5">
+    <a href="/room" className="flex group mb-5">
       <div className="flex flex-row shadow-lg p-5">
         <div className="relative overflow-hidden w-72 h-48">
           <img
@@ -54,15 +54,15 @@ export default function Card() {
               <Chip label="Washer" color="primary" size="small" />
               <Chip label="Kitchen" color="primary" size="small" />
             </div>
-            <div className="flex flex-row gap-3">
+            <div className="flex flex-row gap-3 items-center">
               <Rating
-                className="text-xl text-orange-500"
+                className="text-lg text-orange-500"
                 name="read-only"
                 value={value}
                 readOnly
               />
               <h1 className="font-extrabold">{value}</h1>
-              <h5>(10 reviews)</h5>
+              <h5 className="underline font-extrabold">12 reviews</h5>
             </div>
           </div>
           <div className="flex flex-col justify-between">

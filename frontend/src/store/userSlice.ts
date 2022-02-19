@@ -6,7 +6,7 @@ const initialState: UserStateInterface = {
   user: localStorage.getItem('user') ?? '',
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState,
 
