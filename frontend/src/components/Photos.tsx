@@ -53,7 +53,7 @@ export default function Photos() {
   const photos = [url1, url2, url3, url4, url5, url6];
 
   return (
-    <div className="flex flex-col items-center mt-20 ">
+    <div className="flex flex-col items-center mt-20">
       <div className="flex flex-row justify-around items-center mb-6 gap-[42rem]">
         <div className="flex flex-col gap-3">
           <h1 className="text-xl font-extrabold">Lorem ipsum dolor sit amet</h1>
@@ -90,38 +90,38 @@ export default function Photos() {
         </div>
         <FavoriteBorderIcon className="text-3xl cursor-pointer hover:text-orange-500" />
       </div>
-      <div onClick={handleClickOpen} className="flex flex-row gap-3 mb-96">
+      <div onClick={handleClickOpen} className="flex flex-row gap-2 mb-10">
         <img
           onClick={() => setPhotoNum(1)}
           src={url1}
-          className="rounded-l-3xl w-[40rem] hover:opacity-90 cursor-pointer"
+          className="rounded-l-3xl duration-500 w-[40rem] hover:opacity-90 cursor-pointer"
           alt="photos"
         />
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <img
             onClick={() => setPhotoNum(2)}
             src={url2}
-            className="w-80 h-64 hover:opacity-90 cursor-pointer"
+            className="w-80 h-64 duration-500 hover:opacity-90 cursor-pointer"
             alt="photos"
           />
           <img
             onClick={() => setPhotoNum(3)}
             src={url3}
-            className="w-80 h-64 hover:opacity-90 cursor-pointer"
+            className="w-80 h-64 duration-500 hover:opacity-90 cursor-pointer"
             alt="photos"
           />
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
           <img
             onClick={() => setPhotoNum(4)}
             src={url4}
-            className="rounded-tr-3xl w-80 h-64 hover:opacity-90 cursor-pointer"
+            className="rounded-tr-3xl w-80 h-64 duration-500 hover:opacity-90 cursor-pointer"
             alt="photos"
           />
           <img
             onClick={() => setPhotoNum(5)}
             src={url5}
-            className="rounded-br-3xl w-80 h-64 hover:opacity-90 cursor-pointer"
+            className="rounded-br-3xl w-80 h-64 duration-500 hover:opacity-90 cursor-pointer"
             alt="photos"
           />
         </div>
