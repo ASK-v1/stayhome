@@ -13,7 +13,7 @@ export default function Rooms() {
             <Card key={index} />
           ))}
         </div>
-        <div className=" w-4/5">
+        <div className="w-4/5">
           <Map />
         </div>
       </div>

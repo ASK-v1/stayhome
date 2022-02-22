@@ -32,7 +32,7 @@ export default function Description() {
         officiis aut?
       </div>
       <div className="border-t-gray-400 border mt-5" />
-      <div className="mt-5 flex flex-col gap-3">
+      <div className="mt-10 flex flex-col gap-3">
         <h1 className="font-bold text-xl mb-5">What this place offers</h1>
         <div className="flex flex-row gap-40">
           <div className="flex flex-col gap-3">

@@ -53,7 +53,7 @@ export default function Photos() {
   const photos = [url1, url2, url3, url4, url5, url6];
 
   return (
-    <div className="flex flex-col items-center mt-20">
+    <div className="flex flex-col items-center mt-10">
       <div className="flex flex-row justify-around items-center mb-6 gap-[42rem]">
         <div className="flex flex-col gap-3">
           <h1 className="text-xl font-extrabold">Lorem ipsum dolor sit amet</h1>

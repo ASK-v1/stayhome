@@ -19,8 +19,8 @@ export default function Reserve() {
   };
 
   return (
-    <div className="flex flex-col shadow-2xl border rounded-3xl border-gray-400 p-10">
-      <div className="flex justify-between items-center mb-10">
+    <div className="flex flex-col shadow-2xl self-start border rounded-3xl border-gray-400 p-5 h-[33rem]">
+      <div className="flex justify-between items-center mb-5">
         <div className="flex flex-row p-3 gap-2 text-xl">
           <h1 className="font-rowdies">$511</h1>
           <h1>/ night</h1>
@@ -88,7 +88,7 @@ export default function Reserve() {
           </Select>
         </FormControl>
       </div>
-      <button className="font-bold border-black bg-black hover:opacity-90 border-2 text-white  w-[300px] h-12 mt-5 rounded duration-300">
+      <button className="font-bold border-black bg-black hover:opacity-90 text-white  w-[300px] h-12 mt-5 rounded duration-300">
         Reserve
       </button>
       <div className="flex flex-col gap-3 mt-10">

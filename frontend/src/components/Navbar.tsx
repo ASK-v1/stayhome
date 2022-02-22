@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="flex items-center justify-around bg-orange-500 p-3">
+      <div className="flex items-center justify-around bg-orange-500 p-1">
         <Link to="/">
           <img src={'img/logo.png'} alt="logo" width="200" />
         </Link>

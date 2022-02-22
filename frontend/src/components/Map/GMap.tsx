@@ -10,7 +10,7 @@ export default function GMap({
   children: React.ReactNode;
 }) {
   const mapRef = useRef<HTMLDivElement>();
-  const style = { height: '100vh' };
+
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   useEffect(() => {
@@ -23,7 +23,18 @@ export default function GMap({
   }
 
   return (
-    <div ref={mapRef} style={style} id="map">
+    <div
+      ref={mapRef}
+      style={{
+        display: 'block',
+        left: '50%',
+        marginRight: '500px',
+        height: '37rem',
+        width: '77rem',
+        borderRadius: '20px',
+      }}
+      id="map"
+    >
       {React.Children.map(children, (child: React.ReactElement) =>
         React.cloneElement(child, { map }),
       )}
