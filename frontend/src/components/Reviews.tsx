@@ -8,8 +8,12 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { orange, grey } from '@material-ui/core/colors';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import { useState } from 'react';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -20,6 +24,21 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function Reviews() {
+  const [filter, setFilter] = useState<string>('');
+
+  const reviewsArr = [
+    'Lorem ipsum dolor sit amet',
+    'sit amet consectetur adipisicing',
+    ' Officia repudiandae eos voluptas sunt',
+    'harum explicabo quas',
+    'eligendi eius facere ea',
+    ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. A ratione omnis magni harum quas iste, tenetur mollitia eos nostrum autem fuga est totam unde veniam consequatur odio, doloribus eaque. Itaque?',
+  ];
+
+  const handleChange = (e) => {
+    setFilter(e.target.value);
+  };
+
   const value = 4;
 
   const [open, setOpen] = React.useState(false);
@@ -90,16 +109,16 @@ export default function Reviews() {
           TransitionComponent={Transition}
           keepMounted
           onClose={handleClose}
-          aria-describedby="alert-dialog-slide-description"
+          maxWidth={'md'}
         >
-          <DialogTitle sx={{ m: 0, p: 5 }}>
+          <DialogTitle sx={{ m: 0, p: 3 }}>
             {open ? (
               <IconButton
                 aria-label="close"
                 onClick={handleClose}
                 sx={{
                   position: 'absolute',
-                  right: 8,
+                  left: 8,
                   top: 8,
                   color: (theme) => theme.palette.grey[500],
                 }}
@@ -108,43 +127,95 @@ export default function Reviews() {
               </IconButton>
             ) : null}
           </DialogTitle>
-          <div>
-            <Rating name="read-only" value={value} readOnly />
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '10px',
+              fontWeight: 'bold',
+              fontSize: '25px',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Rating
+              style={{
+                color: orange[600],
+                fontSize: '25px',
+              }}
+              name="read-only"
+              value={value}
+              readOnly
+            />
             <h1>{value}</h1>
             <h5>- 20 reviews</h5>
           </div>
-          <Box
-            component="form"
-            sx={{
-              '& > :not(style)': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
+          <FormControl sx={{ m: 5 }}>
+            <OutlinedInput
+              onChange={handleChange}
+              style={{
+                borderRadius: '50px',
+              }}
+              startAdornment={
+                <InputAdornment position="end">
+                  <SearchIcon
+                    fontSize="large"
+                    style={{
+                      marginRight: '10px',
+                    }}
+                  />
+                </InputAdornment>
+              }
             />
-          </Box>
+          </FormControl>
           <DialogContent>
-            <div>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
-                <div className="flex flex-row gap-5">
-                  <Avatar>B</Avatar>
-                  <div>
-                    <h1>Brandon</h1>
-                    <h1>February 2022</h1>
-                    <h1>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Officia repudiandae eos voluptas sunt eligendi eius facere
-                      ea voluptatum dolor earum dolores unde at harum explicabo
-                      quas
-                    </h1>
+            <div
+              style={{
+                marginLeft: '25px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '50px',
+              }}
+            >
+              {reviewsArr
+                .filter((reviewArr) =>
+                  reviewArr.toLowerCase().includes(filter.toLowerCase()),
+                )
+                .map((review) => (
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      gap: '15px',
+                    }}
+                  >
+                    <Avatar
+                      style={{
+                        backgroundColor: orange[600],
+                      }}
+                    >
+                      B
+                    </Avatar>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <h1>Brandon</h1>
+                      <h1 style={{ color: grey[800], marginBottom: '5px' }}>
+                        February 2022
+                      </h1>
+                      <h1>{review}</h1>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
+            <div
+              style={{
+                width: '1000px',
+              }}
+            ></div>
           </DialogContent>
         </Dialog>
       </div>
