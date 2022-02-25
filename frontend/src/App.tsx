@@ -1,6 +1,7 @@
 import Home from './pages/Home';
 import Rooms from './pages/Rooms';
 import Room from './pages/Room';
+import Profile from './pages/Profile';
 import { Routes, Route } from 'react-router-dom';
 
 export default function App() {
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/room" element={<Room />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
