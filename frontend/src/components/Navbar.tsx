@@ -9,10 +9,12 @@ import Signup from './Signup';
 import Login from './Login';
 import store from '../store';
 import { userLogout } from '../store/userAction';
+import { useNavigate } from 'react-router';
 
 export default function Navbar() {
   const [signup, setSignup] = useState<boolean>(false);
   const [login, setLogin] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -72,6 +74,9 @@ export default function Navbar() {
                 }}
               >
                 Sign up
+              </MenuItem>
+              <MenuItem onClick={() => navigate('/personal')}>
+                Personal info
               </MenuItem>
               <MenuItem onClick={logout}>Log out</MenuItem>
             </Menu>

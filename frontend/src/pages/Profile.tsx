@@ -6,11 +6,13 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react';
 
-export default function Home() {
+export default function Profile() {
   const url =
     'https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
 
   const [from, setFrom] = useState<boolean>(true);
+  const [moreHost, setMoreHost] = useState<number>(5);
+  const [moreGuest, setMoreGuest] = useState<number>(5);
 
   const guest = {
     name: 'Brandon',
@@ -128,7 +130,7 @@ export default function Home() {
 
           <div>
             {from
-              ? guests.map((guest_) => (
+              ? guests.splice(0, moreGuest).map((guest_) => (
                   <div className="flex flex-row gap-5 mt-10">
                     <Avatar className="p-6 bg-orange-500">B</Avatar>
                     <div className="flex flex-col">
@@ -144,7 +146,7 @@ export default function Home() {
                   </div>
                   // eslint-disable-next-line @typescript-eslint/indent
                 ))
-              : hosts.map((host_) => (
+              : hosts.splice(0, moreHost).map((host_) => (
                   <div className="flex flex-row gap-5 mt-10">
                     <Avatar className="p-6 bg-orange-500">B</Avatar>
                     <div className="flex flex-col">
@@ -160,9 +162,17 @@ export default function Home() {
                   </div>
                   // eslint-disable-next-line @typescript-eslint/indent
                 ))}
-            <button className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60">
-              Show more reviews
-            </button>
+            {moreHost !== 50 && (
+              <button
+                onClick={() => {
+                  if (from) setMoreGuest(moreGuest + 5);
+                  else setMoreHost(moreHost + 5);
+                }}
+                className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+              >
+                Show more reviews
+              </button>
+            )}
           </div>
         </div>
       </div>

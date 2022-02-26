@@ -9,7 +9,6 @@ import AlertTitle from '@mui/material/AlertTitle';
 import { useNavigate } from 'react-router';
 
 export default function Contact() {
-  const [contact, setContact] = useState<boolean>(true);
   const [send, setSend] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -38,33 +37,27 @@ export default function Contact() {
           <h1 className="w-[30rem] mt-5">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum id
             ipsam voluptas quaerat eaque eveniet totam! Nobis exercitationem rem
-            id nulla esse soluta qui. Ab libero quaerat nesciunt neque ipsa?
+            id nulla esse soluta qui. Ab libero quaerat
           </h1>
         </div>
-        <button
-          onClick={() => setContact(false)}
-          className="ml-20 border w-36 font-bold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
-        >
-          Contact Host
-        </button>
         {send ? (
-          <div className="flex flex-col gap-5 ml-30">
+          <div className="flex flex-row gap-10 ml-20">
             <TextField
-              id="outlined-multiline-static"
               label="Message the Host"
               multiline
-              rows={5}
+              rows={6}
               fullWidth
+              sx={{ width: '360px' }}
             />
             <button
               onClick={() => setSend(false)}
-              className="ml-20 border w-36 font-bold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
+              className="border w-36 font-bold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
             >
               Send message
             </button>
           </div>
         ) : (
-          <Stack sx={{ width: '300px', margin: '50px' }}>
+          <Stack sx={{ width: '525px', margin: '50px' }}>
             <Alert severity="success">
               <AlertTitle>Thank you!</AlertTitle>
               Your message has been sent
