@@ -23,7 +23,14 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function Reviews() {
+
+export default function Reviews({
+  reviews,
+  setReviews,
+}: {
+  reviews: boolean;
+  setReviews;
+}) {
   const [filter, setFilter] = useState<string>('');
 
   const reviewsArr = [
@@ -41,7 +48,7 @@ export default function Reviews() {
 
   const value = 4;
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -49,6 +56,7 @@ export default function Reviews() {
 
   const handleClose = () => {
     setOpen(false);
+    setReviews(false);
   };
 
   return (
@@ -105,7 +113,7 @@ export default function Reviews() {
       </div>
       <div>
         <Dialog
-          open={open}
+          open={open || reviews}
           TransitionComponent={Transition}
           keepMounted
           onClose={handleClose}

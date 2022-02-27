@@ -23,7 +23,7 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Photos() {
+export default function Photos({ setReviews }) {
   const value = 2;
 
   const url1 =
@@ -66,7 +66,12 @@ export default function Photos() {
                 readOnly
               />
               <h1 className="font-extrabold">{value}</h1>
-              <h5 className="underline font-extrabold">12 reviews</h5>
+              <h5
+                onClick={() => setReviews(true)}
+                className="underline font-extrabold cursor-pointer"
+              >
+                12 reviews
+              </h5>
             </div>
             <Breadcrumbs
               separator={<NavigateNextIcon fontSize="small" />}

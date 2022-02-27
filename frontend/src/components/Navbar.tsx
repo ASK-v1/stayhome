@@ -76,8 +76,10 @@ export default function Navbar() {
                 Sign up
               </MenuItem>
               <MenuItem onClick={() => navigate('/personal')}>
-                Personal info
+                Personal
               </MenuItem>
+              <MenuItem>Messages</MenuItem>
+              <MenuItem onClick={() => navigate('/profile')}>Listings</MenuItem>
               <MenuItem onClick={logout}>Log out</MenuItem>
             </Menu>
           </div>

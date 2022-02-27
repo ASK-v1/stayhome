@@ -130,6 +130,21 @@ export default function Personal() {
               </div>
             </div>
           </div>
+          <div className="border border-gray-300 self-center w-[37.5rem]" />
+          <div className="flex justify-evenly items-center">
+            <div className="flex flex-col gap-1">
+              <h1 className="font-bold">About</h1>
+              <h1 className="text-gray-800">Not specified</h1>
+              <div className="mt-5">
+                <TextField
+                  multiline
+                  rows={3}
+                  fullWidth
+                  sx={{ width: '600px' }}
+                />
+              </div>
+            </div>
+          </div>
           <button
             onClick={saveLoading}
             className="font-extrabold mt-10 rounded-md bg-blue-600 text-white text-xl shadow-2xl hover:bg-black duration-200 ease-in-out transform hover:scale-110 self-center p-3 w-60"

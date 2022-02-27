@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Avatar from '@mui/material/Avatar';
 import StarIcon from '@mui/icons-material/Star';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import HomeIcon from '@mui/icons-material/Home';
 import { useState } from 'react';
 
 export default function Profile() {
@@ -13,6 +12,7 @@ export default function Profile() {
   const [from, setFrom] = useState<boolean>(true);
   const [moreHost, setMoreHost] = useState<number>(5);
   const [moreGuest, setMoreGuest] = useState<number>(5);
+  const [openReviews, setOpenReviews] = useState<boolean>(false);
 
   const guest = {
     name: 'Brandon',
@@ -31,7 +31,7 @@ export default function Profile() {
   const hosts = [];
   const guests = [];
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 25; i++) {
     hosts[i] = host;
     guests[i] = guest;
   }
@@ -42,10 +42,9 @@ export default function Profile() {
       <div className="flex flex-row p-20 justify-center gap-20">
         <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem]">
           <Avatar className="p-10 bg-orange-500 text-3xl self-center">B</Avatar>
-          <div className="flex flex-row gap-3 items-center mt-5">
-            <StarIcon className=" text-orange-500" />
-            <h1 className="underline text-lg">20 reviews</h1>
-          </div>
+          <h1 className="underline text-lg mt-5 self-center cursor-pointer duration-300 active:scale-90">
+            Update photo
+          </h1>
           <div className="mt-10 flex flex-col gap-3">
             <h1 className="font-bold text-xl text-gray-800 mb-5">
               Brandon confirmed
@@ -72,8 +71,10 @@ export default function Profile() {
           <div className="flex flex-col gap-3 item">
             <h1 className="font-bold text-2xl">About</h1>
             <div className="flex flex-row gap-3 items-center">
-              <HomeIcon />
-              <h1>Lives in San Francisco, CA</h1>
+              <h1 className="w-[30rem]">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quibusdam culpa deserunt dolores earum
+              </h1>
             </div>
           </div>
           <div>
@@ -95,8 +96,13 @@ export default function Profile() {
             </div>
           </div>
           <div className="flex flex-row gap-3 mt-10">
-            <StarIcon className="text-3xl" />
-            <h1 className="text-2xl">100 reviews</h1>
+            <StarIcon className="text-3xl underline" />
+            <h1
+              onClick={() => setOpenReviews(!openReviews)}
+              className="text-2xl"
+            >
+              100 reviews
+            </h1>
           </div>
           <div className="flex flex-col gap-5 mt-5">
             <div className="flex flex-row gap-5">
@@ -162,17 +168,25 @@ export default function Profile() {
                   </div>
                   // eslint-disable-next-line @typescript-eslint/indent
                 ))}
-            {moreHost !== 50 && (
-              <button
-                onClick={() => {
-                  if (from) setMoreGuest(moreGuest + 5);
-                  else setMoreHost(moreHost + 5);
-                }}
-                className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
-              >
-                Show more reviews
-              </button>
-            )}
+            {from
+              ? moreGuest !== 25 && (
+                  <button
+                    onClick={() => setMoreGuest(moreGuest + 5)}
+                    className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                  >
+                    Show more reviews
+                  </button>
+                  // eslint-disable-next-line @typescript-eslint/indent
+                )
+              : moreHost !== 25 && (
+                  <button
+                    onClick={() => setMoreHost(moreHost + 5)}
+                    className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                  >
+                    Show more reviews
+                  </button>
+                  // eslint-disable-next-line @typescript-eslint/indent
+                )}
           </div>
         </div>
       </div>
