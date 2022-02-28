@@ -39,10 +39,7 @@ export default function Navbar() {
           <img src={'img/logo.png'} alt="logo" width="200" />
         </Link>
         <div className="flex gap-10 items-center">
-          <Button
-            className="p-3 border-white text-white capitalize"
-            variant="outlined"
-          >
+          <Button className="p-3 border-white text-white capitalize" variant="outlined">
             Become Host
           </Button>
           <div>
@@ -75,9 +72,7 @@ export default function Navbar() {
               >
                 Sign up
               </MenuItem>
-              <MenuItem onClick={() => navigate('/personal')}>
-                Personal
-              </MenuItem>
+              <MenuItem onClick={() => navigate('/personal')}>Personal</MenuItem>
               <MenuItem>Messages</MenuItem>
               <MenuItem onClick={() => navigate('/profile')}>Listings</MenuItem>
               <MenuItem onClick={logout}>Log out</MenuItem>

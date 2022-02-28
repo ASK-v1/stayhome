@@ -8,8 +8,7 @@ export const store = configureStore({
   },
 });
 
-const useAppDispatch = () => useDispatch<typeof store.dispatch>();
-const useAppSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> =
-  useSelector;
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
+export const useAppSelector: TypedUseSelectorHook<ReturnType<typeof store.getState>> = useSelector;
 
 export default { useAppDispatch, useAppSelector };

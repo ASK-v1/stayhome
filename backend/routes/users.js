@@ -33,4 +33,17 @@ router.post('/login', async (req, res) => {
   } else res.status(401).send();
 });
 
+router.post('/edit', async (req, res) => {
+  const { firstName, lastName, phone, about, email, id } = req.body;
+
+  if (about) await User.updateOne({ _id: id }, { $set: { about } });
+  if (firstName) await User.updateOne({ _id: id }, { $set: { firstName } });
+  if (lastName) await User.updateOne({ _id: id }, { $set: { lastName } });
+  if (phone) await User.updateOne({ _id: id }, { $set: { phone } });
+  if (email) await User.updateOne({ _id: id }, { $set: { email } });
+
+  const userData = await User.findById(id);
+  res.send({ userData });
+});
+
 module.exports = router;

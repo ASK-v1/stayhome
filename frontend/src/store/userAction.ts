@@ -16,4 +16,9 @@ const userLogout = (dispatch: Dispatch) => {
   dispatch(logout());
 };
 
-export { userLogout, userLogin, userSignup };
+const userEdit = (edit: object) => async (dispatch: Dispatch) => {
+  const { data } = await axios.post('http://localhost:5000/users/edit', edit);
+  dispatch(userData(data.userData));
+};
+
+export { userLogout, userLogin, userSignup, userEdit };

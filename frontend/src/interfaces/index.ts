@@ -16,3 +16,12 @@ export interface UserStateInterface {
   isAuth: boolean;
   user: string;
 }
+
+export interface PersonalInterface {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  about: string;
+  id?: string;
+}

@@ -12,7 +12,6 @@ export default function Profile() {
   const [from, setFrom] = useState<boolean>(true);
   const [moreHost, setMoreHost] = useState<number>(5);
   const [moreGuest, setMoreGuest] = useState<number>(5);
-  const [openReviews, setOpenReviews] = useState<boolean>(false);
 
   const guest = {
     name: 'Brandon',
@@ -46,9 +45,7 @@ export default function Profile() {
             Update photo
           </h1>
           <div className="mt-10 flex flex-col gap-3">
-            <h1 className="font-bold text-xl text-gray-800 mb-5">
-              Brandon confirmed
-            </h1>
+            <h1 className="font-bold text-xl text-gray-800 mb-5">Brandon confirmed</h1>
             <div className="flex flex-row gap-3">
               <CheckCircleIcon className=" text-orange-500" />
               <h1>Identity</h1>
@@ -72,8 +69,8 @@ export default function Profile() {
             <h1 className="font-bold text-2xl">About</h1>
             <div className="flex flex-row gap-3 items-center">
               <h1 className="w-[30rem]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quibusdam culpa deserunt dolores earum
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam culpa deserunt
+                dolores earum
               </h1>
             </div>
           </div>
@@ -97,38 +94,23 @@ export default function Profile() {
           </div>
           <div className="flex flex-row gap-3 mt-10">
             <StarIcon className="text-3xl underline" />
-            <h1
-              onClick={() => setOpenReviews(!openReviews)}
-              className="text-2xl"
-            >
-              100 reviews
-            </h1>
+            <h1 className="text-2xl">100 reviews</h1>
           </div>
           <div className="flex flex-col gap-5 mt-5">
             <div className="flex flex-row gap-5">
               {from ? (
-                <button className="text-gray-800 pointer-events-none">
-                  From guests (50)
-                </button>
+                <button className="text-gray-800 pointer-events-none">From guests (50)</button>
               ) : (
-                <button
-                  className="active:scale-90"
-                  onClick={() => setFrom(true)}
-                >
+                <button className="active:scale-90" onClick={() => setFrom(true)}>
                   From guests (50)
                 </button>
               )}
               {from ? (
-                <button
-                  onClick={() => setFrom(false)}
-                  className="active:scale-90"
-                >
+                <button onClick={() => setFrom(false)} className="active:scale-90">
                   From hosts (50)
                 </button>
               ) : (
-                <button className="pointer-events-none text-gray-800 ">
-                  From hosts (50)
-                </button>
+                <button className="pointer-events-none text-gray-800 ">From hosts (50)</button>
               )}
             </div>
             <div className="border-b-2 border-gray-400 w-[50rem]" />
