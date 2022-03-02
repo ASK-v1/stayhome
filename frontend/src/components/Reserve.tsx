@@ -107,7 +107,7 @@ export default function Reserve() {
         </div>
       </div>
       <div className="border-gray-400 border-b mt-5" />
-      <div className="flex flex-row justify-between mt-5 text-lg font-extrabold">
+      <div className="flex flex-row justify-between mt-5 text-lg font-bold">
         <h1>Total before taxes</h1>
         <h1>$552</h1>
       </div>
