@@ -152,7 +152,7 @@ export default function Search() {
         </div>
         <button
           onClick={() => navigate('/rooms')}
-          className="flex flex-row font-extrabold ml-6 py-4 rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-black duration-300 "
+          className="flex flex-row font-semibold ml-6 py-4 rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-black duration-300 "
         >
           <SearchIcon className="text-2xl"></SearchIcon>
           <p>Search</p>

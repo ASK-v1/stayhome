@@ -24,13 +24,13 @@ export default function Room() {
           <Description />
           <Reserve />
         </div>
-        <div className="border-t-gray-400 border mt-10 w-[77rem] self-center" />
+        <div className="border-gray-400 border-b mt-10 w-[77rem] self-center" />
       </div>
       <div id="reviews">
         <Reviews reviews={reviews} setReviews={setReviews} />
       </div>
       <div className="flex flex-col items-center" id="location">
-        <div className="border-t-gray-400 border w-[77rem] self-center" />
+        <div className="border-gray-400 border-b w-[77rem] self-center" />
         <h1 className="text-xl font-bold mt-10 mb-5">Where you’ll be</h1>
         <div className="self-center justify-self-center mr-[1228px]">
           <Map />

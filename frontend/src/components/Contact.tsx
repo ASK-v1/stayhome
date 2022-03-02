@@ -14,15 +14,13 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col items-center mb-20">
-      <div className="border-t-gray-400 border mt-10 mb-10 w-[77rem] self-center" />
+      <div className="border-gray-400 border-b mt-10 mb-10 w-[77rem] self-center" />
       <div className="flex flex-row gap-5 items-start">
         <div onClick={() => navigate('/profile')}>
-          <Avatar className="p-10 bg-orange-500 cursor-pointer text-3xl">
-            B
-          </Avatar>
+          <Avatar className="p-10 bg-orange-500 cursor-pointer text-3xl">B</Avatar>
         </div>
         <div className="flex flex-col">
-          <h1 className="font-bold">Brandon</h1>
+          <h1 className="font-bold text-xl">Hosted by Brandon</h1>
           <h1 className="text-gray-800">February 2022</h1>
           <div className="flex flex-row gap-10 mt-3 items-center">
             <div className="flex flex-row gap-3 items-center">
@@ -35,9 +33,9 @@ export default function Contact() {
             </div>
           </div>
           <h1 className="w-[30rem] mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum id
-            ipsam voluptas quaerat eaque eveniet totam! Nobis exercitationem rem
-            id nulla esse soluta qui. Ab libero quaerat
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum id ipsam voluptas
+            quaerat eaque eveniet totam! Nobis exercitationem rem id nulla esse soluta qui. Ab
+            libero quaerat
           </h1>
         </div>
         {send ? (
@@ -51,7 +49,7 @@ export default function Contact() {
             />
             <button
               onClick={() => setSend(false)}
-              className="border w-36 font-bold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
+              className="border w-36 font-semibold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
             >
               Send message
             </button>

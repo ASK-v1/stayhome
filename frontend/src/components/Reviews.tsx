@@ -24,13 +24,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Reviews({
-  reviews,
-  setReviews,
-}: {
-  reviews: boolean;
-  setReviews;
-}) {
+export default function Reviews({ reviews, setReviews }: { reviews: boolean; setReviews }) {
   const [filter, setFilter] = useState<string>('');
 
   const reviewsArr = [
@@ -62,14 +56,9 @@ export default function Reviews({
   return (
     <div className="flex flex-col items-center mb-10">
       <div className="flex flex-row items-center mt-10 gap-2">
-        <Rating
-          className="text-2xl text-orange-500"
-          name="read-only"
-          value={value}
-          readOnly
-        />
-        <h1 className="text-xl font-extrabold">{value}</h1>
-        <h5 className="text-xl font-extrabold">- 20 reviews</h5>
+        <Rating className="text-2xl text-orange-500" name="read-only" value={value} readOnly />
+        <h1 className="text-xl font-bold">{value}</h1>
+        <h5 className="text-xl font-bold">- 20 reviews</h5>
       </div>
       <div className="flex flex-col gap-20 mt-10">
         <div className="flex flex-row gap-28">
@@ -80,9 +69,9 @@ export default function Reviews({
                 <h1 className="font-bold">Brandon</h1>
                 <h1 className="text-gray-800">February 2022</h1>
                 <h1 className="w-[500px] mt-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia repudiandae eos voluptas sunt eligendi eius facere ea
-                  voluptatum dolor earum dolores unde at harum explicabo quas
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia repudiandae eos
+                  voluptas sunt eligendi eius facere ea voluptatum dolor earum dolores unde at harum
+                  explicabo quas
                 </h1>
               </div>
             </div>
@@ -96,9 +85,9 @@ export default function Reviews({
                 <h1 className="font-bold">Brandon</h1>
                 <h1 className="text-gray-800">February 2022</h1>
                 <h1 className="w-[500px] mt-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia repudiandae eos voluptas sunt eligendi eius facere ea
-                  voluptatum dolor earum dolores unde at harum explicabo quas
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia repudiandae eos
+                  voluptas sunt eligendi eius facere ea voluptatum dolor earum dolores unde at harum
+                  explicabo quas
                 </h1>
               </div>
             </div>
@@ -106,7 +95,7 @@ export default function Reviews({
         </div>
         <button
           onClick={handleClickOpen}
-          className="mt-5 border w-56 font-bold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
+          className="mt-5 border w-56 font-semibold border-black text-black self-center p-3 rounded-md duration-300 hover:bg-black hover:text-white"
         >
           Show all 20 reviews
         </button>
@@ -186,9 +175,7 @@ export default function Reviews({
               }}
             >
               {reviewsArr
-                .filter((reviewArr) =>
-                  reviewArr.toLowerCase().includes(filter.toLowerCase()),
-                )
+                .filter((reviewArr) => reviewArr.toLowerCase().includes(filter.toLowerCase()))
                 .map((review) => (
                   <div
                     style={{
@@ -210,10 +197,14 @@ export default function Reviews({
                         flexDirection: 'column',
                       }}
                     >
-                      <h1>Brandon</h1>
-                      <h1 style={{ color: grey[800], marginBottom: '5px' }}>
-                        February 2022
+                      <h1
+                        style={{
+                          fontWeight: 'bold',
+                        }}
+                      >
+                        Brandon
                       </h1>
+                      <h1 style={{ color: grey[800], marginBottom: '5px' }}>February 2022</h1>
                       <h1>{review}</h1>
                     </div>
                   </div>

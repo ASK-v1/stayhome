@@ -18,20 +18,19 @@ export default function Description() {
 
   return (
     <div className="flex flex-col w-[40rem] gap-2">
-      <h1 className="font-extrabold text-xl">
+      <h1 className="font-bold text-xl">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit
       </h1>
       <div>
         <h1 className="text-gray-800">6 guests - 2 bedrooms - 1 bath</h1>
       </div>
-      <div className="border-t-gray-400 border mt-5" />
+      <div className="border-gray-400 border-b mt-5" />
       <div className="mt-5">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magni,
-        itaque ea iusto minima laudantium a cumque, nemo voluptas pariatur
-        eveniet. Earum, voluptatem eos. Recusandae molestiae nihil praesentium
-        officiis aut?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores magni, itaque ea iusto
+        minima laudantium a cumque, nemo voluptas pariatur eveniet. Earum, voluptatem eos.
+        Recusandae molestiae nihil praesentium officiis aut?
       </div>
-      <div className="border-t-gray-400 border mt-5" />
+      <div className="border-gray-400 border-b mt-5" />
       <div className="mt-10 flex flex-col gap-3">
         <h1 className="font-bold text-xl mb-5">What this place offers</h1>
         <div className="flex flex-row gap-40">

@@ -62,7 +62,7 @@ export default function Filters() {
       <div className="flex flex-row gap-3 items-center justify-start">
         {openPrice ? (
           <button
-            className="active:scale-90 duration-300 text-black border ml-5 rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
+            className="active:scale-90 duration-300 text-black border ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
             onClick={(event) => setAnchorElPrice(event.currentTarget)}
           >
             Price
@@ -74,7 +74,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 ml-5 rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-24"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24"
             onClick={(event) => setAnchorElPrice(event.currentTarget)}
           >
             Price
@@ -88,7 +88,7 @@ export default function Filters() {
 
         {openRooms ? (
           <button
-            className="active:scale-90 duration-300 text-black border rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
+            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
             onClick={(event) => setAnchorElRooms(event.currentTarget)}
           >
             Rooms
@@ -100,7 +100,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-24"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24"
             onClick={(event) => setAnchorElRooms(event.currentTarget)}
           >
             Rooms
@@ -114,7 +114,7 @@ export default function Filters() {
 
         {openType ? (
           <button
-            className="active:scale-90 duration-300 text-black border rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-36 bg-gray-200 border-black"
+            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-36 bg-gray-200 border-black"
             onClick={(event) => setAnchorElType(event.currentTarget)}
           >
             Type of place
@@ -126,7 +126,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-bold flex flex-row gap-1 justify-center p-2 text-sm w-36"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-36"
             onClick={(event) => setAnchorElType(event.currentTarget)}
           >
             Type of place
@@ -138,18 +138,18 @@ export default function Filters() {
           </button>
         )}
 
-        <div className="border border-gray-400 w-5 rotate-90" />
+        <div className="border-b border-gray-400 w-5 rotate-90" />
 
         {filter.wifi ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('wifi')}
           >
             Wifi
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('wifi')}
           >
             Wifi
@@ -158,14 +158,14 @@ export default function Filters() {
 
         {filter.kitchen ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('kitchen')}
           >
             Kitchen
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('kitchen')}
           >
             Kitchen
@@ -174,14 +174,14 @@ export default function Filters() {
 
         {filter.parking ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-28 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-28 bg-gray-200"
             onClick={() => handleClick('parking')}
           >
             Free parking
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-28"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-28"
             onClick={() => handleClick('parking')}
           >
             Free parking
@@ -190,14 +190,14 @@ export default function Filters() {
 
         {filter.washer ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('washer')}
           >
             Washer
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('washer')}
           >
             Washer
@@ -206,14 +206,14 @@ export default function Filters() {
 
         {filter.dryer ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('dryer')}
           >
             Dryer
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('dryer')}
           >
             Dryer
@@ -222,14 +222,14 @@ export default function Filters() {
 
         {filter.iron ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('iron')}
           >
             Iron
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('iron')}
           >
             Iron
@@ -238,14 +238,14 @@ export default function Filters() {
 
         {filter.gym ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('gym')}
           >
             Gym
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('gym')}
           >
             Gym
@@ -254,14 +254,14 @@ export default function Filters() {
 
         {filter.pool ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('pool')}
           >
             Pool
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('pool')}
           >
             Pool
@@ -270,14 +270,14 @@ export default function Filters() {
 
         {filter.balcony ? (
           <button
-            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-bold justify-center w-20 bg-gray-200"
+            className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
             onClick={() => handleClick('balcony')}
           >
             Balcony
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-bold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
             onClick={() => handleClick('balcony')}
           >
             Balcony

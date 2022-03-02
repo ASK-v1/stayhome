@@ -46,9 +46,7 @@ export default function Signup(props: {
     setSign({ ...sign, showPassword: !sign.showPassword });
   };
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
@@ -87,7 +85,6 @@ export default function Signup(props: {
                 textAlign: 'center',
                 padding: '20px',
                 fontSize: '30px',
-                fontFamily: 'Rowdies',
                 fontWeight: 'bolder',
               }}
             >
@@ -161,7 +158,7 @@ export default function Signup(props: {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '35px',
+                    gap: '33px',
                     fontSize: '20px',
                     marginTop: '20px',
                     color: 'gray',
@@ -171,7 +168,7 @@ export default function Signup(props: {
                   <button
                     style={{
                       color: 'black',
-                      fontFamily: 'Rowdies',
+                      fontWeight: 'bold',
                       textDecoration: 'underline',
                     }}
                     onClick={() => {
@@ -189,7 +186,6 @@ export default function Signup(props: {
                     padding: '15px',
                     color: 'white',
                     fontSize: '20px',
-                    fontWeight: 'bolder',
                     alignSelf: 'center',
                     borderRadius: '5px',
                     paddingLeft: '119px',

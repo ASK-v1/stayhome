@@ -23,11 +23,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Login(props: {
-  login: boolean;
-  setLogin: Function;
-  setSignup: Function;
-}) {
+export default function Login(props: { login: boolean; setLogin: Function; setSignup: Function }) {
   const [log, setLog] = useState<LoginInterface>({
     password: '',
     email: '',
@@ -45,9 +41,7 @@ export default function Login(props: {
     setLog({ ...log, showPassword: !log.showPassword });
   };
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
 
@@ -86,7 +80,6 @@ export default function Login(props: {
                 textAlign: 'center',
                 padding: '20px',
                 fontSize: '30px',
-                fontFamily: 'Rowdies',
                 fontWeight: 'bolder',
               }}
             >
@@ -142,7 +135,7 @@ export default function Login(props: {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '43px',
+                    gap: '40px',
                     fontSize: '20px',
                     marginTop: '20px',
                     color: 'gray',
@@ -152,7 +145,7 @@ export default function Login(props: {
                   <button
                     style={{
                       color: 'black',
-                      fontFamily: 'Rowdies',
+                      fontWeight: 'bold',
                       textDecoration: 'underline',
                     }}
                     onClick={() => {
@@ -170,7 +163,6 @@ export default function Login(props: {
                     padding: '15px',
                     color: 'white',
                     fontSize: '20px',
-                    fontWeight: 'bolder',
                     alignSelf: 'center',
                     borderRadius: '5px',
                     paddingLeft: '119px',

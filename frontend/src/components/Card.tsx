@@ -11,7 +11,7 @@ export default function Card() {
   return (
     <a href="/room" className="flex group">
       <div className="flex flex-col gap-1">
-        <div className="border border-gray-400 w-[50rem] ml-5" />
+        <div className="border-b border-gray-400 w-[50rem] ml-5" />
         <div className="flex flex-row p-5">
           <div className="relative overflow-hidden w-72 h-48">
             <img
@@ -23,8 +23,8 @@ export default function Card() {
           <div className="flex flex-row gap-24 w-[40rem] ">
             <div className="ml-3 flex flex-col justify-between">
               <div className="flex flex-col gap-1">
-                <h1 className="text-gray-500">Lorem ipsum</h1>
-                <h1>Lorem ipsum</h1>
+                <h1 className="text-gray-500 font-semibold">Lorem ipsum</h1>
+                <h1 className="font-semibold">Lorem ipsum</h1>
               </div>
               <div>
                 <div className="flex flex-row gap-6">
@@ -63,15 +63,15 @@ export default function Card() {
                   value={value}
                   readOnly
                 />
-                <h1 className="font-bold text-md">{value}</h1>
+                <h1 className="font-semibold text-md">{value}</h1>
               </div>
             </div>
             <div className="flex flex-col self-end">
-              <div className="flex flex-row">
-                <h1 className="font-extrabold text-xl">$56</h1>
-                <h1 className="font-light text-xl">/night</h1>
+              <div className="flex flex-row gap-2">
+                <h1 className="font-black text-xl">$56</h1>
+                <h1 className="font-light text-xl">/ night</h1>
               </div>
-              <h1 className="text-gray-500 font-extrabold text-lg mr-10">$330.5 total</h1>
+              <h1 className="text-gray-800 underline text-sm self-end">$330.5 total</h1>
             </div>
           </div>
         </div>

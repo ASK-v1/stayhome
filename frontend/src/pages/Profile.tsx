@@ -62,11 +62,11 @@ export default function Profile() {
         </div>
         <div>
           <div className="flex flex-col gap-3 mb-10">
-            <h1 className="font-bold text-3xl">Hi, I’m Brandon</h1>
+            <h1 className="font-black text-3xl">Hi, I’m Brandon</h1>
             <h1 className="text-gray-800">Joined in 2022</h1>
           </div>
           <div className="flex flex-col gap-3 item">
-            <h1 className="font-bold text-2xl">About</h1>
+            <h1 className="font-semibold text-2xl">About</h1>
             <div className="flex flex-row gap-3 items-center">
               <h1 className="w-[30rem]">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam culpa deserunt
@@ -75,17 +75,17 @@ export default function Profile() {
             </div>
           </div>
           <div>
-            <h1 className="font-bold text-2xl mt-10">Brandon’s listings</h1>
+            <h1 className="font-semibold text-2xl mt-10">Brandon’s listings</h1>
             <div className="mt-5">
               <img
                 src={url}
                 className="rounded-3xl duration-500 w-[20rem] hover:opacity-90 cursor-pointer"
                 alt="photos"
               />
-              <div className="flex flex-row gap-1 mt-2 items-center">
+              <div className="flex flex-row gap-3 mt-2 items-center">
                 <StarIcon />
-                <h1>4.5</h1>
-                <h1 className="font-bold">(20)</h1>
+                <h1 className="font-semibold text-md">4.5</h1>
+                <h1 className="text-gray-800">(20 reviews)</h1>
               </div>
               <h1 className="w-80 mt-1">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -94,7 +94,7 @@ export default function Profile() {
           </div>
           <div className="flex flex-row gap-3 mt-10">
             <StarIcon className="text-3xl underline" />
-            <h1 className="text-2xl">100 reviews</h1>
+            <h1 className="text-2xl font-semibold">100 reviews</h1>
           </div>
           <div className="flex flex-col gap-5 mt-5">
             <div className="flex flex-row gap-5">
@@ -113,7 +113,7 @@ export default function Profile() {
                 <button className="pointer-events-none text-gray-800 ">From hosts (50)</button>
               )}
             </div>
-            <div className="border-b-2 border-gray-400 w-[50rem]" />
+            <div className="border-b border-gray-400 w-[50rem]" />
           </div>
 
           <div>
@@ -154,7 +154,7 @@ export default function Profile() {
               ? moreGuest !== 25 && (
                   <button
                     onClick={() => setMoreGuest(moreGuest + 5)}
-                    className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                    className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
                   >
                     Show more reviews
                   </button>
@@ -163,7 +163,7 @@ export default function Profile() {
               : moreHost !== 25 && (
                   <button
                     onClick={() => setMoreHost(moreHost + 5)}
-                    className="border w-60 font-bold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                    className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
                   >
                     Show more reviews
                   </button>

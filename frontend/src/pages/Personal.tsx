@@ -58,11 +58,11 @@ export default function Personal() {
     <div>
       <Navbar />
       <div className="mb-20">
-        <h1 className="text-center text-3xl my-10 font-bold font-rowdies">PERSONAL INFO</h1>
+        <h1 className="text-center text-3xl my-10 font-black">PERSONAL INFO</h1>
         <div className="flex flex-col gap-10 justify-evenly">
           <div className="flex justify-evenly items-center">
             <div className="flex flex-col gap-1">
-              <h1 className="text-xl font-rowdies text-gray-800">Name</h1>
+              <h1 className="text-xl font-semibold text-gray-800">Name</h1>
               <div className="flex flex-row gap-5 mt-5">
                 <TextField
                   sx={{ minWidth: 290 }}
@@ -81,7 +81,7 @@ export default function Personal() {
           </div>
           <div className="flex justify-evenly items-center">
             <div className="flex flex-col gap-1">
-              <h1 className="text-xl font-rowdies text-gray-800">Email address</h1>
+              <h1 className="text-xl font-semibold  text-gray-800">Email address</h1>
               <div className="mt-5">
                 <TextField
                   sx={{ minWidth: 600 }}
@@ -94,7 +94,7 @@ export default function Personal() {
           </div>
           <div className="flex justify-evenly items-center">
             <div className="flex flex-col gap-1">
-              <h1 className="text-xl font-rowdies text-gray-800">Phone number</h1>
+              <h1 className="text-xl font-semibold  text-gray-800">Phone number</h1>
               <div className="mt-5">
                 <TextField
                   sx={{ minWidth: 600 }}
@@ -107,7 +107,7 @@ export default function Personal() {
           </div>
           <div className="flex justify-evenly items-center">
             <div className="flex flex-col gap-1">
-              <h1 className="text-xl font-rowdies text-gray-800">About</h1>
+              <h1 className="text-xl font-semibold  text-gray-800">About</h1>
               <div className="mt-5">
                 <TextField
                   placeholder={user.about}
@@ -122,7 +122,7 @@ export default function Personal() {
           </div>
           <button
             onClick={personalEdit}
-            className="font-extrabold mt-10 rounded-md bg-blue-600 text-white text-xl shadow-2xl hover:bg-black duration-300 self-center p-3 w-60"
+            className="font-semibold mt-10 rounded-md bg-blue-600 text-white text-xl shadow-2xl hover:bg-black duration-300 self-center p-3 w-60"
           >
             Save
           </button>

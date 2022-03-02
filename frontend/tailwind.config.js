@@ -8,9 +8,6 @@ module.exports = {
         home: "url('/public/img/home.jpg')",
         notfound: "url('/public/img/404.jpg')",
       }),
-      fontFamily: {
-        rowdies: ['rowdies'],
-      },
     },
     colors: {
       black: '#000',

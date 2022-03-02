@@ -56,27 +56,19 @@ export default function Photos({ setReviews }) {
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-row justify-around items-center mb-6 gap-[42rem]">
         <div className="flex flex-col gap-3">
-          <h1 className="text-xl font-extrabold">Lorem ipsum dolor sit amet</h1>
+          <h1 className="text-xl font-bold">Lorem ipsum dolor sit amet</h1>
           <div className="flex flex-row gap-9">
             <div className="flex flex-row gap-3 items-center">
-              <Rating
-                className="text-lg text-orange-500"
-                name="read-only"
-                value={value}
-                readOnly
-              />
-              <h1 className="font-extrabold">{value}</h1>
+              <Rating className="text-lg text-orange-500" name="read-only" value={value} readOnly />
+              <h1 className="font-semibold">{value}</h1>
               <h5
                 onClick={() => setReviews(true)}
-                className="underline font-extrabold cursor-pointer"
+                className="underline font-semibold cursor-pointer"
               >
                 12 reviews
               </h5>
             </div>
-            <Breadcrumbs
-              separator={<NavigateNextIcon fontSize="small" />}
-              aria-label="breadcrumb"
-            >
+            <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
               <Link underline="hover" color="black" href="/">
                 Home
               </Link>
@@ -131,12 +123,7 @@ export default function Photos({ setReviews }) {
           />
         </div>
       </div>
-      <Dialog
-        fullScreen
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Transition}
-      >
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar sx={{ position: 'relative' }}>
           <Toolbar
             style={{
