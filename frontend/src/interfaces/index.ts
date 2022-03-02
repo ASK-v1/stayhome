@@ -25,3 +25,23 @@ export interface PersonalInterface {
   about: string;
   id?: string;
 }
+
+export interface FiltersInterface {
+  minPrice: string;
+  maxPrice: string;
+  bedrooms: string;
+  bathrooms: string;
+  entirePlace: boolean;
+  privateRoom: boolean;
+  hotelRoom: boolean;
+  sharedRoom: boolean;
+  wifi: boolean;
+  kitchen: boolean;
+  parking: boolean;
+  washer: boolean;
+  dryer: boolean;
+  gym: boolean;
+  pool: boolean;
+  iron: boolean;
+  balcony: boolean;
+}

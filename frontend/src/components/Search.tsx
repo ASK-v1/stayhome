@@ -18,14 +18,7 @@ function sleep(delay = 0) {
   });
 }
 
-const cities = [
-  'Amsterdam',
-  'Berlin',
-  'Bursa',
-  'Chicago',
-  'London',
-  'San Francisco',
-];
+const cities = ['Amsterdam', 'Berlin', 'Bursa', 'Chicago', 'London', 'San Francisco'];
 
 export default function Search() {
   const navigate = useNavigate();
@@ -95,9 +88,7 @@ export default function Search() {
                 ...params.InputProps,
                 endAdornment: (
                   <React.Fragment>
-                    {loading ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
+                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
                     {params.InputProps.endAdornment}
                   </React.Fragment>
                 ),
@@ -161,7 +152,7 @@ export default function Search() {
         </div>
         <button
           onClick={() => navigate('/rooms')}
-          className="flex flex-row font-extrabold ml-6 py-4 rounded bg-blue-600 px-6 text-white text-xl shadow-xl hover:bg-black duration-200 ease-in-out transform hover:scale-110 items-center gap-2"
+          className="flex flex-row font-extrabold ml-6 py-4 rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-black duration-300 "
         >
           <SearchIcon className="text-2xl"></SearchIcon>
           <p>Search</p>

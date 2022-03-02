@@ -122,7 +122,7 @@ export default function Personal() {
           </div>
           <button
             onClick={personalEdit}
-            className="font-extrabold mt-10 rounded-md bg-blue-600 text-white text-xl shadow-2xl hover:bg-black duration-200 ease-in-out transform hover:scale-110 self-center p-3 w-60"
+            className="font-extrabold mt-10 rounded-md bg-blue-600 text-white text-xl shadow-2xl hover:bg-black duration-300 self-center p-3 w-60"
           >
             Save
           </button>
