@@ -32,6 +32,8 @@ export default function Navbar() {
     window.location.reload();
   };
 
+  const isAuth = store.useAppSelector((state) => state.user.isAuth);
+
   return (
     <div>
       <div className="flex items-center justify-around bg-orange-500 p-1">
@@ -39,8 +41,14 @@ export default function Navbar() {
           <img src={'img/logo.png'} alt="logo" width="200" />
         </Link>
         <div className="flex gap-10 items-center">
-          <Button className="p-3 border-white text-white capitalize" variant="outlined">
-            Become Host
+          <Button
+            onClick={() => navigate('/becomehost')}
+            className="font-semibold p-3 border-white text-white capitalize flex gap-1 "
+            variant="outlined"
+          >
+            <h1>Become</h1>
+            <h1 className="lowercase">a</h1>
+            <h1>Host</h1>
           </Button>
           <div>
             <IconButton onClick={handleClick}>
@@ -56,26 +64,32 @@ export default function Navbar() {
                 },
               }}
             >
-              <MenuItem
-                onClick={() => {
-                  setLogin(true);
-                  setAnchorEl(null);
-                }}
-              >
-                Log in
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  setSignup(true);
-                  setAnchorEl(null);
-                }}
-              >
-                Sign up
-              </MenuItem>
-              <MenuItem onClick={() => navigate('/personal')}>Personal</MenuItem>
-              <MenuItem>Messages</MenuItem>
-              <MenuItem onClick={() => navigate('/profile')}>Listings</MenuItem>
-              <MenuItem onClick={logout}>Log out</MenuItem>
+              {!isAuth && (
+                <MenuItem
+                  onClick={() => {
+                    setLogin(true);
+                    setAnchorEl(null);
+                  }}
+                >
+                  Log in
+                </MenuItem>
+              )}
+
+              {!isAuth && (
+                <MenuItem
+                  onClick={() => {
+                    setSignup(true);
+                    setAnchorEl(null);
+                  }}
+                >
+                  Sign up
+                </MenuItem>
+              )}
+
+              {isAuth && <MenuItem onClick={() => navigate('/personal')}>Personal</MenuItem>}
+              {isAuth && <MenuItem>Messages</MenuItem>}
+              {isAuth && <MenuItem onClick={() => navigate('/profile')}>Listings</MenuItem>}
+              {isAuth && <MenuItem onClick={logout}>Log out</MenuItem>}
             </Menu>
           </div>
         </div>

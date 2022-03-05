@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../models/user');
-const { SECRET } = require('../keys');
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
+const { SECRET } = require('../key');
 
 router.post('/signup', async (req, res) => {
   const { email, password, firstName, lastName } = req.body;

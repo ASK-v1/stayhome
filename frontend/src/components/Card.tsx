@@ -23,7 +23,7 @@ export default function Card() {
           <div className="flex flex-row gap-24 w-[40rem] ">
             <div className="ml-3 flex flex-col justify-between">
               <div className="flex flex-col gap-1">
-                <h1 className="text-gray-500 font-semibold">Lorem ipsum</h1>
+                <h1 className="text-gray-600 font-semibold text-sm">Lorem ipsum</h1>
                 <h1 className="font-semibold">Lorem ipsum</h1>
               </div>
               <div>
