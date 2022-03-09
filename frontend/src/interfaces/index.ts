@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 export interface SignupInterface {
   firstName: string;
   lastName: string;
@@ -44,4 +45,44 @@ export interface FiltersInterface {
   pool: boolean;
   iron: boolean;
   balcony: boolean;
+}
+
+export interface BecomeHostTypeInterface {
+  entirePlace: boolean;
+  privateRoom: boolean;
+  hotelRoom: boolean;
+  sharedRoom: boolean;
+}
+
+export interface BecomeHostLocationInterface {
+  country: string;
+  street: string;
+  city: string;
+  state: string;
+  apt: string;
+}
+
+export interface BecomeHostGuestInterface {
+  guests: number;
+  bedrooms: number;
+  bathrooms: number;
+}
+
+export interface BecomeHostAmenityInterface {
+  wifi: boolean;
+  free: boolean;
+  tv: boolean;
+  microwave: boolean;
+  bathtub: boolean;
+  iron: boolean;
+  pool: boolean;
+  dishes: boolean;
+  refrigerator: boolean;
+  washer: boolean;
+  dryer: boolean;
+  coffee: boolean;
+  aid: boolean;
+  hangers: boolean;
+  balcony: boolean;
+  freezer: boolean;
 }
