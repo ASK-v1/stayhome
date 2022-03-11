@@ -85,6 +85,7 @@ export default function Space({ setPage }: { setPage: Function }) {
           >
             Exit
           </button>
+          <div className="absolute bottom-24 w-[5.55%] border-t-4 border-black" />
           <div className="absolute bottom-24 w-6/12 border-t border-gray-800" />
           <button
             onClick={() => setPage(2)}

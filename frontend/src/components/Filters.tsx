@@ -8,8 +8,8 @@ import InputLabel from '@mui/material/InputLabel';
 import { FiltersInterface } from '../interfaces';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { BecomeHostGuestInterface } from '../interfaces';
 
 export default function Filters() {
   const [filter, setfilter] = useState<FiltersInterface>({
@@ -57,6 +57,13 @@ export default function Filters() {
   const openRooms = Boolean(anchorElRooms);
   const openType = Boolean(anchorElType);
 
+  const [value, setValue] = useState<BecomeHostGuestInterface>({
+    guests: 1,
+    bedrooms: 1,
+    beds: 1,
+    bathrooms: 1,
+  });
+
   return (
     <div className="mb-12 mt-5">
       <div className="flex flex-row gap-3 items-center justify-start">
@@ -88,10 +95,10 @@ export default function Filters() {
 
         {openRooms ? (
           <button
-            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
+            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44 bg-gray-200 border-black"
             onClick={(event) => setAnchorElRooms(event.currentTarget)}
           >
-            Rooms
+            Rooms and beds
             {openRooms ? (
               <KeyboardArrowUpIcon fontSize="small" />
             ) : (
@@ -100,10 +107,10 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44"
             onClick={(event) => setAnchorElRooms(event.currentTarget)}
           >
-            Rooms
+            Rooms and beds
             {openRooms ? (
               <KeyboardArrowUpIcon fontSize="small" />
             ) : (
@@ -325,10 +332,11 @@ export default function Filters() {
             padding: '10px',
             borderRadius: '5px',
             color: 'white',
-            marginLeft: '50px',
-            width: '100px',
+            marginLeft: '25px',
+            width: '9.4rem',
             boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
-            marginTop: '10px',
+            marginTop: '20px',
+            marginBottom: '20px',
           }}
         >
           Save
@@ -340,53 +348,117 @@ export default function Filters() {
         onClose={() => setAnchorElRooms(null)}
         PaperProps={{
           style: {
-            width: 200,
+            width: 400,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            gap: '20px',
           },
         }}
       >
-        <FormControl fullWidth sx={{ m: 1, width: '150px', marginLeft: '25px' }}>
-          <InputLabel>Bedrooms</InputLabel>
-          <Select
-            sx={{
-              bgcolor: 'background.paper',
-              borderRadius: 1,
-              minWidth: 100,
-            }}
-            label="Bedrooms"
-            value={filter.bedrooms}
-            onChange={handleChange('bedrooms')}
-            displayEmpty
-          >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl fullWidth sx={{ m: 1, width: '150px', marginLeft: '25px' }}>
-          <InputLabel>Bathrooms</InputLabel>
-          <Select
-            sx={{
-              bgcolor: 'background.paper',
-              borderRadius: 1,
-              minWidth: 100,
-            }}
-            label="Bathrooms"
-            value={filter.bathrooms}
-            onChange={handleChange('bathrooms')}
-            displayEmpty
-          >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
-        </FormControl>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '13rem', marginTop: '1.5rem' }}>
+          <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>Guests</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '1.25rem' }}>
+            {value.guests !== 1 ? (
+              <button
+                onClick={() => setValue({ ...value, guests: value.guests - 1 })}
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '20px',
+                  borderRadius: '30px',
+                  height: '2.5rem',
+                  width: '2.5rem',
+                  border: 'solid 1px',
+                }}
+              >
+                -
+              </button>
+            ) : (
+              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+                -
+              </button>
+            )}
+            <h1 className="mt-2">{value.guests}</h1>
+            <button
+              onClick={() => setValue({ ...value, guests: value.guests + 1 })}
+              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-row items-center gap-[15.5rem]">
+          <h1 className="font-bold text-2xl">Bedrooms</h1>
+          <div className="flex flex-row gap-5">
+            {value.bedrooms !== 1 ? (
+              <button
+                onClick={() => setValue({ ...value, bedrooms: value.bedrooms - 1 })}
+                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+              >
+                -
+              </button>
+            ) : (
+              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+                -
+              </button>
+            )}
+            <h1 className="mt-2">{value.bedrooms}</h1>
+            <button
+              onClick={() => setValue({ ...value, bedrooms: value.bedrooms + 1 })}
+              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-row items-center gap-[19.2rem]">
+          <h1 className="font-bold text-2xl">Beds</h1>
+          <div className="flex flex-row gap-5">
+            {value.beds !== 1 ? (
+              <button
+                onClick={() => setValue({ ...value, beds: value.beds - 1 })}
+                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+              >
+                -
+              </button>
+            ) : (
+              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+                -
+              </button>
+            )}
+            <h1 className="mt-2">{value.beds}</h1>
+            <button
+              onClick={() => setValue({ ...value, beds: value.beds + 1 })}
+              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-row items-center gap-[15rem]">
+          <h1 className="font-bold text-2xl">Bathrooms</h1>
+          <div className="flex flex-row gap-5">
+            {value.bathrooms !== 1 ? (
+              <button
+                onClick={() => setValue({ ...value, bathrooms: value.bathrooms - 1 })}
+                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+              >
+                -
+              </button>
+            ) : (
+              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+                -
+              </button>
+            )}
+            <h1 className="mt-2">{value.bathrooms}</h1>
+            <button
+              onClick={() => setValue({ ...value, bathrooms: value.bathrooms + 1 })}
+              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+            >
+              +
+            </button>
+          </div>
+        </div>
         <button
           onClick={() => setAnchorElRooms(null)}
           style={{
@@ -397,7 +469,8 @@ export default function Filters() {
             marginLeft: '50px',
             width: '100px',
             boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
-            marginTop: '10px',
+            marginTop: '20px',
+            marginBottom: '20px',
           }}
         >
           Save
@@ -413,6 +486,7 @@ export default function Filters() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'start',
+            padding: '10px',
           },
         }}
       >
@@ -440,7 +514,7 @@ export default function Filters() {
               flexDirection: 'column',
             }}
           >
-            <h1 style={{ fontSize: '17px' }}>Entire place</h1>
+            <h1 style={{ fontSize: '20px' }}>Entire place</h1>
           </div>
         </div>
         <div
@@ -461,7 +535,7 @@ export default function Filters() {
               },
             }}
           />
-          <h1 style={{ fontSize: '17px' }}>Private room</h1>
+          <h1 style={{ fontSize: '20px' }}>Private room</h1>
         </div>
         <div
           style={{
@@ -481,7 +555,7 @@ export default function Filters() {
               },
             }}
           />
-          <h1 style={{ fontSize: '17px' }}>Hotel room</h1>
+          <h1 style={{ fontSize: '20px' }}>Hotel room</h1>
         </div>
         <div
           style={{
@@ -501,7 +575,7 @@ export default function Filters() {
               },
             }}
           />
-          <h1 style={{ fontSize: '17px' }}>Shared room</h1>
+          <h1 style={{ fontSize: '20px' }}>Shared room</h1>
         </div>
         <button
           onClick={() => setAnchorElType(null)}
@@ -510,10 +584,11 @@ export default function Filters() {
             padding: '10px',
             borderRadius: '5px',
             color: 'white',
-            marginLeft: '50px',
-            width: '100px',
+            width: '10rem',
+            marginLeft: '10px',
             boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
-            marginTop: '10px',
+            marginTop: '20px',
+            marginBottom: '20px',
           }}
         >
           Save

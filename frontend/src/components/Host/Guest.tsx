@@ -6,6 +6,7 @@ export default function Guest({ setPage }: { setPage: Function }) {
   const [value, setValue] = useState<BecomeHostGuestInterface>({
     guests: 1,
     bedrooms: 1,
+    beds: 1,
     bathrooms: 1,
   });
 
@@ -67,6 +68,30 @@ export default function Guest({ setPage }: { setPage: Function }) {
                 </button>
               </div>
             </div>
+            <div className="flex flex-row items-center gap-[19.2rem]">
+              <h1 className="font-bold text-2xl">Beds</h1>
+              <div className="flex flex-row gap-5">
+                {value.beds !== 1 ? (
+                  <button
+                    onClick={() => setValue({ ...value, beds: value.beds - 1 })}
+                    className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+                  >
+                    -
+                  </button>
+                ) : (
+                  <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+                    -
+                  </button>
+                )}
+                <h1 className="mt-2">{value.beds}</h1>
+                <button
+                  onClick={() => setValue({ ...value, beds: value.beds + 1 })}
+                  className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+                >
+                  +
+                </button>
+              </div>
+            </div>
             <div className="flex flex-row items-center gap-[15rem]">
               <h1 className="font-bold text-2xl">Bathrooms</h1>
               <div className="flex flex-row gap-5">
@@ -98,6 +123,7 @@ export default function Guest({ setPage }: { setPage: Function }) {
           >
             Exit
           </button>
+          <div className="absolute bottom-24 w-[16.65%] border-t-4 border-black" />
           <div className="absolute bottom-24 w-6/12 border-t border-gray-800" />
           <button
             onClick={() => setPage(2)}

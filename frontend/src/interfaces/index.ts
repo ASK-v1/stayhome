@@ -65,6 +65,7 @@ export interface BecomeHostLocationInterface {
 export interface BecomeHostGuestInterface {
   guests: number;
   bedrooms: number;
+  beds: number;
   bathrooms: number;
 }
 
@@ -76,7 +77,7 @@ export interface BecomeHostAmenityInterface {
   bathtub: boolean;
   iron: boolean;
   pool: boolean;
-  dishes: boolean;
+  kitchen: boolean;
   refrigerator: boolean;
   washer: boolean;
   dryer: boolean;

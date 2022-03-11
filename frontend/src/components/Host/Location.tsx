@@ -76,6 +76,7 @@ export default function Location({ setPage }: { setPage: Function }) {
           >
             Exit
           </button>
+          <div className="absolute bottom-24 w-[11.10%] border-t-4 border-black" />
           <div className="absolute bottom-24 w-6/12 border-t border-gray-800" />
           <button
             onClick={() => setPage(1)}

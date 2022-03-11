@@ -24,11 +24,6 @@ export default function Search() {
   const navigate = useNavigate();
 
   const [value, setValue] = useState<DateRange<Date>>([null, null]);
-  const [guest, setGuest] = useState('');
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setGuest(event.target.value);
-  };
 
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
@@ -127,32 +122,9 @@ export default function Search() {
             )}
           />
         </LocalizationProvider>
-        <div>
-          <FormControl>
-            <Select
-              sx={{
-                bgcolor: 'background.paper',
-                borderRadius: 1,
-                minWidth: 100,
-              }}
-              value={guest}
-              onChange={handleChange}
-              displayEmpty
-            >
-              <MenuItem disabled value="">
-                <p className=" text-gray-700">Guest</p>
-              </MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
         <button
           onClick={() => navigate('/rooms')}
-          className="flex flex-row font-semibold ml-6 py-4 rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-black duration-300 "
+          className="flex flex-row font-semibold ml-3 py-[14px] rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-blue-500"
         >
           <SearchIcon className="text-2xl"></SearchIcon>
           <p>Search</p>

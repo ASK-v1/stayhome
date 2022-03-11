@@ -25,7 +25,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
     bathtub: false,
     iron: false,
     pool: false,
-    dishes: false,
+    kitchen: false,
     refrigerator: false,
     washer: false,
     dryer: false,
@@ -64,21 +64,21 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                   <h1>Wifi</h1>
                 </button>
               )}
-              {amenity.dishes ? (
+              {amenity.kitchen ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, dishes: !amenity.dishes })}
+                  onClick={() => setAmenity({ ...amenity, kitchen: !amenity.kitchen })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <DiningIcon fontSize="large" />
-                  <h1>Dishes</h1>
+                  <h1>Kitchen</h1>
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, dishes: !amenity.dishes })}
+                  onClick={() => setAmenity({ ...amenity, kitchen: !amenity.kitchen })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <DiningIcon fontSize="large" />
-                  <h1>Dishes</h1>
+                  <h1>Kitchen</h1>
                 </button>
               )}
               {amenity.free ? (
@@ -334,6 +334,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
           >
             Exit
           </button>
+          <div className="absolute bottom-24 w-[22.20%] border-t-4 border-black" />
           <div className="absolute bottom-24 w-6/12 border-t border-gray-800" />
           <button
             onClick={() => setPage(3)}
