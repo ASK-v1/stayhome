@@ -1,5 +1,5 @@
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
 import { useState } from 'react';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
@@ -81,7 +81,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 hover:border-black"
             onClick={(event) => setAnchorElPrice(event.currentTarget)}
           >
             Price
@@ -107,7 +107,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44 hover:border-black"
             onClick={(event) => setAnchorElRooms(event.currentTarget)}
           >
             Rooms and beds
@@ -133,7 +133,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-36"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-36 hover:border-black"
             onClick={(event) => setAnchorElType(event.currentTarget)}
           >
             Type of place
@@ -156,7 +156,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('wifi')}
           >
             Wifi
@@ -172,7 +172,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('kitchen')}
           >
             Kitchen
@@ -188,7 +188,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-28"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-28 hover:border-black"
             onClick={() => handleClick('parking')}
           >
             Free parking
@@ -204,7 +204,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('washer')}
           >
             Washer
@@ -220,7 +220,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('dryer')}
           >
             Dryer
@@ -236,7 +236,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('iron')}
           >
             Iron
@@ -252,7 +252,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('gym')}
           >
             Gym
@@ -268,7 +268,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('pool')}
           >
             Pool
@@ -284,7 +284,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20"
+            className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
             onClick={() => handleClick('balcony')}
           >
             Balcony
@@ -334,12 +334,11 @@ export default function Filters() {
             color: 'white',
             marginLeft: '25px',
             width: '9.4rem',
-            boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
             marginTop: '20px',
             marginBottom: '20px',
           }}
         >
-          Save
+          <h1>Save</h1>
         </button>
       </Menu>
       <Menu
@@ -356,104 +355,229 @@ export default function Filters() {
           },
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '13rem', marginTop: '1.5rem' }}>
-          <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>Guests</h1>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '1.25rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '12rem', marginTop: '1rem' }}>
+          <h1 style={{ fontSize: '20px' }}>Guests</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
             {value.guests !== 1 ? (
               <button
                 onClick={() => setValue({ ...value, guests: value.guests - 1 })}
                 style={{
                   fontWeight: 'bold',
-                  fontSize: '20px',
-                  borderRadius: '30px',
-                  height: '2.5rem',
-                  width: '2.5rem',
-                  border: 'solid 1px',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
                 }}
               >
                 -
               </button>
             ) : (
-              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
                 -
               </button>
             )}
-            <h1 className="mt-2">{value.guests}</h1>
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.guests}
+            </h1>
             <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
               onClick={() => setValue({ ...value, guests: value.guests + 1 })}
-              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
             >
               +
             </button>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-[15.5rem]">
-          <h1 className="font-bold text-2xl">Bedrooms</h1>
-          <div className="flex flex-row gap-5">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '13.1rem', marginTop: '1rem' }}>
+          <h1 style={{ fontSize: '20px' }}>Beds</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
             {value.bedrooms !== 1 ? (
               <button
                 onClick={() => setValue({ ...value, bedrooms: value.bedrooms - 1 })}
-                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
               >
                 -
               </button>
             ) : (
-              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
                 -
               </button>
             )}
-            <h1 className="mt-2">{value.bedrooms}</h1>
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.bedrooms}
+            </h1>
             <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
               onClick={() => setValue({ ...value, bedrooms: value.bedrooms + 1 })}
-              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
             >
               +
             </button>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-[19.2rem]">
-          <h1 className="font-bold text-2xl">Beds</h1>
-          <div className="flex flex-row gap-5">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '10.2rem', marginTop: '1rem' }}>
+          <h1 style={{ fontSize: '20px' }}>Bedrooms</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
             {value.beds !== 1 ? (
               <button
                 onClick={() => setValue({ ...value, beds: value.beds - 1 })}
-                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
               >
                 -
               </button>
             ) : (
-              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
                 -
               </button>
             )}
-            <h1 className="mt-2">{value.beds}</h1>
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.beds}
+            </h1>
             <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
               onClick={() => setValue({ ...value, beds: value.beds + 1 })}
-              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
             >
               +
             </button>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-[15rem]">
-          <h1 className="font-bold text-2xl">Bathrooms</h1>
-          <div className="flex flex-row gap-5">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '9.8rem', marginTop: '1rem' }}>
+          <h1 style={{ fontSize: '20px' }}>Bathrooms</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
             {value.bathrooms !== 1 ? (
               <button
                 onClick={() => setValue({ ...value, bathrooms: value.bathrooms - 1 })}
-                className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
               >
                 -
               </button>
             ) : (
-              <button className="font-semibold text-xl text-gray-400 rounded-full border border-gray-300 h-10 w-10 cursor-default">
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
                 -
               </button>
             )}
-            <h1 className="mt-2">{value.bathrooms}</h1>
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.bathrooms}
+            </h1>
             <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
               onClick={() => setValue({ ...value, bathrooms: value.bathrooms + 1 })}
-              className="font-semibold text-xl rounded-full border border-gray-600 h-10 w-10 hover:border-black"
             >
               +
             </button>
@@ -466,9 +590,7 @@ export default function Filters() {
             padding: '10px',
             borderRadius: '5px',
             color: 'white',
-            marginLeft: '50px',
-            width: '100px',
-            boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
+            width: '360px',
             marginTop: '20px',
             marginBottom: '20px',
           }}
@@ -586,7 +708,6 @@ export default function Filters() {
             color: 'white',
             width: '10rem',
             marginLeft: '10px',
-            boxShadow: '2px 12px 12px 2px rgba(0, 0, 0, 0.2)',
             marginTop: '20px',
             marginBottom: '20px',
           }}
