@@ -1,5 +1,4 @@
 import Menu from '@mui/material/Menu';
-import Button from '@mui/material/Button';
 import { useState } from 'react';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
@@ -65,7 +64,7 @@ export default function Filters() {
   });
 
   return (
-    <div className="mb-12 mt-5">
+    <div className="mt-5">
       <div className="flex flex-row gap-3 items-center justify-start">
         {openPrice ? (
           <button

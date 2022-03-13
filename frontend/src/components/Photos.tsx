@@ -56,7 +56,6 @@ export default function Photos({ setReviews }) {
     <div className="flex flex-col items-center mt-10">
       <div className="flex flex-row justify-around items-center mb-6 gap-[42rem]">
         <div className="flex flex-col gap-3">
-          <h1 className="text-xl font-bold">Lorem ipsum dolor sit amet</h1>
           <div className="flex flex-row gap-9">
             <div className="flex flex-row gap-3 items-center">
               <Rating className="text-lg text-orange-500" name="read-only" value={value} readOnly />

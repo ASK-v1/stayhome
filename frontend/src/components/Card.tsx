@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import PeopleIcon from '@mui/icons-material/People';
-import KingBedIcon from '@mui/icons-material/KingBed';
-import ShowerIcon from '@mui/icons-material/Shower';
-import Chip from '@mui/material/Chip';
 import Rating from '@mui/material/Rating';
 
 export default function Card() {
-  const [value, setValue] = useState<number | null>(3.4);
+  const [value, setValue] = useState<number | null>(4.22);
 
   return (
     <a href="/room" className="flex group">
@@ -20,41 +16,39 @@ export default function Card() {
               alt="card"
             />
           </div>
-          <div className="flex flex-row gap-24 w-[40rem] ">
-            <div className="ml-3 flex flex-col justify-between">
-              <div className="flex flex-col gap-1">
-                <h1 className="text-gray-600 font-semibold text-sm">Lorem ipsum</h1>
-                <h1 className="font-semibold">Lorem ipsum</h1>
-              </div>
-              <div>
-                <div className="flex flex-row gap-6">
-                  <div className="sm:inline-flex sm:items-center sm:shrink-0">
-                    <PeopleIcon />
-                    <div className="sm:ml-2">
-                      <p className="text-gray-500 text-sm">Guest</p>
-                      <p className="font-medium text-xs text-center">2</p>
-                    </div>
+          <div className="flex flex-row w-[35rem] justify-between">
+            <div className="ml-3 flex flex-col gap-1">
+              <h1 className="font-semibold text-lg">Lorem ipsum, dolor sit amet consectetur</h1>
+              <div className="border-t border-gray-400 w-10 my-1" />
+              <div className="flex flex-col mb-[79px]">
+                <div className="flex flex-row gap-1 text-sm text-gray-600">
+                  <div className="flex flex-row items-center gap-1">
+                    <h1>6</h1>
+                    <h1>guests</h1>
                   </div>
-                  <div className="sm:inline-flex sm:items-center sm:shrink-0">
-                    <KingBedIcon />
-                    <div className="sm:ml-2">
-                      <p className="text-gray-500 text-sm">Bedroom</p>
-                      <p className="font-medium text-xs text-center">2</p>
-                    </div>
+                  <h1>-</h1>
+                  <div className="flex flex-row items-center gap-1">
+                    <h1>2</h1>
+                    <h1>bedrooms</h1>
                   </div>
-                  <div className="sm:inline-flex sm:items-center sm:shrink-0">
-                    <ShowerIcon />
-                    <div className="sm:ml-2">
-                      <p className="text-gray-500 text-sm">Bathroom</p>
-                      <p className="font-medium text-xs text-center">1</p>
-                    </div>
+                  <h1>-</h1>
+                  <div className="flex flex-row items-center gap-1">
+                    <h1>4</h1>
+                    <h1>beds</h1>
+                  </div>
+                  <h1>-</h1>
+                  <div className="flex flex-row items-center gap-1">
+                    <h1>2</h1>
+                    <h1>baths</h1>
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-row gap-3">
-                <Chip label="Wifi" color="primary" size="small" />
-                <Chip label="Washer" color="primary" size="small" />
-                <Chip label="Kitchen" color="primary" size="small" />
+                <div className="flex flex-row gap-1 text-sm text-gray-600">
+                  <h1>Wifi</h1>
+                  <h1>-</h1>
+                  <h1>Washer</h1>
+                  <h1>-</h1>
+                  <h1>Kitchen</h1>
+                </div>
               </div>
               <div className="flex flex-row gap-2 items-center">
                 <Rating
@@ -63,15 +57,15 @@ export default function Card() {
                   value={value}
                   readOnly
                 />
-                <h1 className="font-semibold text-md">{value}</h1>
+                <h1 className="font-semibold">{value}</h1>
               </div>
             </div>
             <div className="flex flex-col self-end">
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 self-end">
                 <h1 className="font-black text-xl">$56</h1>
                 <h1 className="font-light text-xl">/ night</h1>
               </div>
-              <h1 className="text-gray-800 underline text-sm self-end">$330.5 total</h1>
+              <h1 className="text-gray-800 underline text-sm">$1330.5 total before taxes</h1>
             </div>
           </div>
         </div>

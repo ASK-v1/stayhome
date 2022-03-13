@@ -9,6 +9,8 @@ export default function Rooms() {
     <div>
       <Navbar />
       <Filters />
+      <div className="border-b border-gray-400 w-full mt-5" />
+      <h1 className="ml-5 text-gray-800 font-semibold my-5">200+ stays in map area</h1>
       <div className="flex flex-row">
         <div>
           {[1, 2, 3, 4].map((_, index) => (
