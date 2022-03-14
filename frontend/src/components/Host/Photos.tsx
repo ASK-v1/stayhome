@@ -5,7 +5,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 const Input = styled('input')({ display: 'none' });
 
-export default function Photos({ setPage }: { setPage: Function }) {
+export default function Photos({ setPage, setPhotos }) {
   const navigate = useNavigate();
 
   return (

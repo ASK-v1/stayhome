@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { BecomeHostTypeInterface } from '../../interfaces';
 
-export default function Space({ setPage }: { setPage: Function }) {
-  const [type, setType] = useState<BecomeHostTypeInterface>({
+export default function Space({ setPage, setSpace }) {
+  const [value, setValue] = useState<BecomeHostTypeInterface>({
     entirePlace: false,
     privateRoom: false,
     hotelRoom: false,
@@ -13,13 +13,18 @@ export default function Space({ setPage }: { setPage: Function }) {
   const navigate = useNavigate();
 
   const handleClick = (prop: keyof BecomeHostTypeInterface) => () => {
-    setType({
+    setValue({
       entirePlace: false,
       privateRoom: false,
       hotelRoom: false,
       sharedRoom: false,
       [prop]: true,
     });
+  };
+
+  const next = () => {
+    setSpace(Object.entries(value).filter((item) => item[1] === true)[0][0]);
+    setPage(2);
   };
 
   return (
@@ -30,7 +35,7 @@ export default function Space({ setPage }: { setPage: Function }) {
         </div>
         <div className="flex flex-col bg-white w-7/12 justify-center">
           <div className="flex flex-col gap-3 items-center justify-center my-10">
-            {type.entirePlace ? (
+            {value.entirePlace ? (
               <button className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-80">
                 An entire place
               </button>
@@ -42,7 +47,7 @@ export default function Space({ setPage }: { setPage: Function }) {
                 An entire place
               </button>
             )}
-            {type.sharedRoom ? (
+            {value.sharedRoom ? (
               <button className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-80">
                 A shared room
               </button>
@@ -54,7 +59,7 @@ export default function Space({ setPage }: { setPage: Function }) {
                 A shared room
               </button>
             )}
-            {type.privateRoom ? (
+            {value.privateRoom ? (
               <button className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-80">
                 A private room
               </button>
@@ -66,7 +71,7 @@ export default function Space({ setPage }: { setPage: Function }) {
                 A private room
               </button>
             )}
-            {type.hotelRoom ? (
+            {value.hotelRoom ? (
               <button className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-80">
                 A hotel room
               </button>
@@ -88,7 +93,7 @@ export default function Space({ setPage }: { setPage: Function }) {
           <div className="absolute bottom-24 w-[5.55%] border-t-4 border-black" />
           <div className="absolute bottom-24 w-6/12 border-t border-gray-800" />
           <button
-            onClick={() => setPage(2)}
+            onClick={next}
             className="absolute bottom-5 right-5 border w-20 font-semibold border-black text-black p-3 rounded-md duration-300 hover:bg-black hover:text-white"
           >
             Next

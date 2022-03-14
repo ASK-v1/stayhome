@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import TextField from '@mui/material/TextField';
 
-export default function Place({ setPage }: { setPage: Function }) {
+export default function Title({ setPage, setTitle }) {
   const navigate = useNavigate();
 
   return (

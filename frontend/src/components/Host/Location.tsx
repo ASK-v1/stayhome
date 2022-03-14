@@ -8,8 +8,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Map from '../Map';
 
-export default function Location({ setPage }: { setPage: Function }) {
-  const [type, setType] = useState<BecomeHostLocationInterface>({
+export default function Location({ setPage, setLocation }) {
+  const [value, setValue] = useState<BecomeHostLocationInterface>({
     country: '',
     street: '',
     city: '',
@@ -18,6 +18,16 @@ export default function Location({ setPage }: { setPage: Function }) {
   });
 
   const navigate = useNavigate();
+
+  const handleChange =
+    (props: keyof BecomeHostLocationInterface) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue({ ...value, [props]: event.target.value });
+    };
+
+  const next = () => {
+    setLocation(value);
+    setPage(3);
+  };
 
   return (
     <div>
@@ -32,25 +42,27 @@ export default function Location({ setPage }: { setPage: Function }) {
           <div className="flex flex-col items-center justify-center shadow-2xl border border-gray-400 rounded-3xl self-center p-10 z-10 bg-white">
             <h1 className="font-semibold mb-10 text-xl">Confirm your address</h1>
             <OutlinedInput
+              onChange={handleChange('street')}
               style={{
                 width: '25rem',
               }}
               placeholder="Street"
             />
             <OutlinedInput
+              onChange={handleChange('apt')}
               style={{
                 width: '25rem',
               }}
               placeholder="Apt"
             />
             <OutlinedInput
+              onChange={handleChange('city')}
               style={{
                 width: '25rem',
               }}
               placeholder="City"
             />
             <Autocomplete
-              id="country-select-demo"
               sx={{ width: '25rem' }}
               options={countries}
               autoHighlight
@@ -85,7 +97,7 @@ export default function Location({ setPage }: { setPage: Function }) {
             Back
           </button>
           <button
-            onClick={() => setPage(3)}
+            onClick={next}
             className="absolute bottom-5 right-5 border w-20 font-semibold border-black text-black p-3 rounded-md duration-300 hover:bg-black hover:text-white"
           >
             Next

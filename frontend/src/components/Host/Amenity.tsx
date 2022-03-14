@@ -16,8 +16,8 @@ import WifiIcon from '@mui/icons-material/Wifi';
 import PoolIcon from '@mui/icons-material/Pool';
 import DiningIcon from '@mui/icons-material/Dining';
 
-export default function Amenity({ setPage }: { setPage: Function }) {
-  const [amenity, setAmenity] = useState<BecomeHostAmenityInterface>({
+export default function Amenity({ setPage, setAmenity }) {
+  const [value, setValue] = useState<BecomeHostAmenityInterface>({
     wifi: false,
     free: false,
     tv: false,
@@ -47,9 +47,9 @@ export default function Amenity({ setPage }: { setPage: Function }) {
         <div className="flex flex-col bg-white w-7/12 justify-center">
           <div className="flex flex-col gap-5 justify-center items-center">
             <div className="flex flex-row gap-5">
-              {amenity.wifi ? (
+              {value.wifi ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, wifi: !amenity.wifi })}
+                  onClick={() => setAmenity({ ...value, wifi: !value.wifi })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <WifiIcon fontSize="large" />
@@ -57,16 +57,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, wifi: !amenity.wifi })}
+                  onClick={() => setAmenity({ ...value, wifi: !value.wifi })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <WifiIcon fontSize="large" />
                   <h1>Wifi</h1>
                 </button>
               )}
-              {amenity.kitchen ? (
+              {value.kitchen ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, kitchen: !amenity.kitchen })}
+                  onClick={() => setAmenity({ ...value, kitchen: !value.kitchen })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <DiningIcon fontSize="large" />
@@ -74,16 +74,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, kitchen: !amenity.kitchen })}
+                  onClick={() => setAmenity({ ...value, kitchen: !value.kitchen })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <DiningIcon fontSize="large" />
                   <h1>Kitchen</h1>
                 </button>
               )}
-              {amenity.free ? (
+              {value.free ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, free: !amenity.free })}
+                  onClick={() => setAmenity({ ...value, free: !value.free })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalParkingIcon fontSize="large" />
@@ -91,16 +91,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, free: !amenity.free })}
+                  onClick={() => setAmenity({ ...value, free: !value.free })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalParkingIcon fontSize="large" />
                   <h1>Free Parking</h1>
                 </button>
               )}
-              {amenity.refrigerator ? (
+              {value.refrigerator ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, refrigerator: !amenity.refrigerator })}
+                  onClick={() => setAmenity({ ...value, refrigerator: !value.refrigerator })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <KitchenIcon fontSize="large" />
@@ -108,7 +108,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, refrigerator: !amenity.refrigerator })}
+                  onClick={() => setAmenity({ ...value, refrigerator: !value.refrigerator })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <KitchenIcon fontSize="large" />
@@ -117,9 +117,9 @@ export default function Amenity({ setPage }: { setPage: Function }) {
               )}
             </div>
             <div className="flex flex-row gap-5">
-              {amenity.freezer ? (
+              {value.freezer ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, freezer: !amenity.freezer })}
+                  onClick={() => setAmenity({ ...value, freezer: !value.freezer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <KitchenIcon fontSize="large" />
@@ -127,16 +127,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, freezer: !amenity.freezer })}
+                  onClick={() => setAmenity({ ...value, freezer: !value.freezer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <KitchenIcon fontSize="large" />
                   <h1>Freezer</h1>
                 </button>
               )}
-              {amenity.pool ? (
+              {value.pool ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, pool: !amenity.pool })}
+                  onClick={() => setAmenity({ ...value, pool: !value.pool })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <PoolIcon fontSize="large" />
@@ -144,16 +144,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, pool: !amenity.pool })}
+                  onClick={() => setAmenity({ ...value, pool: !value.pool })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <PoolIcon fontSize="large" />
                   <h1>Pool</h1>
                 </button>
               )}
-              {amenity.tv ? (
+              {value.tv ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, tv: !amenity.tv })}
+                  onClick={() => setAmenity({ ...value, tv: !value.tv })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <TvIcon fontSize="large" />
@@ -161,16 +161,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, tv: !amenity.tv })}
+                  onClick={() => setAmenity({ ...value, tv: !value.tv })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <TvIcon fontSize="large" />
                   <h1>HDTV</h1>
                 </button>
               )}
-              {amenity.microwave ? (
+              {value.microwave ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, microwave: !amenity.microwave })}
+                  onClick={() => setAmenity({ ...value, microwave: !value.microwave })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <MicrowaveIcon fontSize="large" />
@@ -178,7 +178,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, microwave: !amenity.microwave })}
+                  onClick={() => setAmenity({ ...value, microwave: !value.microwave })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <MicrowaveIcon fontSize="large" />
@@ -187,9 +187,9 @@ export default function Amenity({ setPage }: { setPage: Function }) {
               )}
             </div>
             <div className="flex flex-row gap-5">
-              {amenity.bathtub ? (
+              {value.bathtub ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, bathtub: !amenity.bathtub })}
+                  onClick={() => setAmenity({ ...value, bathtub: !value.bathtub })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <BathtubIcon fontSize="large" />
@@ -197,16 +197,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, bathtub: !amenity.bathtub })}
+                  onClick={() => setAmenity({ ...value, bathtub: !value.bathtub })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <BathtubIcon fontSize="large" />
                   <h1>Bathtub</h1>
                 </button>
               )}
-              {amenity.iron ? (
+              {value.iron ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, iron: !amenity.iron })}
+                  onClick={() => setAmenity({ ...value, iron: !value.iron })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <IronIcon fontSize="large" />
@@ -214,16 +214,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, iron: !amenity.iron })}
+                  onClick={() => setAmenity({ ...value, iron: !value.iron })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <IronIcon fontSize="large" />
                   <h1>Iron</h1>
                 </button>
               )}
-              {amenity.washer ? (
+              {value.washer ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, washer: !amenity.washer })}
+                  onClick={() => setAmenity({ ...value, washer: !value.washer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalLaundryServiceIcon fontSize="large" />
@@ -231,16 +231,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, washer: !amenity.washer })}
+                  onClick={() => setAmenity({ ...value, washer: !value.washer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalLaundryServiceIcon fontSize="large" />
                   <h1>Washer</h1>
                 </button>
               )}
-              {amenity.dryer ? (
+              {value.dryer ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, dryer: !amenity.dryer })}
+                  onClick={() => setAmenity({ ...value, dryer: !value.dryer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalLaundryServiceIcon fontSize="large" />
@@ -248,7 +248,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, dryer: !amenity.dryer })}
+                  onClick={() => setAmenity({ ...value, dryer: !value.dryer })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <LocalLaundryServiceIcon fontSize="large" />
@@ -257,9 +257,9 @@ export default function Amenity({ setPage }: { setPage: Function }) {
               )}
             </div>
             <div className="flex flex-row gap-5">
-              {amenity.coffee ? (
+              {value.coffee ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, coffee: !amenity.coffee })}
+                  onClick={() => setAmenity({ ...value, coffee: !value.coffee })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <CoffeeMakerIcon fontSize="large" />
@@ -267,16 +267,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, coffee: !amenity.coffee })}
+                  onClick={() => setAmenity({ ...value, coffee: !value.coffee })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <CoffeeMakerIcon fontSize="large" />
                   <h1>Coffee</h1>
                 </button>
               )}
-              {amenity.aid ? (
+              {value.aid ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, aid: !amenity.aid })}
+                  onClick={() => setAmenity({ ...value, aid: !value.aid })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <MedicalServicesIcon fontSize="large" />
@@ -284,16 +284,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, aid: !amenity.aid })}
+                  onClick={() => setAmenity({ ...value, aid: !value.aid })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <MedicalServicesIcon fontSize="large" />
                   <h1>First aid</h1>
                 </button>
               )}
-              {amenity.balcony ? (
+              {value.balcony ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, balcony: !amenity.balcony })}
+                  onClick={() => setAmenity({ ...value, balcony: !value.balcony })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <BalconyIcon fontSize="large" />
@@ -301,16 +301,16 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, balcony: !amenity.balcony })}
+                  onClick={() => setAmenity({ ...value, balcony: !value.balcony })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <BalconyIcon fontSize="large" />
                   <h1>Balcony</h1>
                 </button>
               )}
-              {amenity.hangers ? (
+              {value.hangers ? (
                 <button
-                  onClick={() => setAmenity({ ...amenity, hangers: !amenity.hangers })}
+                  onClick={() => setAmenity({ ...value, hangers: !value.hangers })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-800 p-5 bg-gray-200 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <CheckroomIcon fontSize="large" />
@@ -318,7 +318,7 @@ export default function Amenity({ setPage }: { setPage: Function }) {
                 </button>
               ) : (
                 <button
-                  onClick={() => setAmenity({ ...amenity, hangers: !amenity.hangers })}
+                  onClick={() => setAmenity({ ...value, hangers: !value.hangers })}
                   className="hover:border-black duration-300 text-xl border-2 border-gray-400 p-5 rounded-md w-40 flex flex-col items-center gap-5"
                 >
                   <CheckroomIcon fontSize="large" />

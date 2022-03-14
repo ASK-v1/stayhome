@@ -8,7 +8,7 @@ import { FiltersInterface } from '../interfaces';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Checkbox from '@mui/material/Checkbox';
-import { BecomeHostGuestInterface } from '../interfaces';
+import { RoomsInterface } from '../interfaces';
 
 export default function Filters() {
   const [filter, setfilter] = useState<FiltersInterface>({
@@ -56,8 +56,7 @@ export default function Filters() {
   const openRooms = Boolean(anchorElRooms);
   const openType = Boolean(anchorElType);
 
-  const [value, setValue] = useState<BecomeHostGuestInterface>({
-    guests: 1,
+  const [value, setValue] = useState<RoomsInterface>({
     bedrooms: 1,
     beds: 1,
     bathrooms: 1,
@@ -354,63 +353,6 @@ export default function Filters() {
           },
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '12rem', marginTop: '1rem' }}>
-          <h1 style={{ fontSize: '20px' }}>Guests</h1>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
-            {value.guests !== 1 ? (
-              <button
-                onClick={() => setValue({ ...value, guests: value.guests - 1 })}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  color: 'black',
-                }}
-              >
-                -
-              </button>
-            ) : (
-              <button
-                style={{
-                  fontWeight: 'semibold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  opacity: '50%',
-                  color: 'grey',
-                }}
-              >
-                -
-              </button>
-            )}
-            <h1
-              style={{
-                marginTop: '4px',
-              }}
-            >
-              {value.guests}
-            </h1>
-            <button
-              style={{
-                fontWeight: 'semibold',
-                fontSize: '15px',
-                borderRadius: '20px',
-                height: '2rem',
-                width: '2rem',
-                border: 'solid 1px gray',
-                color: 'black',
-              }}
-              onClick={() => setValue({ ...value, guests: value.guests + 1 })}
-            >
-              +
-            </button>
-          </div>
-        </div>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '13.1rem', marginTop: '1rem' }}>
           <h1 style={{ fontSize: '20px' }}>Beds</h1>
           <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>

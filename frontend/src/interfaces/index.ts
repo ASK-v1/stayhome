@@ -87,3 +87,11 @@ export interface BecomeHostAmenityInterface {
   balcony: boolean;
   freezer: boolean;
 }
+
+export type RoomsInterface = Omit<BecomeHostGuestInterface, 'guests'>;
+
+export interface GuestsInterface {
+  adults: number;
+  children: number;
+  infants: number;
+}

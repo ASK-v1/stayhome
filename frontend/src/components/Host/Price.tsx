@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
-export default function Price({ setPage }: { setPage: Function }) {
+export default function Price({ setPage, setPrice }) {
   const navigate = useNavigate();
 
-  const [price, setPrice] = useState<number>(10);
+  const [value, setvalue] = useState<number>(10);
 
   return (
     <div>
@@ -15,9 +15,9 @@ export default function Price({ setPage }: { setPage: Function }) {
         <div className="flex flex-col bg-white w-7/12 self-center">
           <div className="self-center">
             <div className="flex flex-row gap-10">
-              {price !== 10 ? (
+              {value !== 10 ? (
                 <button
-                  onClick={() => setPrice(price - 10)}
+                  onClick={() => setPrice(value - 10)}
                   className="font-semibold text-xl rounded-full border border-gray-600 h-12 w-12 hover:border-black mt-8"
                 >
                   -
@@ -29,12 +29,12 @@ export default function Price({ setPage }: { setPage: Function }) {
               )}
               <div className="flex flex-col gap-5 justify-center items-center">
                 <h1 className="flex justify-center items-center border border-gray-400 text-center rounded-md h-28 w-80 font-bold text-5xl text-[#222]">
-                  ${price}
+                  ${value}
                 </h1>
                 <h1 className="text-xl text-gray-800 text-center">per night</h1>
               </div>
               <button
-                onClick={() => setPrice(price + 10)}
+                onClick={() => setPrice(value + 10)}
                 className="font-semibold text-xl rounded-full border border-gray-600 h-12 w-12 hover:border-black mt-8"
               >
                 +

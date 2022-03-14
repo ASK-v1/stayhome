@@ -1,7 +1,26 @@
 import { useNavigate } from 'react-router';
-import TextField from '@mui/material/TextField';
 
-export default function Save({ setPage }: { setPage: Function }) {
+export default function Save({
+  setPage,
+  space,
+  location,
+  guest,
+  amenity,
+  photos,
+  title,
+  description,
+  price,
+}: {
+  setPage: Function;
+  space: string;
+  location: object;
+  guest: object;
+  amenity: object;
+  photos: any;
+  title: string;
+  description: string;
+  price: number;
+}) {
   const navigate = useNavigate();
 
   return (

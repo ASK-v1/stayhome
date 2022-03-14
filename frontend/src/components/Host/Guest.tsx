@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { BecomeHostGuestInterface } from '../../interfaces';
 
-export default function Guest({ setPage }: { setPage: Function }) {
+export default function Guest({ setPage, setGuest }) {
   const [value, setValue] = useState<BecomeHostGuestInterface>({
     guests: 1,
     bedrooms: 1,
@@ -11,6 +11,11 @@ export default function Guest({ setPage }: { setPage: Function }) {
   });
 
   const navigate = useNavigate();
+
+  const next = () => {
+    setGuest(value);
+    setPage(4);
+  };
 
   return (
     <div>
@@ -132,7 +137,7 @@ export default function Guest({ setPage }: { setPage: Function }) {
             Back
           </button>
           <button
-            onClick={() => setPage(4)}
+            onClick={next}
             className="absolute bottom-5 right-5 border w-20 font-semibold border-black text-black p-3 rounded-md duration-300 hover:bg-black hover:text-white"
           >
             Next
