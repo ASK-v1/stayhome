@@ -23,7 +23,13 @@ export default function Space({ setPage, setSpace }) {
   };
 
   const next = () => {
-    setSpace(Object.entries(value).filter((item) => item[1] === true)[0][0]);
+    let space = '';
+    const val = Object.entries(value).filter((item) => item[1] === true)[0][0];
+    if (val === 'entirePlace') space = 'Entire place';
+    else if (val === 'privateRoom') space = 'Private room';
+    else if (val === 'hotelRoom') space = 'Hotel room';
+    else space = 'Shared room';
+    setSpace(space);
     setPage(2);
   };
 

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import Avatar from '@mui/material/Avatar';
 
 export default function Save({
   setPage,
@@ -23,14 +24,75 @@ export default function Save({
 }) {
   const navigate = useNavigate();
 
+  const url =
+    'https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+  const name = 'ASK';
+
+  const roomsGuests = JSON.parse(JSON.stringify(guest));
+
+  let titleCheck = '';
+  if (title.length > 22) titleCheck = `${title.slice(0, 22)}...`;
+
   return (
     <div>
       <div className="flex flex-row">
-        <div className="flex items-center h-screen p-20 w-7/12 self-center text-5xl font-black bg-orange-500 text-white">
+        <div className="flex items-center h-screen p-20 w-7/12 text-5xl font-black bg-orange-500 text-white">
           <h1>Check out your listing!</h1>
         </div>
-        <div className="flex flex-col bg-white w-7/12 self-center">
-          <div className="self-center">LISTING</div>
+        <div className="flex flex-col bg-white w-7/12 self-center mb-40">
+          <div className="flex flex-col shadow-2xl rounded-3xl border border-gray-400 h-[37rem] self-center">
+            <img src={url} className="rounded-t-3xl w-[25rem]" alt="photos" />
+            <h1 className="font-bold text-2xl my-5 ml-5">{titleCheck || title}</h1>
+
+            <div className="border-b border-gray-400 mb-5 ml-5 w-[360px]" />
+
+            <div className="flex flex-row gap-3">
+              <h1 className="text-lg font-bold ml-5 w-40 text-gray-800">
+                {space} Hosted by {name}
+              </h1>
+              <Avatar className="p-6 bg-orange-500">{name}</Avatar>
+            </div>
+
+            <div className="border-b border-gray-400 my-5 ml-5 w-[360px]" />
+
+            <div className="flex flex-row gap-1 text-sm text-gray-800 ml-5">
+              <div className="flex flex-row items-center gap-1">
+                <h1>{roomsGuests.guests}</h1>
+                <div>{roomsGuests.guests === 1 ? <h1>guest</h1> : <h1>guests</h1>}</div>
+              </div>
+              <h1>-</h1>
+              <div className="flex flex-row items-center gap-1">
+                <h1>{roomsGuests.bedrooms}</h1>
+                <div>{roomsGuests.bedrooms === 1 ? <h1>bedroom</h1> : <h1>bedrooms</h1>}</div>
+              </div>
+              <h1>-</h1>
+              <div className="flex flex-row items-center gap-1">
+                <h1>{roomsGuests.beds}</h1>
+                <div>{roomsGuests.beds === 1 ? <h1>bed</h1> : <h1>beds</h1>}</div>
+              </div>
+              <h1>-</h1>
+              <div className="flex flex-row items-center gap-1">
+                <h1>{roomsGuests.bathrooms}</h1>
+                <div>{roomsGuests.bathrooms === 1 ? <h1>bath</h1> : <h1>baths</h1>}</div>
+              </div>
+            </div>
+
+            <div className="border-b border-gray-400 my-5 ml-5 w-[360px]" />
+
+            <div className="flex flex-row gap-4 ml-5">
+              <div className="flex flex-row gap-2">
+                <h1 className="font-bold text-xl">${price}</h1>
+                <h1 className="font-semibold text-xl">Per night</h1>
+              </div>
+              <h1 className="text-gray-400">|</h1>
+              <div className="flex flex-row gap-2">
+                <h1 className="font-bold text-xl">
+                  {Object.entries(amenity).filter((item) => item[1] === true).length}
+                </h1>
+                <h1 className="font-semibold text-xl">Amenities</h1>
+              </div>
+            </div>
+          </div>
           <button
             onClick={() => navigate('/')}
             className="absolute top-5 right-5 border w-20 font-semibold text-white p-3 rounded-md duration-300 hover:opacity-90 bg-black shadow-2xl"

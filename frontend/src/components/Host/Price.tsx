@@ -6,6 +6,10 @@ export default function Price({ setPage, setPrice }) {
 
   const [value, setvalue] = useState<number>(10);
 
+  const next = () => {
+    setPrice(value);
+    setPage(9);
+  };
   return (
     <div>
       <div className="flex flex-row">
@@ -17,7 +21,7 @@ export default function Price({ setPage, setPrice }) {
             <div className="flex flex-row gap-10">
               {value !== 10 ? (
                 <button
-                  onClick={() => setPrice(value - 10)}
+                  onClick={() => setvalue(value - 10)}
                   className="font-semibold text-xl rounded-full border border-gray-600 h-12 w-12 hover:border-black mt-8"
                 >
                   -
@@ -34,7 +38,7 @@ export default function Price({ setPage, setPrice }) {
                 <h1 className="text-xl text-gray-800 text-center">per night</h1>
               </div>
               <button
-                onClick={() => setPrice(value + 10)}
+                onClick={() => setvalue(value + 10)}
                 className="font-semibold text-xl rounded-full border border-gray-600 h-12 w-12 hover:border-black mt-8"
               >
                 +
@@ -57,7 +61,7 @@ export default function Price({ setPage, setPrice }) {
               Back
             </button>
             <button
-              onClick={() => setPage(9)}
+              onClick={next}
               className="absolute bottom-5 right-5 border w-20 font-semibold border-black text-black p-3 rounded-md duration-300 hover:bg-black hover:text-white"
             >
               Next

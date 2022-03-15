@@ -63,6 +63,9 @@ export default function Location({ setPage, setLocation }) {
               placeholder="City"
             />
             <Autocomplete
+              onChange={(event: any, newValue: string | null) => {
+                setValue({ ...value, country: newValue });
+              }}
               sx={{ width: '25rem' }}
               options={countries}
               autoHighlight

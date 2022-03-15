@@ -133,14 +133,28 @@ export default function Search() {
             )}
           />
         </LocalizationProvider>
-        <button
-          className="h-14 border border-gray-400 rounded bg-gray-200 w-20 hover:bg-gray-300"
-          onClick={(event) => setAnchorElGuests(event.currentTarget)}
-        >
-          <h1 className="self-start font-semibold text-left text-gray-900 ml-3 opacity-70">
-            Guests
-          </h1>
-        </button>
+        {value.adults + value.children > 1 ? (
+          <button
+            className="h-14 border border-gray-400 rounded bg-gray-200 w-20 hover:bg-gray-300"
+            onClick={(event) => setAnchorElGuests(event.currentTarget)}
+          >
+            <div className="flex flex-col">
+              <h1 className="self-start font-semibold text-left text-gray-900 ml-3 opacity-70 text-xs">
+                Guests
+              </h1>
+              <h1 className="self-start ml-3">{value.adults + value.children}</h1>
+            </div>
+          </button>
+        ) : (
+          <button
+            className="h-14 border border-gray-400 rounded bg-gray-200 w-20 hover:bg-gray-300"
+            onClick={(event) => setAnchorElGuests(event.currentTarget)}
+          >
+            <h1 className="self-start font-semibold text-left text-gray-900 ml-3 opacity-70">
+              Guests
+            </h1>
+          </button>
+        )}
         <Menu
           open={openGuests}
           anchorEl={anchorElGuests}

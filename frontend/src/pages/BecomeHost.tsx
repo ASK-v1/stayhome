@@ -11,7 +11,6 @@ import { useState } from 'react';
 
 export default function BecomeHost() {
   const [page, setPage] = useState<number>(1);
-
   const [space, setSpace] = useState<string>();
   const [location, setLocation] = useState<object>();
   const [guest, setGuest] = useState<object>();
@@ -19,9 +18,7 @@ export default function BecomeHost() {
   const [photos, setPhotos] = useState<any>();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [price, setPrice] = useState<number>(null);
-
-  console.log(location);
+  const [price, setPrice] = useState<number>(10);
 
   return (
     <div>

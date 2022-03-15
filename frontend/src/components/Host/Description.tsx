@@ -1,9 +1,16 @@
 import { useNavigate } from 'react-router';
 import TextField from '@mui/material/TextField';
+import { useState } from 'react';
 
 export default function Description({ setPage, setDescription }) {
   const navigate = useNavigate();
 
+  const [value, setvalue] = useState<string>('');
+
+  const next = () => {
+    setDescription(value);
+    setPage(8);
+  };
   return (
     <div>
       <div className="flex flex-row">
@@ -13,7 +20,13 @@ export default function Description({ setPage, setDescription }) {
         <div className="flex flex-col bg-white w-7/12 self-center">
           <div className="self-center">
             <h1 className="mb-5 font-semibold text-2xl">Create your description</h1>
-            <TextField multiline rows={6} fullWidth sx={{ width: '500px' }} />
+            <TextField
+              onChange={(event) => setvalue(event.target.value)}
+              multiline
+              rows={6}
+              fullWidth
+              sx={{ width: '500px' }}
+            />
           </div>
           <button
             onClick={() => navigate('/')}
@@ -31,7 +44,7 @@ export default function Description({ setPage, setDescription }) {
               Back
             </button>
             <button
-              onClick={() => setPage(8)}
+              onClick={next}
               className="absolute bottom-5 right-5 border w-20 font-semibold border-black text-black p-3 rounded-md duration-300 hover:bg-black hover:text-white"
             >
               Next
