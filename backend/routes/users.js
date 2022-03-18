@@ -46,4 +46,16 @@ router.post('/edit', async (req, res) => {
   res.send({ userData });
 });
 
+router.post('/hostImage', async (req, res) => {
+  const { first, second, third, fourth, fifth, id } = req.body;
+
+  await User.updateOne(
+    { _id: id },
+    { $set: { hostPhotos: [first, second, third, fourth, fifth] } },
+  );
+
+  const userData = await User.findById(id);
+  res.send({ userData });
+});
+
 module.exports = router;

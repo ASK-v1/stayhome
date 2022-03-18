@@ -7,6 +7,8 @@ const userSchema = new Schema({
   email: String,
   about: String,
   phone: String,
+  profilePhoto: String,
+  hostPhotos: Array,
 });
 
 const User = model('User', userSchema);

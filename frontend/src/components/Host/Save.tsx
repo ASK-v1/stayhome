@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import Avatar from '@mui/material/Avatar';
+import store from '../../store';
 
 export default function Save({
   setPage,
@@ -17,16 +18,13 @@ export default function Save({
   location: object;
   guest: object;
   amenity: object;
-  photos: any;
+  photos: string;
   title: string;
   description: string;
   price: number;
 }) {
   const navigate = useNavigate();
-
-  const url =
-    'https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
-  const name = 'ASK';
+  const user = store.useAppSelector((state) => JSON.parse(state.user.user));
 
   const roomsGuests = JSON.parse(JSON.stringify(guest));
 
@@ -41,16 +39,16 @@ export default function Save({
         </div>
         <div className="flex flex-col bg-white w-7/12 self-center mb-40">
           <div className="flex flex-col shadow-2xl rounded-3xl border border-gray-400 h-[37rem] self-center">
-            <img src={url} className="rounded-t-3xl w-[25rem]" alt="photos" />
+            <img src={photos} className="rounded-t-3xl w-[25rem]" alt="photos" />
             <h1 className="font-bold text-2xl my-5 ml-5">{titleCheck || title}</h1>
 
             <div className="border-b border-gray-400 mb-5 ml-5 w-[360px]" />
 
             <div className="flex flex-row gap-3">
               <h1 className="text-lg font-bold ml-5 w-40 text-gray-800">
-                {space} Hosted by {name}
+                {space} Hosted by {user.name}
               </h1>
-              <Avatar className="p-6 bg-orange-500">{name}</Avatar>
+              <Avatar className="p-6 bg-orange-500">{user.name}</Avatar>
             </div>
 
             <div className="border-b border-gray-400 my-5 ml-5 w-[360px]" />
