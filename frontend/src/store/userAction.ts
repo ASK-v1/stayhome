@@ -28,4 +28,9 @@ const userHost = (save: object) => async (dispatch: Dispatch) => {
   dispatch(userData(data.userData));
 };
 
-export { userLogout, userLogin, userSignup, userEdit, userHost };
+const userPhoto = (photo: object) => async (dispatch: Dispatch) => {
+  const { data } = await axios.post('/users/pp', photo);
+  dispatch(userData(data.userData));
+};
+
+export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto };

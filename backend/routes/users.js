@@ -71,4 +71,12 @@ router.post('/host', async (req, res) => {
   res.send({ userData });
 });
 
+router.post('/pp', async (req, res) => {
+  const { photo, id } = req.body;
+  await User.updateOne({ _id: id }, { $set: { profilePhoto: photo } });
+
+  const userData = await User.findById(id);
+  res.send({ userData });
+});
+
 module.exports = router;

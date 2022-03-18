@@ -4,8 +4,17 @@ import Avatar from '@mui/material/Avatar';
 import StarIcon from '@mui/icons-material/Star';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useState } from 'react';
+import { userPhoto } from '../store/userAction';
+import store from '../store';
+import { styled } from '@mui/material/styles';
+import axios from 'axios';
+
+const Input = styled('input')({ display: 'none' });
 
 export default function Profile() {
+  const dispatch = store.useAppDispatch();
+  const user = store.useAppSelector((state) => JSON.parse(state.user.user));
+
   const url =
     'https://images.unsplash.com/photo-1605276373954-0c4a0dac5b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
 
@@ -35,13 +44,54 @@ export default function Profile() {
     guests[i] = guest;
   }
 
+  const [selectedFile, setSelectedFile] = useState<File>();
+
+  const pp = async () => {
+    const fd = new FormData();
+    fd.append('file', selectedFile);
+    fd.append('upload_preset', 'm8d2vbyn');
+
+    const { data } = await axios.post('https://api.cloudinary.com/v1_1/dpsbq1odp/image/upload', fd);
+
+    await dispatch(userPhoto({ photo: data.secure_url, id: user._id }));
+    window.location.reload();
+  };
+
   return (
     <div>
       <Navbar />
       <div className="flex flex-row p-20 justify-center gap-20">
         <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem]">
-          <Avatar className="p-10 bg-orange-500 text-3xl self-center">B</Avatar>
-          <h1 className="underline text-lg mt-5 self-center cursor-pointer duration-300 active:scale-90">
+          {user.profilePhoto ? (
+            <label className="self-center">
+              <img className="w-32 h-32 rounded-full" src={user.profilePhoto} alt="img" />
+              <Input
+                onChange={(event) => {
+                  setSelectedFile(event.target.files[0]);
+                }}
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+              />
+            </label>
+          ) : (
+            <label className="self-center">
+              <Avatar className="p-16 bg-orange-500 text-3xl self-center">
+                <Input
+                  onChange={(event) => {
+                    setSelectedFile(event.target.files[0]);
+                  }}
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg"
+                />
+                {user.firstName}
+              </Avatar>{' '}
+            </label>
+          )}
+
+          <h1
+            onClick={pp}
+            className="underline text-lg mt-5 self-center cursor-pointer duration-300 active:scale-90"
+          >
             Update photo
           </h1>
           <div className="mt-10 flex flex-col gap-3">
