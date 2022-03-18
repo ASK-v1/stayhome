@@ -23,4 +23,9 @@ const userEdit = (edit: object) => async (dispatch: Dispatch) => {
   dispatch(userData(data.userData));
 };
 
-export { userLogout, userLogin, userSignup, userEdit };
+const userHost = (save: object) => async (dispatch: Dispatch) => {
+  const { data } = await axios.post('/users/host', save);
+  dispatch(userData(data.userData));
+};
+
+export { userLogout, userLogin, userSignup, userEdit, userHost };

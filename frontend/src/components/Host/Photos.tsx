@@ -4,14 +4,12 @@ import Button from '@mui/material/Button';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import axios from 'axios';
 import { useState } from 'react';
-import store from '../../store';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const Input = styled('input')({ display: 'none' });
 
 export default function Photos({ setPage, setPhotos }) {
   const navigate = useNavigate();
-  const user = store.useAppSelector((state) => JSON.parse(state.user.user));
 
   const [selectedFileFirst, setSelectedFileFirst] = useState<File>();
   const [selectedFileSecond, setSelectedFileSecond] = useState<File>();
@@ -59,15 +57,14 @@ export default function Photos({ setPage, setPhotos }) {
       const res4 = await axios.post('https://api.cloudinary.com/v1_1/dpsbq1odp/image/upload', fd4);
       const res5 = await axios.post('https://api.cloudinary.com/v1_1/dpsbq1odp/image/upload', fd5);
 
-      const obj = {
-        id: user._id,
-        first: res1.data.secure_url,
-        second: res2.data.secure_url,
-        third: res3.data.secure_url,
-        fourth: res4.data.secure_url,
-        fifth: res5.data.secure_url,
-      };
-      setPhotos(obj.first);
+      const photos = [
+        res1.data.secure_url,
+        res2.data.secure_url,
+        res3.data.secure_url,
+        res4.data.secure_url,
+        res5.data.secure_url,
+      ];
+      setPhotos(photos);
       setPage(6);
       setLoading(false);
     }

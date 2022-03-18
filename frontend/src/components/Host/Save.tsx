@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router';
 import Avatar from '@mui/material/Avatar';
+import { userHost } from '../../store/userAction';
 import store from '../../store';
 
 export default function Save({
@@ -13,23 +14,42 @@ export default function Save({
   description,
   price,
 }: {
-  setPage: Function;
+  setPage: (value: number) => void;
   space: string;
   location: object;
   guest: object;
   amenity: object;
-  photos: string;
+  photos: string[];
   title: string;
   description: string;
   price: number;
 }) {
+  const dispatch = store.useAppDispatch();
   const navigate = useNavigate();
+
   const user = store.useAppSelector((state) => JSON.parse(state.user.user));
 
   const roomsGuests = JSON.parse(JSON.stringify(guest));
 
   let titleCheck = '';
   if (title.length > 22) titleCheck = `${title.slice(0, 22)}...`;
+
+  const save = async () => {
+    await dispatch(
+      userHost({
+        space,
+        location,
+        guest,
+        amenity,
+        photos,
+        title,
+        description,
+        price,
+        id: user._id,
+      }),
+    );
+    navigate('/');
+  };
 
   return (
     <div>
@@ -39,16 +59,16 @@ export default function Save({
         </div>
         <div className="flex flex-col bg-white w-7/12 self-center mb-40">
           <div className="flex flex-col shadow-2xl rounded-3xl border border-gray-400 h-[37rem] self-center">
-            <img src={photos} className="rounded-t-3xl w-[25rem]" alt="photos" />
+            <img src={photos[0]} className="rounded-t-3xl w-[25rem]" alt="photos" />
             <h1 className="font-bold text-2xl my-5 ml-5">{titleCheck || title}</h1>
 
             <div className="border-b border-gray-400 mb-5 ml-5 w-[360px]" />
 
             <div className="flex flex-row gap-3">
               <h1 className="text-lg font-bold ml-5 w-40 text-gray-800">
-                {space} Hosted by {user.name}
+                {space} Hosted by {user.firstName}
               </h1>
-              <Avatar className="p-6 bg-orange-500">{user.name}</Avatar>
+              <Avatar className="p-6 bg-orange-500">{user.firstName}</Avatar>
             </div>
 
             <div className="border-b border-gray-400 my-5 ml-5 w-[360px]" />
@@ -107,7 +127,7 @@ export default function Save({
               Back
             </button>
             <button
-              onClick={() => navigate('/')}
+              onClick={save}
               className="absolute shadow-2xl bottom-5 right-5 border w-40 font-semibold text-white p-3 rounded-md duration-300 bg-blue-600 hover:bg-blue-500 hover:text-white"
             >
               Save your listing

@@ -8,7 +8,7 @@ const userSchema = new Schema({
   about: String,
   phone: String,
   profilePhoto: String,
-  hostPhotos: Array,
+  host: Object,
 });
 
 const User = model('User', userSchema);

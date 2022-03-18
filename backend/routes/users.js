@@ -46,12 +46,25 @@ router.post('/edit', async (req, res) => {
   res.send({ userData });
 });
 
-router.post('/hostImage', async (req, res) => {
-  const { first, second, third, fourth, fifth, id } = req.body;
+router.post('/host', async (req, res) => {
+  const { space, location, guest, amenity, photos, title, description, price, id } = req.body;
 
   await User.updateOne(
     { _id: id },
-    { $set: { hostPhotos: [first, second, third, fourth, fifth] } },
+    {
+      $set: {
+        host: {
+          space,
+          location,
+          guest,
+          amenity,
+          title,
+          description,
+          price,
+          photos,
+        },
+      },
+    },
   );
 
   const userData = await User.findById(id);
