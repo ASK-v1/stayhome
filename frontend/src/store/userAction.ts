@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { userAuth, userData, logout } from './userSlice';
+import { userAuth, userData, logout, userRooms } from './userSlice';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -33,4 +33,8 @@ const userPhoto = (photo: object) => async (dispatch: Dispatch) => {
   dispatch(userData(data.userData));
 };
 
-export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto };
+const getRooms = async (dispatch: Dispatch) => {
+  const { data } = await axios.get('/users/rooms');
+  dispatch(userRooms(data));
+};
+export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRooms };

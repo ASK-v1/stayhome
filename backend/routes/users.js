@@ -79,4 +79,9 @@ router.post('/pp', async (req, res) => {
   res.send({ userData });
 });
 
+router.get('/rooms', async (req, res) => {
+  const rooms = await User.find();
+  res.send({ rooms });
+});
+
 module.exports = router;

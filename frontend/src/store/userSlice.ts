@@ -4,6 +4,7 @@ import { UserStateInterface } from '../interfaces';
 const initialState: UserStateInterface = {
   isAuth: !!localStorage.getItem('token'),
   user: localStorage.getItem('user') ?? '',
+  rooms: {},
 };
 
 const userSlice = createSlice({
@@ -20,9 +21,12 @@ const userSlice = createSlice({
     logout: (state) => {
       localStorage.clear();
     },
+    userRooms: (state, action: PayloadAction<any>) => {
+      state.rooms = action.payload;
+    },
   },
 });
 
-export const { userAuth, userData, logout } = userSlice.actions;
+export const { userAuth, userData, logout, userRooms } = userSlice.actions;
 
 export default userSlice.reducer;
