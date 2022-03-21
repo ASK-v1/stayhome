@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { userAuth, userData, logout, userRooms } from './userSlice';
+import { userAuth, userData, logout, userRooms, userRoom } from './userSlice';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = process.env.URL || 'http://localhost:5000';
 
 const userSignup = async (user: object) => {
   await axios.post('/users/signup', user);
@@ -37,4 +37,10 @@ const getRooms = async (dispatch: Dispatch) => {
   const { data } = await axios.get('/users/rooms');
   dispatch(userRooms(data));
 };
-export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRooms };
+
+const getRoom = (id: string) => async (dispatch: Dispatch) => {
+  const { data } = await axios.get(`/users/room/${id}`);
+  dispatch(userRoom(data));
+};
+
+export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRooms, getRoom };

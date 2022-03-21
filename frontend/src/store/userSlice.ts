@@ -5,6 +5,7 @@ const initialState: UserStateInterface = {
   isAuth: !!localStorage.getItem('token'),
   user: localStorage.getItem('user') ?? '',
   rooms: {},
+  room: {},
 };
 
 const userSlice = createSlice({
@@ -24,9 +25,12 @@ const userSlice = createSlice({
     userRooms: (state, action: PayloadAction<any>) => {
       state.rooms = action.payload;
     },
+    userRoom: (state, action: PayloadAction<any>) => {
+      state.room = action.payload;
+    },
   },
 });
 
-export const { userAuth, userData, logout, userRooms } = userSlice.actions;
+export const { userAuth, userData, logout, userRooms, userRoom } = userSlice.actions;
 
 export default userSlice.reducer;

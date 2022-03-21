@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Rating from '@mui/material/Rating';
 import { useNavigate } from 'react-router';
 
-export default function Reserve() {
+export default function Reserve({ price }) {
   const rating = 2;
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function Reserve() {
     <div className="flex flex-col shadow-2xl self-start border rounded-3xl border-gray-400 p-5 h-[33rem]">
       <div className="flex justify-between items-center mb-5">
         <div className="flex flex-row p-3 gap-2 text-xl">
-          <h1 className="font-black">$511</h1>
+          <h1 className="font-black">${price}</h1>
           <h1>/ night</h1>
         </div>
         <div className="flex gap-3 items-center">

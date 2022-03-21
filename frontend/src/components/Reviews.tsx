@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Reviews({ reviews, setReviews }: { reviews: boolean; setReviews }) {
+export default function Reviews({ reviews, setReviews }) {
   const [filter, setFilter] = useState<string>('');
 
   const reviewsArr = [

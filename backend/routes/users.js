@@ -84,4 +84,10 @@ router.get('/rooms', async (req, res) => {
   res.send({ rooms });
 });
 
+router.get('/room/:id', async (req, res) => {
+  const { id } = req.params;
+  const room = await User.findById(id);
+  res.send({ room });
+});
+
 module.exports = router;

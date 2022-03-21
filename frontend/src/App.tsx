@@ -14,11 +14,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rooms" element={<Rooms />} />
-        <Route path="/room" element={<Room />} />
+        <Route path="/room/:id" element={<Room />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/personal" element={<Personal />} />
         <Route path="/book" element={<Book />} />
-        <Route path="/BecomeHost" element={<BecomeHost />} />
+        <Route path="/becomehost" element={<BecomeHost />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

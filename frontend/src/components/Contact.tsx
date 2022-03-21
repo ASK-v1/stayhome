@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import AlertTitle from '@mui/material/AlertTitle';
 import { useNavigate } from 'react-router';
 
-export default function Contact() {
+export default function Contact({ about }) {
   const [send, setSend] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -32,11 +32,7 @@ export default function Contact() {
               <h1>Identity verified</h1>
             </div>
           </div>
-          <h1 className="w-[30rem] mt-5">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum id ipsam voluptas
-            quaerat eaque eveniet totam! Nobis exercitationem rem id nulla esse soluta qui. Ab
-            libero quaerat
-          </h1>
+          <h1 className="w-[30rem] mt-5">{about}</h1>
         </div>
         {send ? (
           <div className="flex flex-row gap-10 ml-20">

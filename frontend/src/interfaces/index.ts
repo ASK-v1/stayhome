@@ -17,6 +17,7 @@ export interface UserStateInterface {
   isAuth: boolean;
   user: string;
   rooms: any;
+  room: any;
 }
 
 export interface PersonalInterface {

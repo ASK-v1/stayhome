@@ -11,7 +11,7 @@ export default function Card({ rooms }) {
         {rooms &&
           rooms.map((room) => (
             <div key={room._id} className="flex flex-row p-5">
-              <a href="/room" className="flex group">
+              <a href={`/room/${room._id}`} className="flex group">
                 <div className="relative overflow-hidden w-72 h-48">
                   <img
                     src={room.host.photos[0]}

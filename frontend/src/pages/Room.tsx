@@ -8,21 +8,40 @@ import Map from '../components/Map';
 import Contact from '../components/Contact';
 import Topbar from '../components/Topbar';
 import { useState } from 'react';
+import { getRoom } from '../store/userAction';
+import store from '../store';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 export default function Room() {
+  const dispatch = store.useAppDispatch();
+  const room = store.useAppSelector((state) => state.user.room.room);
+
   const [reviews, setReviews] = useState<boolean>(false);
+  const params = useParams();
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getRoom(params.id));
+    })();
+  }, []);
 
   return (
     <div>
       <Topbar />
       <Navbar />
       <div id="photos">
-        <Photos setReviews={setReviews} />
+        <Photos setReviews={setReviews} photos={room && room.host.photos} />
       </div>
       <div className="flex flex-col" id="amenities">
         <div className="flex flex-row justify-center gap-64">
-          <Description />
-          <Reserve />
+          <Description
+            guest={room && room.host.guest}
+            title={room && room.host.title}
+            description={room && room.host.description}
+            amenity={room && room.host.amenity}
+          />
+          <Reserve price={room && room.host.price} />
         </div>
         <div className="border-gray-400 border-b mt-10 w-[77rem] self-center" />
       </div>
@@ -36,7 +55,7 @@ export default function Room() {
           <Map />
         </div>
       </div>
-      <Contact />
+      <Contact about={room && room.about} />
       <Footer />
     </div>
   );
