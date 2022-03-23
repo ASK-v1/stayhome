@@ -79,29 +79,18 @@ router.post('/pp', async (req, res) => {
   res.send({ userData });
 });
 
-router.get('/rooms', async (req, res) => {
-  const rooms = await User.find();
-  res.send({ rooms });
-});
-
 router.get('/room/:id', async (req, res) => {
   const { id } = req.params;
   const room = await User.findById(id);
   res.send({ room });
 });
 
-router.get('/rooms/:price/:cityName', async (req, res) => {
-  const { minPrice, maxPrice } = req.params;
-
-  res.send(await House.find({ title: cityName, price: { $gt: price, $lt: 5000 } }));
-  return res.status(404).send();
-});
-
-router.get('/get/:category', async (req, res) => {
-  const { category } = req.params;
-  const productData = await Product.find({ category: category });
-  if (!productData) return res.status(404).send();
-  res.send({ productData });
+router.get('/rooms/:city', async (req, res) => {
+  const { city } = req.params;
+  const cityParams = city.split('-').join(' ');
+  const rooms = await User.find({ 'host.location.city': cityParams });
+  if (!rooms) return res.status(404).send();
+  res.send({ rooms });
 });
 
 module.exports = router;

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import SearchIcon from '@mui/icons-material/Search';
-import CircularProgress from '@mui/material/CircularProgress';
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -11,48 +10,15 @@ import { useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import { GuestsInterface } from '../interfaces';
 
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
-const cities = ['Los Angeles', 'San Francisco'];
+const options = ['Los Angeles', 'San Francisco'];
 
 export default function Search() {
   const navigate = useNavigate();
 
   const [date, setDate] = useState<DateRange<Date>>([null, null]);
 
-  const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState<string[]>([]);
-  const loading = open && options?.length === 0;
-
-  useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      await sleep(2000);
-
-      if (active) {
-        setOptions(cities);
-      }
-    })();
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
-  }, [open]);
+  const [val, setVal] = React.useState<string | null>('');
+  const [inputVal, setInputVal] = React.useState('');
 
   const [anchorElGuests, setAnchorElGuests] = useState<null | HTMLElement>(null);
   const openGuests = Boolean(anchorElGuests);
@@ -72,34 +38,20 @@ export default function Search() {
             minWidth: 300,
             borderRadius: 1,
           }}
-          open={open}
-          onOpen={() => {
-            setOpen(true);
+          value={val}
+          onChange={(event: any, newValue: string | null) => {
+            setVal(newValue);
           }}
-          onClose={() => {
-            setOpen(false);
+          inputValue={inputVal}
+          onInputChange={(event, newInputValue) => {
+            setInputVal(newInputValue);
           }}
-          isOptionEqualToValue={(option, values) => option === values}
-          getOptionLabel={(option) => option}
           options={options}
-          loading={loading}
           renderInput={(params) => (
-            <TextField
-              variant="filled"
-              {...params}
-              label="Where are you going?"
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <React.Fragment>
-                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                    {params.InputProps.endAdornment}
-                  </React.Fragment>
-                ),
-              }}
-            />
+            <TextField variant="filled" {...params} label="Where are you going?" />
           )}
         />
+
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateRangePicker
             startText="Check-in"
@@ -370,14 +322,20 @@ export default function Search() {
             </div>
           </div>
         </Menu>
-
-        <button
-          onClick={() => navigate('/rooms')}
-          className="flex flex-row font-semibold ml-3 py-[14px] rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-blue-500"
-        >
-          <SearchIcon className="text-2xl"></SearchIcon>
-          <p>Search</p>
-        </button>
+        {val ? (
+          <button
+            onClick={() => navigate(`/rooms/${val.split(' ').join('-')}`)}
+            className="flex flex-row font-semibold ml-3 py-[14px] rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-blue-500"
+          >
+            <SearchIcon className="text-2xl"></SearchIcon>
+            <p>Search</p>
+          </button>
+        ) : (
+          <button className="flex flex-row font-semibold ml-3 py-[14px] rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-blue-500">
+            <SearchIcon className="text-2xl"></SearchIcon>
+            <p>Search</p>
+          </button>
+        )}
       </div>
     </div>
   );

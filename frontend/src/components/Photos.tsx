@@ -86,7 +86,7 @@ export default function Photos({ setReviews, photos }) {
             <img
               onClick={() => setPhotoNum(1)}
               src={photos[0]}
-              className="rounded-l-3xl duration-500 w-[40rem] h-[32rem] hover:opacity-90 cursor-pointer"
+              className="rounded-l-3xl duration-500 w-[40rem] h-[32.5rem] hover:opacity-90 cursor-pointer"
               alt="photos"
             />
             <div className="flex flex-col gap-2">

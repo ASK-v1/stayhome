@@ -33,8 +33,8 @@ const userPhoto = (photo: object) => async (dispatch: Dispatch) => {
   dispatch(userData(data.userData));
 };
 
-const getRooms = async (dispatch: Dispatch) => {
-  const { data } = await axios.get('/users/rooms');
+const getRooms = (city: string) => async (dispatch: Dispatch) => {
+  const { data } = await axios.get(`/users/rooms/${city}`);
   dispatch(userRooms(data));
 };
 
