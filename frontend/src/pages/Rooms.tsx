@@ -22,7 +22,9 @@ export default function Rooms() {
       <Navbar />
       <Filters />
       <div className="border-b border-gray-400 w-full mt-5" />
-      <h1 className="ml-5 text-gray-800 font-semibold my-5">200+ stays in map area</h1>
+      <h1 className="ml-5 text-gray-800 font-semibold my-5">
+        {users.rooms.length} stays in map area
+      </h1>
       <div className="flex flex-row">
         <Card rooms={users.rooms} />
         <div className="w-4/5">

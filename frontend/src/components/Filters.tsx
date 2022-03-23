@@ -8,14 +8,11 @@ import { FiltersInterface } from '../interfaces';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Checkbox from '@mui/material/Checkbox';
-import { RoomsInterface } from '../interfaces';
 
 export default function Filters() {
   const [filter, setfilter] = useState<FiltersInterface>({
     minPrice: '',
     maxPrice: '',
-    bedrooms: '',
-    bathrooms: '',
     entirePlace: false,
     privateRoom: false,
     hotelRoom: false,
@@ -50,17 +47,9 @@ export default function Filters() {
   };
 
   const [anchorElPrice, setAnchorElPrice] = useState<null | HTMLElement>(null);
-  const [anchorElRooms, setAnchorElRooms] = useState<null | HTMLElement>(null);
   const [anchorElType, setAnchorElType] = useState<null | HTMLElement>(null);
   const openPrice = Boolean(anchorElPrice);
-  const openRooms = Boolean(anchorElRooms);
   const openType = Boolean(anchorElType);
-
-  const [value, setValue] = useState<RoomsInterface>({
-    bedrooms: 1,
-    beds: 1,
-    bathrooms: 1,
-  });
 
   return (
     <div className="mt-5">
@@ -84,32 +73,6 @@ export default function Filters() {
           >
             Price
             {openPrice ? (
-              <KeyboardArrowUpIcon fontSize="small" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="small" />
-            )}
-          </button>
-        )}
-
-        {openRooms ? (
-          <button
-            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44 bg-gray-200 border-black"
-            onClick={(event) => setAnchorElRooms(event.currentTarget)}
-          >
-            Rooms and beds
-            {openRooms ? (
-              <KeyboardArrowUpIcon fontSize="small" />
-            ) : (
-              <KeyboardArrowDownIcon fontSize="small" />
-            )}
-          </button>
-        ) : (
-          <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-44 hover:border-black"
-            onClick={(event) => setAnchorElRooms(event.currentTarget)}
-          >
-            Rooms and beds
-            {openRooms ? (
               <KeyboardArrowUpIcon fontSize="small" />
             ) : (
               <KeyboardArrowDownIcon fontSize="small" />
@@ -296,14 +259,13 @@ export default function Filters() {
         onClose={() => setAnchorElPrice(null)}
         PaperProps={{
           style: {
-            width: 200,
+            width: '10.4rem',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
           },
         }}
       >
-        <FormControl fullWidth sx={{ m: 1, width: '150px', marginLeft: '25px' }}>
+        <FormControl fullWidth sx={{ m: 1, width: '150px' }}>
           <InputLabel>min price</InputLabel>
           <OutlinedInput
             type="number"
@@ -313,7 +275,7 @@ export default function Filters() {
             label="min price"
           />
         </FormControl>
-        <FormControl fullWidth sx={{ m: 1, width: '150px', marginLeft: '25px' }}>
+        <FormControl fullWidth sx={{ m: 1, width: '150px' }}>
           <InputLabel>max price</InputLabel>
           <OutlinedInput
             type="number"
@@ -330,226 +292,25 @@ export default function Filters() {
             padding: '10px',
             borderRadius: '5px',
             color: 'white',
-            marginLeft: '25px',
             width: '9.4rem',
-            marginTop: '20px',
-            marginBottom: '20px',
+            marginTop: '10px',
+            marginLeft: '8px',
           }}
         >
           <h1>Save</h1>
         </button>
       </Menu>
-      <Menu
-        open={openRooms}
-        anchorEl={anchorElRooms}
-        onClose={() => setAnchorElRooms(null)}
-        PaperProps={{
-          style: {
-            width: 400,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-          },
-        }}
-      >
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '13.1rem', marginTop: '1rem' }}>
-          <h1 style={{ fontSize: '20px' }}>Beds</h1>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
-            {value.bedrooms !== 1 ? (
-              <button
-                onClick={() => setValue({ ...value, bedrooms: value.bedrooms - 1 })}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  color: 'black',
-                }}
-              >
-                -
-              </button>
-            ) : (
-              <button
-                style={{
-                  fontWeight: 'semibold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  opacity: '50%',
-                  color: 'grey',
-                }}
-              >
-                -
-              </button>
-            )}
-            <h1
-              style={{
-                marginTop: '4px',
-              }}
-            >
-              {value.bedrooms}
-            </h1>
-            <button
-              style={{
-                fontWeight: 'semibold',
-                fontSize: '15px',
-                borderRadius: '20px',
-                height: '2rem',
-                width: '2rem',
-                border: 'solid 1px gray',
-                color: 'black',
-              }}
-              onClick={() => setValue({ ...value, bedrooms: value.bedrooms + 1 })}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '10.2rem', marginTop: '1rem' }}>
-          <h1 style={{ fontSize: '20px' }}>Bedrooms</h1>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
-            {value.beds !== 1 ? (
-              <button
-                onClick={() => setValue({ ...value, beds: value.beds - 1 })}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  color: 'black',
-                }}
-              >
-                -
-              </button>
-            ) : (
-              <button
-                style={{
-                  fontWeight: 'semibold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  opacity: '50%',
-                  color: 'grey',
-                }}
-              >
-                -
-              </button>
-            )}
-            <h1
-              style={{
-                marginTop: '4px',
-              }}
-            >
-              {value.beds}
-            </h1>
-            <button
-              style={{
-                fontWeight: 'semibold',
-                fontSize: '15px',
-                borderRadius: '20px',
-                height: '2rem',
-                width: '2rem',
-                border: 'solid 1px gray',
-                color: 'black',
-              }}
-              onClick={() => setValue({ ...value, beds: value.beds + 1 })}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '9.8rem', marginTop: '1rem' }}>
-          <h1 style={{ fontSize: '20px' }}>Bathrooms</h1>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
-            {value.bathrooms !== 1 ? (
-              <button
-                onClick={() => setValue({ ...value, bathrooms: value.bathrooms - 1 })}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  color: 'black',
-                }}
-              >
-                -
-              </button>
-            ) : (
-              <button
-                style={{
-                  fontWeight: 'semibold',
-                  fontSize: '15px',
-                  borderRadius: '20px',
-                  height: '2rem',
-                  width: '2rem',
-                  border: 'solid 1px gray',
-                  opacity: '50%',
-                  color: 'grey',
-                }}
-              >
-                -
-              </button>
-            )}
-            <h1
-              style={{
-                marginTop: '4px',
-              }}
-            >
-              {value.bathrooms}
-            </h1>
-            <button
-              style={{
-                fontWeight: 'semibold',
-                fontSize: '15px',
-                borderRadius: '20px',
-                height: '2rem',
-                width: '2rem',
-                border: 'solid 1px gray',
-                color: 'black',
-              }}
-              onClick={() => setValue({ ...value, bathrooms: value.bathrooms + 1 })}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <button
-          onClick={() => setAnchorElRooms(null)}
-          style={{
-            backgroundColor: 'black',
-            padding: '10px',
-            borderRadius: '5px',
-            color: 'white',
-            width: '360px',
-            marginTop: '20px',
-            marginBottom: '20px',
-          }}
-        >
-          Save
-        </button>
-      </Menu>
+
       <Menu
         open={openType}
         anchorEl={anchorElType}
         onClose={() => setAnchorElType(null)}
         PaperProps={{
           style: {
-            width: 200,
+            width: '11.2rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'start',
-            padding: '10px',
           },
         }}
       >
@@ -649,8 +410,7 @@ export default function Filters() {
             color: 'white',
             width: '10rem',
             marginLeft: '10px',
-            marginTop: '20px',
-            marginBottom: '20px',
+            marginTop: '10px',
           }}
         >
           Save

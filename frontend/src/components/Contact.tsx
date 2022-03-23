@@ -51,7 +51,7 @@ export default function Contact({ about }) {
             </button>
           </div>
         ) : (
-          <Stack sx={{ width: '525px', margin: '50px' }}>
+          <Stack sx={{ width: '600px', marginLeft: '35px' }}>
             <Alert severity="success">
               <AlertTitle>Thank you!</AlertTitle>
               Your message has been sent

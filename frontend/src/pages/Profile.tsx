@@ -63,7 +63,7 @@ export default function Profile() {
       <div className="flex flex-row p-20 justify-center gap-20">
         <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem]">
           {user.profilePhoto ? (
-            <label className="self-center">
+            <label className="self-center cursor-pointer">
               <img className="w-32 h-32 rounded-full" src={user.profilePhoto} alt="img" />
               <Input
                 onChange={(event) => {
@@ -74,7 +74,7 @@ export default function Profile() {
               />
             </label>
           ) : (
-            <label className="self-center">
+            <label className="self-center cursor-pointer">
               <Avatar className="p-16 bg-orange-500 text-3xl self-center">
                 <Input
                   onChange={(event) => {
@@ -125,7 +125,7 @@ export default function Profile() {
             </div>
           </div>
           <div>
-            <h1 className="font-semibold text-2xl mt-10">Brandon’s listings</h1>
+            <h1 className="font-semibold text-2xl mt-10">Brandon’s listing</h1>
             <div className="mt-5">
               <img
                 src={url}

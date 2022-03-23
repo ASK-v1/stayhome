@@ -17,7 +17,7 @@ function sleep(delay = 0) {
   });
 }
 
-const cities = ['Amsterdam', 'Berlin', 'Bursa', 'Chicago', 'London', 'San Francisco'];
+const cities = ['Los Angeles', 'San Francisco'];
 
 export default function Search() {
   const navigate = useNavigate();
@@ -135,19 +135,19 @@ export default function Search() {
         </LocalizationProvider>
         {value.adults + value.children > 1 ? (
           <button
-            className="h-14 border border-gray-400 rounded bg-gray-200 w-20 hover:bg-gray-300"
+            className="h-14 border border-gray-400 rounded bg-gray-200 w-24 hover:bg-gray-300"
             onClick={(event) => setAnchorElGuests(event.currentTarget)}
           >
             <div className="flex flex-col">
               <h1 className="self-start font-semibold text-left text-gray-900 ml-3 opacity-70 text-xs">
                 Guests
               </h1>
-              <h1 className="self-start ml-3">{value.adults + value.children}</h1>
+              <h1 className="self-start ml-3">{value.adults + value.children} guests</h1>
             </div>
           </button>
         ) : (
           <button
-            className="h-14 border border-gray-400 rounded bg-gray-200 w-20 hover:bg-gray-300"
+            className="h-14 border border-gray-400 rounded bg-gray-200 w-24 hover:bg-gray-300"
             onClick={(event) => setAnchorElGuests(event.currentTarget)}
           >
             <h1 className="self-start font-semibold text-left text-gray-900 ml-3 opacity-70">
@@ -161,7 +161,7 @@ export default function Search() {
           onClose={() => setAnchorElGuests(null)}
           PaperProps={{
             style: {
-              width: 400,
+              width: 300,
               display: 'flex',
               flexDirection: 'column',
               padding: '20px',
@@ -169,12 +169,12 @@ export default function Search() {
             },
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h1 style={{ fontSize: '20px', width: '200px' }}>Adults</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '60px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+              <h1 style={{ fontSize: '20px' }}>Adults</h1>
               <h1 style={{ fontSize: '13px', color: 'gray' }}>Ages 13 or above</h1>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', gap: '15px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
               {value.adults !== 1 ? (
                 <button
                   onClick={() => setValue({ ...value, adults: value.adults - 1 })}
@@ -239,12 +239,12 @@ export default function Search() {
               marginBottom: '15px',
             }}
           />
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h1 style={{ fontSize: '20px', width: '200px' }}>Children</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '88px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+              <h1 style={{ fontSize: '20px' }}>Children</h1>
               <h1 style={{ fontSize: '13px', color: 'gray' }}>Ages 2–12</h1>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', gap: '15px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
               {value.children !== 0 ? (
                 <button
                   onClick={() => setValue({ ...value, children: value.children - 1 })}
@@ -309,12 +309,12 @@ export default function Search() {
               marginBottom: '15px',
             }}
           />
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h1 style={{ fontSize: '20px', width: '200px' }}>Infants</h1>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '103px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+              <h1 style={{ fontSize: '20px' }}>Infants</h1>
               <h1 style={{ fontSize: '13px', color: 'gray' }}>Under 2</h1>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', gap: '15px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
               {value.infants !== 0 ? (
                 <button
                   onClick={() => setValue({ ...value, infants: value.infants - 1 })}
@@ -370,6 +370,7 @@ export default function Search() {
             </div>
           </div>
         </Menu>
+
         <button
           onClick={() => navigate('/rooms')}
           className="flex flex-row font-semibold ml-3 py-[14px] rounded bg-blue-600 px-6 text-white text-xl shadow-2xl items-center gap-2 hover:bg-blue-500"

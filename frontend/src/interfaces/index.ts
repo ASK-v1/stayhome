@@ -32,8 +32,6 @@ export interface PersonalInterface {
 export interface FiltersInterface {
   minPrice: string;
   maxPrice: string;
-  bedrooms: string;
-  bathrooms: string;
   entirePlace: boolean;
   privateRoom: boolean;
   hotelRoom: boolean;
@@ -89,8 +87,6 @@ export interface BecomeHostAmenityInterface {
   balcony: boolean;
   freezer: boolean;
 }
-
-export type RoomsInterface = Omit<BecomeHostGuestInterface, 'guests'>;
 
 export interface GuestsInterface {
   adults: number;

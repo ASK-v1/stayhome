@@ -3,23 +3,26 @@ import TextField from '@mui/material/TextField';
 import DateRangePicker, { DateRange } from '@mui/lab/DateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import Rating from '@mui/material/Rating';
 import { useNavigate } from 'react-router';
+import { GuestsInterface } from '../interfaces';
+import Menu from '@mui/material/Menu';
 
 export default function Reserve({ price }) {
   const rating = 2;
 
   const navigate = useNavigate();
 
-  const [value, setValue] = useState<DateRange<Date>>([null, null]);
-  const [guest, setGuest] = useState('');
+  const [date, setDate] = useState<DateRange<Date>>([null, null]);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setGuest(event.target.value);
-  };
+  const [anchorElGuests, setAnchorElGuests] = useState<null | HTMLElement>(null);
+  const openGuests = Boolean(anchorElGuests);
+
+  const [value, setValue] = useState<GuestsInterface>({
+    adults: 1,
+    children: 0,
+    infants: 0,
+  });
 
   return (
     <div className="flex flex-col shadow-2xl self-start border rounded-3xl border-gray-400 p-5 h-[33rem]">
@@ -37,9 +40,9 @@ export default function Reserve({ price }) {
         <DateRangePicker
           startText="Check-in"
           endText="Check-out"
-          value={value}
+          value={date}
           onChange={(newValue) => {
-            setValue(newValue);
+            setDate(newValue);
           }}
           renderInput={(startProps, endProps) => (
             <React.Fragment>
@@ -63,29 +66,241 @@ export default function Reserve({ price }) {
           )}
         />
       </LocalizationProvider>
-      <div>
-        <FormControl>
-          <Select
-            sx={{
-              bgcolor: 'background.paper',
-              borderRadius: 1,
-              minWidth: 300,
-            }}
-            value={guest}
-            onChange={handleChange}
-            displayEmpty
-          >
-            <MenuItem disabled value="">
-              <p className=" text-gray-700">Guest</p>
-            </MenuItem>
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+
+      {value.adults + value.children > 1 ? (
+        <button
+          className="h-14 border border-gray-400 rounded w-[18.8rem] hover:border-black"
+          onClick={(event) => setAnchorElGuests(event.currentTarget)}
+        >
+          <div className="flex flex-col">
+            <h1 className="self-start text-left ml-3 text-xs">Guests</h1>
+            <h1 className="self-start ml-3">{value.adults + value.children} guests</h1>
+          </div>
+        </button>
+      ) : (
+        <button
+          className="h-14 border border-gray-400 text-gray-900 opacity-70 rounded w-[18.8rem] hover:border-black"
+          onClick={(event) => setAnchorElGuests(event.currentTarget)}
+        >
+          <h1 className="self-start text-left ml-3">Guests</h1>
+        </button>
+      )}
+      <Menu
+        open={openGuests}
+        anchorEl={anchorElGuests}
+        onClose={() => setAnchorElGuests(null)}
+        PaperProps={{
+          style: {
+            width: 300,
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '20px',
+            alignItems: 'center',
+          },
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '60px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+            <h1 style={{ fontSize: '20px' }}>Adults</h1>
+            <h1 style={{ fontSize: '13px', color: 'gray' }}>Ages 13 or above</h1>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
+            {value.adults !== 1 ? (
+              <button
+                onClick={() => setValue({ ...value, adults: value.adults - 1 })}
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
+              >
+                -
+              </button>
+            ) : (
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
+                -
+              </button>
+            )}
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.adults}
+            </h1>
+            <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
+              onClick={() => setValue({ ...value, adults: value.adults + 1 })}
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            borderTop: 'solid 1px',
+            borderTopColor: 'gray',
+            opacity: '30%',
+            width: '20rem',
+            marginTop: '15px',
+            marginBottom: '15px',
+          }}
+        />
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '88px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+            <h1 style={{ fontSize: '20px' }}>Children</h1>
+            <h1 style={{ fontSize: '13px', color: 'gray' }}>Ages 2–12</h1>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
+            {value.children !== 0 ? (
+              <button
+                onClick={() => setValue({ ...value, children: value.children - 1 })}
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
+              >
+                -
+              </button>
+            ) : (
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
+                -
+              </button>
+            )}
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.children}
+            </h1>
+            <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
+              onClick={() => setValue({ ...value, children: value.children + 1 })}
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            borderTop: 'solid 1px',
+            borderTopColor: 'gray',
+            opacity: '30%',
+            width: '20rem',
+            marginTop: '15px',
+            marginBottom: '15px',
+          }}
+        />
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '103px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '30px' }}>
+            <h1 style={{ fontSize: '20px' }}>Infants</h1>
+            <h1 style={{ fontSize: '13px', color: 'gray' }}>Under 2</h1>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '10px' }}>
+            {value.infants !== 0 ? (
+              <button
+                onClick={() => setValue({ ...value, infants: value.infants - 1 })}
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  color: 'black',
+                }}
+              >
+                -
+              </button>
+            ) : (
+              <button
+                style={{
+                  fontWeight: 'semibold',
+                  fontSize: '15px',
+                  borderRadius: '20px',
+                  height: '2rem',
+                  width: '2rem',
+                  border: 'solid 1px gray',
+                  opacity: '50%',
+                  color: 'grey',
+                }}
+              >
+                -
+              </button>
+            )}
+            <h1
+              style={{
+                marginTop: '4px',
+              }}
+            >
+              {value.infants}
+            </h1>
+            <button
+              style={{
+                fontWeight: 'semibold',
+                fontSize: '15px',
+                borderRadius: '20px',
+                height: '2rem',
+                width: '2rem',
+                border: 'solid 1px gray',
+                color: 'black',
+              }}
+              onClick={() => setValue({ ...value, infants: value.infants + 1 })}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </Menu>
+
       <button
         onClick={() => navigate('/book')}
         className="font-semibold border-black bg-black hover:opacity-90 text-white  w-[300px] h-12 mt-5 rounded duration-300"

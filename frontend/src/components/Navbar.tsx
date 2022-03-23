@@ -36,9 +36,9 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="flex items-center justify-around bg-orange-500 p-1">
+      <div className="flex items-center justify-around bg-orange-500 p-2">
         <Link to="/">
-          <img src={'img/logo.png'} alt="logo" width="200" />
+          <div className="bg-logo h-16 w-52 bg-center bg-cover" />
         </Link>
         <div className="flex gap-10 items-center">
           <Button

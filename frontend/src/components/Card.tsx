@@ -6,11 +6,11 @@ export default function Card({ rooms }) {
 
   return (
     <div>
-      <div className="flex flex-col gap-1">
-        <div className="border-b border-gray-400 w-[50rem] ml-5" />
-        {rooms &&
-          rooms.map((room) => (
-            <div key={room._id} className="flex flex-row p-5">
+      {rooms &&
+        rooms.map((room) => (
+          <div key={room._id} className="flex flex-col">
+            <div className="border-b border-gray-400 w-[53rem] ml-5" />
+            <div className="flex flex-row p-5">
               <a href={`/room/${room._id}`} className="flex group">
                 <div className="relative overflow-hidden w-72 h-48">
                   <img
@@ -22,7 +22,11 @@ export default function Card({ rooms }) {
 
                 <div className="flex flex-row w-[35rem] justify-between">
                   <div className="ml-3 flex flex-col gap-1">
-                    <h1 className="font-semibold text-lg">{room.host.title}</h1>
+                    {room.host.title.length > 40 ? (
+                      <h1 className="font-semibold text-lg">{room.host.title.slice(0, 40)}...</h1>
+                    ) : (
+                      <h1 className="font-semibold text-lg">{room.host.title}</h1>
+                    )}
                     <div className="border-t border-gray-400 w-10 my-1" />
                     <div className="flex flex-col mb-[79px]">
                       <div className="flex flex-row gap-1 text-sm text-gray-600">
@@ -72,8 +76,8 @@ export default function Card({ rooms }) {
                 </div>
               </a>
             </div>
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
   );
 }

@@ -90,4 +90,18 @@ router.get('/room/:id', async (req, res) => {
   res.send({ room });
 });
 
+router.get('/rooms/:price/:cityName', async (req, res) => {
+  const { minPrice, maxPrice } = req.params;
+
+  res.send(await House.find({ title: cityName, price: { $gt: price, $lt: 5000 } }));
+  return res.status(404).send();
+});
+
+router.get('/get/:category', async (req, res) => {
+  const { category } = req.params;
+  const productData = await Product.find({ category: category });
+  if (!productData) return res.status(404).send();
+  res.send({ productData });
+});
+
 module.exports = router;

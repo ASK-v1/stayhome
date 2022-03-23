@@ -59,7 +59,7 @@ export default function Save({
         </div>
         <div className="flex flex-col bg-white w-7/12 self-center mb-40">
           <div className="flex flex-col shadow-2xl rounded-3xl border border-gray-400 h-[37rem] self-center">
-            <img src={photos[0]} className="rounded-t-3xl w-[25rem]" alt="photos" />
+            <img src={photos[0]} className="rounded-t-3xl w-[25rem] h-64" alt="photos" />
             <h1 className="font-bold text-2xl my-5 ml-5">{titleCheck || title}</h1>
 
             <div className="border-b border-gray-400 mb-5 ml-5 w-[360px]" />

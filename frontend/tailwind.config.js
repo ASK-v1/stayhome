@@ -7,6 +7,7 @@ module.exports = {
       backgroundImage: (theme) => ({
         home: "url('/public/img/home.jpg')",
         notfound: "url('/public/img/404.jpg')",
+        logo: "url('/public/img/logo.png')",
       }),
     },
     colors: {
