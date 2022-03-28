@@ -88,14 +88,6 @@ router.get('/room/:id', async (req, res) => {
   res.send({ room });
 });
 
-router.get('/rooms/:city', async (req, res) => {
-  const { city } = req.params;
-  const cityParams = city.split('-').join(' ');
-  const rooms = await User.find({ 'host.location.city': cityParams });
-  if (!rooms) return res.status(404).send();
-  res.send({ rooms });
-});
-
 router.get(
   '/rooms/:city/filter/:wifi/:kitchen/:parking/:washer/:dryer/:iron/:tv/:pool/:balcony/:entirePlace/:privateRoom/:hotelRoom/:sharedRoom/:minPrice/:maxPrice',
   async (req, res) => {

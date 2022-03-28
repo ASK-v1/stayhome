@@ -34,11 +34,6 @@ const userPhoto = (photo: object) => async (dispatch: Dispatch) => {
   dispatch(userData(data.userData));
 };
 
-const getRooms = (city: string) => async (dispatch: Dispatch) => {
-  const { data } = await axios.get(`/users/rooms/${city}`);
-  dispatch(userRooms(data));
-};
-
 const getRoom = (id: string) => async (dispatch: Dispatch) => {
   const { data } = await axios.get(`/users/room/${id}`);
   dispatch(userRoom(data));
@@ -56,14 +51,4 @@ const getFilter = (filter: FiltersInterface, city: string) => async (dispatch: D
   dispatch(userRooms(data));
 };
 
-export {
-  userLogout,
-  userLogin,
-  userSignup,
-  userEdit,
-  userHost,
-  userPhoto,
-  getRooms,
-  getRoom,
-  getFilter,
-};
+export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRoom, getFilter };
