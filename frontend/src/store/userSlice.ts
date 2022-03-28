@@ -6,6 +6,7 @@ const initialState: UserStateInterface = {
   user: localStorage.getItem('user') ?? '',
   rooms: {},
   room: {},
+  cities: [],
 };
 
 const userSlice = createSlice({
@@ -28,9 +29,17 @@ const userSlice = createSlice({
     userRoom: (state, action: PayloadAction<any>) => {
       state.room = action.payload;
     },
+    cityRooms: (state, action: PayloadAction<any>) => {
+      let city = [];
+      action.payload.users.map((items) => city.push(items.host?.location?.city));
+
+      state.cities = city.filter(
+        (c, index) => city.indexOf(c) === index && c !== undefined && c !== null && c !== '',
+      );
+    },
   },
 });
 
-export const { userAuth, userData, logout, userRooms, userRoom } = userSlice.actions;
+export const { userAuth, userData, logout, userRooms, userRoom, cityRooms } = userSlice.actions;
 
 export default userSlice.reducer;

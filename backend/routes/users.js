@@ -184,4 +184,9 @@ router.get(
   },
 );
 
+router.get('/search', async (req, res) => {
+  const users = await User.find();
+  res.send({ users });
+});
+
 module.exports = router;

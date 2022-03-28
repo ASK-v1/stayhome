@@ -9,10 +9,19 @@ import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import { GuestsInterface } from '../interfaces';
-
-const options = ['Los Angeles', 'San Francisco'];
+import { getCity } from '../store/userAction';
+import store from '../store';
 
 export default function Search() {
+  const dispatch = store.useAppDispatch();
+  const cities = store.useAppSelector((state) => state.user.cities);
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getCity);
+    })();
+  }, []);
+
   const navigate = useNavigate();
 
   const [date, setDate] = useState<DateRange<Date>>([null, null]);
@@ -46,7 +55,7 @@ export default function Search() {
           onInputChange={(event, newInputValue) => {
             setInputVal(newInputValue);
           }}
-          options={options}
+          options={cities}
           renderInput={(params) => (
             <TextField variant="filled" {...params} label="Where are you going?" />
           )}

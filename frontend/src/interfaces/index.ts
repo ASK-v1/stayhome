@@ -18,6 +18,7 @@ export interface UserStateInterface {
   user: string;
   rooms: any;
   room: any;
+  cities: any;
 }
 
 export interface PersonalInterface {

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { userAuth, userData, logout, userRooms, userRoom } from './userSlice';
+import { userAuth, userData, logout, userRooms, userRoom, cityRooms } from './userSlice';
 import { FiltersInterface } from '../interfaces';
 
-axios.defaults.baseURL = process.env.URL || 'http://localhost:5000';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const userSignup = async (user: object) => {
   await axios.post('/users/signup', user);
@@ -51,4 +51,19 @@ const getFilter = (filter: FiltersInterface, city: string) => async (dispatch: D
   dispatch(userRooms(data));
 };
 
-export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRoom, getFilter };
+const getCity = async (dispatch: Dispatch) => {
+  const { data } = await axios.get('/users/search');
+  dispatch(cityRooms(data));
+};
+
+export {
+  userLogout,
+  userLogin,
+  userSignup,
+  userEdit,
+  userHost,
+  userPhoto,
+  getRoom,
+  getFilter,
+  getCity,
+};
