@@ -69,7 +69,7 @@ export default function Reserve({ price }) {
 
       {value.adults + value.children > 1 ? (
         <button
-          className="h-14 border border-gray-400 rounded w-[18.8rem] hover:border-black"
+          className="h-14 border border-gray-400 rounded w-[300px] hover:border-black"
           onClick={(event) => setAnchorElGuests(event.currentTarget)}
         >
           <div className="flex flex-col">
@@ -79,7 +79,7 @@ export default function Reserve({ price }) {
         </button>
       ) : (
         <button
-          className="h-14 border border-gray-400 text-gray-900 opacity-70 rounded w-[18.8rem] hover:border-black"
+          className="h-14 border border-gray-400 text-gray-900 opacity-70 rounded w-[300px] hover:border-black"
           onClick={(event) => setAnchorElGuests(event.currentTarget)}
         >
           <h1 className="self-start text-left ml-3">Guests</h1>

@@ -3,23 +3,10 @@ import Footer from '../components/Footer';
 import Map from '../components/Map';
 import Card from '../components/Card';
 import Filters from '../components/Filters';
-import { getRooms } from '../store/userAction';
 import store from '../store';
-import { useEffect } from 'react';
-import { useParams } from 'react-router';
 
 export default function Rooms() {
-  const dispatch = store.useAppDispatch();
   const users = store.useAppSelector((state) => state.user.rooms);
-  const params = useParams();
-
-  let loading = false;
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(getRooms(params.city));
-    })();
-  }, []);
 
   return (
     <div>
@@ -35,7 +22,7 @@ export default function Rooms() {
           <Map />
         </div>
       </div>
-      {users && <Footer />}
+      {users.rooms && <Footer />}
     </div>
   );
 }

@@ -75,7 +75,7 @@ export default function Profile() {
             </label>
           ) : (
             <label className="self-center cursor-pointer">
-              <Avatar className="p-16 bg-orange-500 text-3xl self-center">
+              <Avatar className="p-16 bg-orange-500 text-5xl self-center">
                 <Input
                   onChange={(event) => {
                     setSelectedFile(event.target.files[0]);
@@ -83,8 +83,8 @@ export default function Profile() {
                   type="file"
                   accept="image/png, image/jpeg, image/jpg"
                 />
-                {user.firstName}
-              </Avatar>{' '}
+                {user.firstName[0].toUpperCase()}
+              </Avatar>
             </label>
           )}
 

@@ -78,7 +78,11 @@ export default function Signup(props: {
         onClose={() => props.setSignup(false)}
       >
         <div style={{ display: 'flex' }}>
-          <img src={'img/dialog.jpg'} alt="dialog" width="450" />
+          <img
+            src="https://res.cloudinary.com/dpsbq1odp/image/upload/v1648148135/dialog_avq7fb.jpg"
+            alt="dialog"
+            width="450"
+          />
           <div>
             <h1
               style={{

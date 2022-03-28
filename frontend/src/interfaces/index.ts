@@ -30,8 +30,8 @@ export interface PersonalInterface {
 }
 
 export interface FiltersInterface {
-  minPrice: string;
-  maxPrice: string;
+  minPrice: number;
+  maxPrice: number;
   entirePlace: boolean;
   privateRoom: boolean;
   hotelRoom: boolean;
@@ -41,7 +41,7 @@ export interface FiltersInterface {
   parking: boolean;
   washer: boolean;
   dryer: boolean;
-  gym: boolean;
+  tv: boolean;
   pool: boolean;
   iron: boolean;
   balcony: boolean;

@@ -68,7 +68,13 @@ export default function Save({
               <h1 className="text-lg font-bold ml-5 w-40 text-gray-800">
                 {space} Hosted by {user.firstName}
               </h1>
-              <Avatar className="p-6 bg-orange-500">{user.firstName}</Avatar>
+              {user.profilePhoto ? (
+                <img className="w-20 rounded-full" src={user.profilePhoto} alt="profile" />
+              ) : (
+                <Avatar className="text-3xl p-10 bg-orange-500">
+                  {user.firstName[0].toUpperCase()}
+                </Avatar>
+              )}
             </div>
 
             <div className="border-b border-gray-400 my-5 ml-5 w-[360px]" />

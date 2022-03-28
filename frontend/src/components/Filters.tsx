@@ -1,5 +1,5 @@
 import Menu from '@mui/material/Menu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -8,11 +8,19 @@ import { FiltersInterface } from '../interfaces';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Checkbox from '@mui/material/Checkbox';
+import { getFilter } from '../store/userAction';
+import store from '../store';
+import { useParams } from 'react-router';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Filters() {
+  const dispatch = store.useAppDispatch();
+  const params = useParams();
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [filter, setfilter] = useState<FiltersInterface>({
-    minPrice: '',
-    maxPrice: '',
+    minPrice: null,
+    maxPrice: null,
     entirePlace: false,
     privateRoom: false,
     hotelRoom: false,
@@ -22,7 +30,7 @@ export default function Filters() {
     parking: false,
     washer: false,
     dryer: false,
-    gym: false,
+    tv: false,
     pool: false,
     iron: false,
     balcony: false,
@@ -51,8 +59,47 @@ export default function Filters() {
   const openPrice = Boolean(anchorElPrice);
   const openType = Boolean(anchorElType);
 
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      await dispatch(getFilter(filter, params.city));
+      setLoading(false);
+    })();
+  }, [
+    filter.dryer,
+    filter.balcony,
+    filter.iron,
+    filter.kitchen,
+    filter.parking,
+    filter.pool,
+    filter.tv,
+    filter.wifi,
+    filter.washer,
+  ]);
+
+  const getRooms = async (amenity?: keyof FiltersInterface) => {
+    setAnchorElType(null);
+    setAnchorElPrice(null);
+    handleClick(amenity);
+    setLoading(true);
+    await dispatch(getFilter(filter, params.city));
+    setLoading(false);
+  };
+
   return (
     <div className="mt-5">
+      {loading && (
+        <div className="flex justify-center">
+          <CircularProgress
+            size={50}
+            style={{
+              position: 'fixed',
+              top: '50%',
+              color: 'orange',
+            }}
+          />
+        </div>
+      )}
       <div className="flex flex-row gap-3 items-center justify-start">
         {openPrice ? (
           <button
@@ -204,19 +251,19 @@ export default function Filters() {
           </button>
         )}
 
-        {filter.gym ? (
+        {filter.tv ? (
           <button
             className="active:scale-90 duration-300 text-black p-2 text-sm border border-black rounded-full font-semibold justify-center w-20 bg-gray-200"
-            onClick={() => handleClick('gym')}
+            onClick={() => handleClick('tv')}
           >
-            Gym
+            TV
           </button>
         ) : (
           <button
             className="active:scale-90 duration-300 text-gray-800 p-2 text-sm border border-gray-400 rounded-full font-semibold justify-center w-20 hover:border-black"
-            onClick={() => handleClick('gym')}
+            onClick={() => handleClick('tv')}
           >
-            Gym
+            TV
           </button>
         )}
 
@@ -259,13 +306,13 @@ export default function Filters() {
         onClose={() => setAnchorElPrice(null)}
         PaperProps={{
           style: {
-            width: '10.4rem',
+            width: '11rem',
             display: 'flex',
             flexDirection: 'column',
           },
         }}
       >
-        <FormControl fullWidth sx={{ m: 1, width: '150px' }}>
+        <FormControl fullWidth sx={{ m: 1, width: '10rem' }}>
           <InputLabel>min price</InputLabel>
           <OutlinedInput
             type="number"
@@ -275,7 +322,7 @@ export default function Filters() {
             label="min price"
           />
         </FormControl>
-        <FormControl fullWidth sx={{ m: 1, width: '150px' }}>
+        <FormControl fullWidth sx={{ m: 1, width: '10rem' }}>
           <InputLabel>max price</InputLabel>
           <OutlinedInput
             type="number"
@@ -286,13 +333,13 @@ export default function Filters() {
           />
         </FormControl>
         <button
-          onClick={() => setAnchorElPrice(null)}
+          onClick={() => getRooms()}
           style={{
             backgroundColor: 'black',
             padding: '10px',
             borderRadius: '5px',
             color: 'white',
-            width: '9.4rem',
+            width: '10rem',
             marginTop: '10px',
             marginLeft: '8px',
           }}
@@ -402,7 +449,7 @@ export default function Filters() {
           <h1 style={{ fontSize: '20px' }}>Shared room</h1>
         </div>
         <button
-          onClick={() => setAnchorElType(null)}
+          onClick={() => getRooms()}
           style={{
             backgroundColor: 'black',
             padding: '10px',

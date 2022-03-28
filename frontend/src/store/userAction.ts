@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { userAuth, userData, logout, userRooms, userRoom } from './userSlice';
+import { FiltersInterface } from '../interfaces';
 
 axios.defaults.baseURL = process.env.URL || 'http://localhost:5000';
 
@@ -43,4 +44,26 @@ const getRoom = (id: string) => async (dispatch: Dispatch) => {
   dispatch(userRoom(data));
 };
 
-export { userLogout, userLogin, userSignup, userEdit, userHost, userPhoto, getRooms, getRoom };
+const getFilter = (filter: FiltersInterface, city: string) => async (dispatch: Dispatch) => {
+  let maxCheck: number;
+  let minCheck: number;
+  Number(filter.maxPrice) === 0 ? (maxCheck = 9999) : (maxCheck = Number(filter.maxPrice));
+  Number(filter.minPrice) === 0 ? (minCheck = 0) : (minCheck = Number(filter.minPrice));
+
+  const { data } = await axios.get(
+    `/users/rooms/${city}/filter/${filter.wifi}/${filter.kitchen}/${filter.parking}/${filter.washer}/${filter.dryer}/${filter.iron}/${filter.tv}/${filter.pool}/${filter.balcony}/${filter.entirePlace}/${filter.privateRoom}/${filter.hotelRoom}/${filter.sharedRoom}/${minCheck}/${maxCheck}`,
+  );
+  dispatch(userRooms(data));
+};
+
+export {
+  userLogout,
+  userLogin,
+  userSignup,
+  userEdit,
+  userHost,
+  userPhoto,
+  getRooms,
+  getRoom,
+  getFilter,
+};
