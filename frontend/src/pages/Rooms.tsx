@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Map from '../components/Map';
+import Map from '../components/Map/RoomsMap';
 import Card from '../components/Card';
 import Filters from '../components/Filters';
 import store from '../store';

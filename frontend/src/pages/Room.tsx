@@ -4,7 +4,7 @@ import Photos from '../components/Photos';
 import Reserve from '../components/Reserve';
 import Description from '../components/Description';
 import Reviews from '../components/Reviews';
-import Map from '../components/Map';
+import Map from '../components/Map/RoomMap';
 import Contact from '../components/Contact';
 import Topbar from '../components/Topbar';
 import { useState } from 'react';

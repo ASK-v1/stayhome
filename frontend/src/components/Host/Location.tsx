@@ -6,7 +6,7 @@ import { countries } from './countries';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import Map from '../Map';
+import Map from '../Map/HostMap';
 
 export default function Location({ setPage, setLocation }) {
   const [value, setValue] = useState<BecomeHostLocationInterface>({
