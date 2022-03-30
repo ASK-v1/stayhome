@@ -17,9 +17,15 @@ export default function Rooms() {
       <div className="border-t border-gray-400 w-full z-30 fixed bg-white mt-[9.8rem] left-5" />
       <div className="flex flex-row w-[50rem]">
         <div className="bg-white z-10 relative mt-[9.8rem]">
-          <h1 className="ml-5 text-gray-800 font-semibold my-5">
-            {users.rooms && users.rooms.length} stays in {param.city.split('-').join(' ')}
-          </h1>
+          {users.rooms.length ? (
+            <h1 className="ml-5 text-gray-800 font-semibold my-5">
+              {users.rooms && users.rooms.length} stays in {param.city.split('-').join(' ')}
+            </h1>
+          ) : (
+            <h1 className="ml-5 text-gray-800 font-semibold my-5 w-[54.25rem]  mb-[75rem]">
+              0 stay in {param.city.split('-').join(' ')}
+            </h1>
+          )}
           {users.rooms && users.rooms.length < 4 ? (
             users.rooms.length < 2 ? (
               <div className="mb-[70vh]">
