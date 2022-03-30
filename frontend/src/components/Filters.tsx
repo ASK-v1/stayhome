@@ -87,7 +87,7 @@ export default function Filters() {
   };
 
   return (
-    <div className="mt-5">
+    <div className="bg-white p-5">
       {loading && (
         <div className="flex justify-center">
           <CircularProgress
@@ -103,7 +103,7 @@ export default function Filters() {
       <div className="flex flex-row gap-3 items-center justify-start">
         {openPrice ? (
           <button
-            className="active:scale-90 duration-300 text-black border ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
+            className="active:scale-90 duration-300 text-black border rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 bg-gray-200 border-black"
             onClick={(event) => setAnchorElPrice(event.currentTarget)}
           >
             Price
@@ -115,7 +115,7 @@ export default function Filters() {
           </button>
         ) : (
           <button
-            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 ml-5 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 hover:border-black"
+            className="active:scale-90 duration-300 text-gray-800 border border-gray-400 rounded-full font-semibold flex flex-row gap-1 justify-center p-2 text-sm w-24 hover:border-black"
             onClick={(event) => setAnchorElPrice(event.currentTarget)}
           >
             Price

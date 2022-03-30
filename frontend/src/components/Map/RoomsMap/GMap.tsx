@@ -23,18 +23,7 @@ export default function GMap({
   }
 
   return (
-    <div
-      ref={mapRef}
-      style={{
-        display: 'block',
-        left: '50%',
-        marginRight: '500px',
-        height: '37rem',
-        width: '77rem',
-        borderRadius: '20px',
-      }}
-      id="map"
-    >
+    <div className=" h-screen absolute w-[70vw] " ref={mapRef} id="map">
       {React.Children.map(children, (child: React.ReactElement) =>
         React.cloneElement(child, { map }),
       )}
