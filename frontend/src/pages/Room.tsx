@@ -52,7 +52,7 @@ export default function Room() {
         <div className="border-gray-400 border-b w-[77rem] self-center" />
         <h1 className="text-xl font-bold mt-10 mb-5">Where you’ll be</h1>
         <h1 className="mb-5">San Francisco, California, United States</h1>
-        <div className="self-center justify-self-center mr-[1228px]">
+        <div className="self-center justify-self-center mr-[76.75rem]">
           <Map />
         </div>
       </div>
