@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const { User } = require('../models/user');
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
-const { SECRET } = require('../key');
 
 router.post('/signup', async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
@@ -28,7 +27,7 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ email });
     const match = await bcrypt.compare(password, userData.password);
     if (match) {
-      const token = jwt.sign(email, SECRET);
+      const token = jwt.sign(email, process.env.SECRET);
       res.send({ token, userData });
     } else res.status(401).send();
   } catch {

@@ -3,7 +3,9 @@ import { Dispatch } from 'redux';
 import { userAuth, userData, logout, userRooms, userRoom, cityRooms } from './userSlice';
 import { FiltersInterface } from '../interfaces';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+process.env.NODE_ENV === 'production'
+  ? (axios.defaults.baseURL = 'https://backend-ansk5ne9h-ask-v1.vercel.app')
+  : (axios.defaults.baseURL = 'http://localhost:5000');
 
 const userSignup = async (user: object) => {
   await axios.post('/users/signup', user);

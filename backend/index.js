@@ -2,11 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
-require('dotenv').config();
 const mongoose = require('mongoose');
-const { mongoURI } = require('./key');
+require('dotenv').config();
 
-mongoose.connect(process.env.MONGO_URI || mongoURI, {
+const mongodb = process.env.MONGO_URI;
+mongoose.connect(mongodb, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -23,5 +23,5 @@ app.use(bodyParser.json());
 
 app.use('/users', usersRouter);
 
-const port = process.env.PORT || '5000';
+const port = process.env.PORT;
 app.listen(port);

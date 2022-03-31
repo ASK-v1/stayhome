@@ -17,12 +17,9 @@ export default function Marker({
     marker.setMap(map);
     marker.setPosition(position);
     marker.setIcon({
-      path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-      scale: 10,
-      fillColor: '#ed8936',
-      fillOpacity: 0.8,
-      strokeWeight: 1,
+      url: 'https://res.cloudinary.com/dpsbq1odp/image/upload/v1648656025/Webp.net-resizeimage_mnkibw.png',
     });
+    marker.setLabel('80$');
   }
 
   return null;
