@@ -14,7 +14,12 @@ export default function GMap({
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   useEffect(() => {
-    setMap(new window.google.maps.Map(mapRef.current!, {}));
+    setMap(
+      new window.google.maps.Map(mapRef.current!, {
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false,
+      }),
+    );
   }, []);
 
   if (map) {

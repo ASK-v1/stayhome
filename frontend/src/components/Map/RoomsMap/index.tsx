@@ -1,22 +1,25 @@
 import GMap from './GMap';
 import Marker from './Marker';
 import { Wrapper } from '@googlemaps/react-wrapper';
+import store from '../../../store';
 
 export default function Map() {
-  const center = { lat: -34.323, lng: 150.644 };
-  const zoom = 10;
-  const positions = [
-    { lat: -34.321, lng: 150.444 },
-    { lat: -34.32, lng: 150.544 },
-    { lat: -34.323, lng: 150.644 },
-  ];
+  const users = store.useAppSelector((state) => state.user.rooms);
+
+  let priceAndId = [];
+  let positions = [];
+  let zoom = 13;
+
+  if (users.rooms) {
+    users.rooms.map((user) => positions.push(user.host.location.coordinate));
+    positions = positions.filter((items) => items !== undefined);
+    users.rooms.map((user) => priceAndId.push({ price: user.host.price, id: user._id }));
+  }
 
   return (
     <Wrapper apiKey={''}>
-      <GMap zoom={zoom} center={center}>
-        {positions.map((position, index) => (
-          <Marker key={index} position={position} />
-        ))}
+      <GMap zoom={zoom} center={positions[0]}>
+        <Marker positions={positions} priceAndId={priceAndId} />
       </GMap>
     </Wrapper>
   );
