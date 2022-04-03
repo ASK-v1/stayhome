@@ -8,6 +8,8 @@ import { userEdit } from '../store/userAction';
 import store from '../store';
 
 export default function Personal() {
+  window.scrollTo(0, 0);
+
   const user = store.useAppSelector((state) => JSON.parse(state.user.user));
   const dispatch = store.useAppDispatch();
 

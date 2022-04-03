@@ -6,6 +6,8 @@ import store from '../store';
 import { useParams } from 'react-router';
 
 export default function Rooms() {
+  window.scrollTo(0, 0);
+
   const users = store.useAppSelector((state) => state.user.rooms);
   const param = useParams();
   return (

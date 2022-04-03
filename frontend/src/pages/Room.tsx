@@ -14,6 +14,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 
 export default function Room() {
+  window.scrollTo(0, 0);
+
   const dispatch = store.useAppDispatch();
   const room = store.useAppSelector((state) => state.user.room.room);
 

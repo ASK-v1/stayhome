@@ -10,6 +10,8 @@ import { orange } from '@material-ui/core/colors';
 import Avatar from '@mui/material/Avatar';
 
 export default function Book() {
+  window.scrollTo(0, 0);
+
   const navigate = useNavigate();
 
   const url =

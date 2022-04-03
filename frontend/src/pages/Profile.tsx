@@ -12,6 +12,8 @@ import axios from 'axios';
 const Input = styled('input')({ display: 'none' });
 
 export default function Profile() {
+  window.scrollTo(0, 0);
+
   const dispatch = store.useAppDispatch();
   const user = store.useAppSelector((state) => JSON.parse(state.user.user));
 
