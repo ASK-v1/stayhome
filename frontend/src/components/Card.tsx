@@ -1,14 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Rating from '@mui/material/Rating';
+import store from '../store';
 
 export default function Card({ rooms }) {
   const [value, setValue] = useState<number | null>(4.22);
+
+  const roomId = store.useAppSelector((state) => state.user.roomId);
+
+  useEffect(() => {
+    (() => {
+      if (roomId) {
+        const location = document.getElementById(roomId).offsetTop;
+        window.scrollTo({
+          top: location,
+          behavior: 'smooth',
+        });
+      }
+    })();
+  }, [roomId]);
 
   return (
     <div>
       {rooms &&
         rooms.map((room) => (
-          <div key={room._id} className="flex flex-col">
+          <div
+            key={room._id}
+            id={room._id}
+            className={
+              roomId && roomId === room._id
+                ? 'flex flex-col border-2 rounded-2xl border-orange-500 shadow-2xl'
+                : 'flex flex-col '
+            }
+          >
             <div className="border-b border-gray-400 w-[53rem] ml-5" />
             <div className="flex flex-row p-5">
               <a href={`/room/${room._id}`} className="flex group">

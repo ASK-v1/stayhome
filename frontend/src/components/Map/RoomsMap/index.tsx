@@ -8,11 +8,10 @@ export default function Map() {
 
   let priceAndId = [];
   let positions = [];
-  let zoom = 13;
+  let zoom = 11;
 
   if (users.rooms) {
     users.rooms.map((user) => positions.push(user.host.location.coordinate));
-    positions = positions.filter((items) => items !== undefined);
     users.rooms.map((user) => priceAndId.push({ price: user.host.price, id: user._id }));
   }
 

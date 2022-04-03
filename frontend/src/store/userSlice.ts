@@ -7,6 +7,7 @@ const initialState: UserStateInterface = {
   rooms: {},
   room: {},
   cities: [],
+  roomId: '',
 };
 
 const userSlice = createSlice({
@@ -37,9 +38,13 @@ const userSlice = createSlice({
         (c, index) => city.indexOf(c) === index && c !== undefined && c !== null && c !== '',
       );
     },
+    mark: (state, action: PayloadAction<string>) => {
+      state.roomId = action.payload;
+    },
   },
 });
 
-export const { userAuth, userData, logout, userRooms, userRoom, cityRooms } = userSlice.actions;
+export const { userAuth, userData, logout, userRooms, userRoom, cityRooms, mark } =
+  userSlice.actions;
 
 export default userSlice.reducer;
