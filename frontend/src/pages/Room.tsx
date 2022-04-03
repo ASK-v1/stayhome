@@ -28,6 +28,11 @@ export default function Room() {
     })();
   }, []);
 
+  let position: { lat: number; lng: number };
+  if (room) {
+    position = room.host.location.coordinate;
+  }
+
   return (
     <div>
       <Topbar />
@@ -55,7 +60,7 @@ export default function Room() {
         <h1 className="text-xl font-bold mt-10 mb-5">Where you’ll be</h1>
         <h1 className="mb-5">San Francisco, California, United States</h1>
         <div className="self-center justify-self-center mr-[76.75rem]">
-          <Map />
+          <Map position={position} />
         </div>
       </div>
       <Contact about={room && room.about} />
