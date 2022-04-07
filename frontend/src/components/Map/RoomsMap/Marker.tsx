@@ -26,7 +26,7 @@ export default function Marker({
             text: `$${priceAndId[i].price}`,
             className: 'mark',
           },
-          icon: 'https://res.cloudinary.com/dpsbq1odp/image/upload/v1648808168/Webp.net-resizeimage_vb9bxu_zthesx.png',
+          icon: 'https://res.cloudinary.com/dpsbq1odp/image/upload/v1648997369/Webp.net-resizeimage_1_w9yney.png',
           optimized: false,
         });
         marker[i].addListener('click', () => {

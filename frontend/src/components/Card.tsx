@@ -4,15 +4,30 @@ import store from '../store';
 
 export default function Card({ rooms }) {
   const [value, setValue] = useState<number | null>(4.22);
-
   const roomId = store.useAppSelector((state) => state.user.roomId);
 
   useEffect(() => {
-    (() => {
+    if (roomId) {
+      window.location.reload();
+      window.scrollTo({
+        top: 0,
+      });
+    }
+  }, []);
+
+  const delay = () => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, 1);
+    });
+  };
+
+  useEffect(() => {
+    (async () => {
+      await delay();
       if (roomId) {
         const location = document.getElementById(roomId).offsetTop;
         window.scrollTo({
-          top: location,
+          top: location - 10,
           behavior: 'smooth',
         });
       }

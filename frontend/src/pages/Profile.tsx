@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import Avatar from '@mui/material/Avatar';
 import StarIcon from '@mui/icons-material/Star';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { userPhoto } from '../store/userAction';
 import store from '../store';
 import { styled } from '@mui/material/styles';
@@ -12,7 +12,9 @@ import axios from 'axios';
 const Input = styled('input')({ display: 'none' });
 
 export default function Profile() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const dispatch = store.useAppDispatch();
   const user = store.useAppSelector((state) => JSON.parse(state.user.user));
