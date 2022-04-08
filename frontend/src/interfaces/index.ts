@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 export interface SignupInterface {
   firstName: string;
   lastName: string;

@@ -4,9 +4,12 @@ import Card from '../components/Card';
 import Filters from '../components/Filters';
 import store from '../store';
 import { useParams } from 'react-router';
+import { useEffect } from 'react';
 
 export default function Rooms() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const users = store.useAppSelector((state) => state.user.rooms);
   const param = useParams();

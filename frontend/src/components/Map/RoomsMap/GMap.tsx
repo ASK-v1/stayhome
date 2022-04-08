@@ -20,7 +20,7 @@ export default function GMap({
         scrollwheel: false,
       }),
     );
-  }, []);
+  }, [center]);
 
   if (map) {
     map.setCenter(center);
