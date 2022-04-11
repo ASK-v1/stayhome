@@ -11,16 +11,53 @@ import Menu from '@mui/material/Menu';
 import { GuestsInterface } from '../interfaces';
 import { getCity } from '../store/userAction';
 import store from '../store';
+import CircularProgress from '@mui/material/CircularProgress';
+
+function sleep(delay = 0) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay);
+  });
+}
 
 export default function Search() {
   const dispatch = store.useAppDispatch();
   const cities = store.useAppSelector((state) => state.user.cities);
+
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState<Array<string>>([]);
+  const loading = open && options.length === 0;
 
   useEffect(() => {
     (async () => {
       await dispatch(getCity);
     })();
   }, []);
+
+  useEffect(() => {
+    let active = true;
+
+    if (!loading) {
+      return undefined;
+    }
+
+    (async () => {
+      await sleep(1000);
+
+      if (active) {
+        setOptions(cities);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [loading]);
+
+  useEffect(() => {
+    if (!open) {
+      setOptions([]);
+    }
+  }, [open]);
 
   const navigate = useNavigate();
 
@@ -47,6 +84,21 @@ export default function Search() {
             minWidth: 300,
             borderRadius: 1,
           }}
+          onOpen={() => {
+            setOpen(true);
+          }}
+          onClose={() => {
+            setOpen(false);
+          }}
+          open={open}
+          isOptionEqualToValue={(option, values) => option === values}
+          getOptionLabel={(option) => option}
+          options={options}
+          loading={loading}
+          selectOnFocus
+          autoHighlight
+          clearIcon
+          noOptionsText="Sorry, we couldn't find."
           value={val}
           onChange={(event: any, newValue: string | null) => {
             setVal(newValue);
@@ -55,7 +107,6 @@ export default function Search() {
           onInputChange={(event, newInputValue) => {
             setInputVal(newInputValue);
           }}
-          options={cities}
           renderInput={(params) => (
             <TextField variant="filled" {...params} label="Where are you going?" />
           )}
