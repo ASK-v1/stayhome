@@ -29,10 +29,14 @@ export default function Navbar() {
 
   const logout = () => {
     dispatch(userLogout);
+    navigate('/');
     window.location.reload();
   };
 
   const isAuth = store.useAppSelector((state) => state.user.isAuth);
+
+  let userData;
+  if (isAuth) userData = store.useAppSelector((state) => JSON.parse(state.user.user));
 
   return (
     <div>
@@ -41,7 +45,7 @@ export default function Navbar() {
           <div className="bg-logo h-16 w-52 bg-center bg-cover" />
         </Link>
         <div className="flex gap-10 items-center">
-          {isAuth && (
+          {isAuth && !userData.host && (
             <Button
               onClick={() => navigate('/becomehost')}
               className="font-semibold p-3 border-white text-white capitalize flex gap-1 "
@@ -88,10 +92,9 @@ export default function Navbar() {
                   Sign up
                 </MenuItem>
               )}
-
+              {isAuth && <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>}
+              {isAuth && userData.host && <MenuItem>Manage listing</MenuItem>}
               {isAuth && <MenuItem onClick={() => navigate('/personal')}>Personal</MenuItem>}
-              {isAuth && <MenuItem>Messages</MenuItem>}
-              {isAuth && <MenuItem onClick={() => navigate('/profile')}>Listings</MenuItem>}
               {isAuth && <MenuItem onClick={logout}>Log out</MenuItem>}
             </Menu>
           </div>

@@ -64,7 +64,13 @@ export default function Profile() {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-row p-20 justify-center gap-20">
+      <div
+        className={
+          user.host
+            ? 'flex flex-row p-20 justify-center gap-20'
+            : 'flex flex-row p-20 justify-center gap-20 h-screen'
+        }
+      >
         <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem]">
           {user.profilePhoto ? (
             <label className="self-center cursor-pointer">
@@ -116,114 +122,113 @@ export default function Profile() {
         </div>
         <div>
           <div className="flex flex-col gap-3 mb-10">
-            <h1 className="font-black text-3xl">Hi, I’m Brandon</h1>
+            <h1 className="font-black text-3xl">Hi, I’m {user.firstName}</h1>
             <h1 className="text-gray-800">Joined in 2022</h1>
           </div>
-          <div className="flex flex-col gap-3 item">
+          <div className="flex flex-col gap-3 item items-start">
             <h1 className="font-semibold text-2xl">About</h1>
             <div className="flex flex-row gap-3 items-center">
-              <h1 className="w-[30rem]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam culpa deserunt
-                dolores earum
-              </h1>
+              <h1 className="w-[30rem]">{user.about}</h1>
             </div>
           </div>
-          <div>
-            <h1 className="font-semibold text-2xl mt-10">Brandon’s listing</h1>
-            <div className="mt-5">
-              <img
-                src={url}
-                className="rounded-3xl duration-500 w-[20rem] hover:opacity-90 cursor-pointer"
-                alt="photos"
-              />
-              <div className="flex flex-row gap-3 mt-2 items-center">
-                <StarIcon />
-                <h1 className="font-semibold text-md">4.5</h1>
-                <h1 className="text-gray-800">(20 reviews)</h1>
+          {user.host && (
+            <div>
+              <div>
+                <h1 className="font-semibold text-2xl mt-10">{user.firstName}’s listing</h1>
+                <div className="mt-5">
+                  <img
+                    src={user.host.photos[0]}
+                    className="rounded-3xl duration-500 w-[20rem] hover:opacity-90 cursor-pointer"
+                    alt="photos"
+                  />
+                  <div className="flex flex-row gap-3 mt-2 items-center">
+                    <StarIcon />
+                    <h1 className="font-semibold text-md">0</h1>
+                    <h1 className="text-gray-800">(0 reviews)</h1>
+                  </div>
+                  <h1 className="w-80 mt-1">{user.host.title}</h1>
+                </div>
               </div>
-              <h1 className="w-80 mt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h1>
-            </div>
-          </div>
-          <div className="flex flex-row gap-3 mt-10">
-            <StarIcon className="text-3xl underline" />
-            <h1 className="text-2xl font-semibold">100 reviews</h1>
-          </div>
-          <div className="flex flex-col gap-5 mt-5">
-            <div className="flex flex-row gap-5">
-              {from ? (
-                <button className="text-gray-800 pointer-events-none">From guests (50)</button>
-              ) : (
-                <button className="active:scale-90" onClick={() => setFrom(true)}>
-                  From guests (50)
-                </button>
-              )}
-              {from ? (
-                <button onClick={() => setFrom(false)} className="active:scale-90">
-                  From hosts (50)
-                </button>
-              ) : (
-                <button className="pointer-events-none text-gray-800 ">From hosts (50)</button>
-              )}
-            </div>
-            <div className="border-b border-gray-400 w-[50rem]" />
-          </div>
+              <div className="flex flex-row gap-3 mt-10">
+                <StarIcon className="text-3xl underline" />
+                <h1 className="text-2xl font-semibold">0 reviews</h1>
+              </div>
+              <div className="flex flex-col gap-5 mt-5">
+                <div className="flex flex-row gap-5">
+                  {from ? (
+                    <button className="text-gray-800 pointer-events-none">From guests (50)</button>
+                  ) : (
+                    <button className="active:scale-90" onClick={() => setFrom(true)}>
+                      From guests (50)
+                    </button>
+                  )}
+                  {from ? (
+                    <button onClick={() => setFrom(false)} className="active:scale-90">
+                      From hosts (50)
+                    </button>
+                  ) : (
+                    <button className="pointer-events-none text-gray-800 ">From hosts (50)</button>
+                  )}
+                </div>
+                <div className="border-b border-gray-400 w-[50rem]" />
+              </div>
 
-          <div>
-            {from
-              ? guests.splice(0, moreGuest).map((guest_) => (
-                  <div className="flex flex-row gap-5 mt-10">
-                    <Avatar className="p-6 bg-orange-500">B</Avatar>
-                    <div className="flex flex-col">
-                      <h1 className="font-bold">{guest_.name}</h1>
-                      <h1 className="text-gray-800">{guest_.date}</h1>
-                      <h1 className="w-[500px] mt-2">{guest_.review}</h1>
-                    </div>
-                    <img
-                      src={url}
-                      className="rounded-3xl duration-500 w-32 h-24 hover:opacity-90 cursor-pointer"
-                      alt="photos"
-                    />
-                  </div>
-                  // eslint-disable-next-line @typescript-eslint/indent
-                ))
-              : hosts.splice(0, moreHost).map((host_) => (
-                  <div className="flex flex-row gap-5 mt-10">
-                    <Avatar className="p-6 bg-orange-500">B</Avatar>
-                    <div className="flex flex-col">
-                      <h1 className="font-bold">{host_.name}</h1>
-                      <h1 className="text-gray-800">{host_.date}</h1>
-                      <h1 className="w-[500px] mt-2">{host_.review}</h1>
-                    </div>
-                    <img
-                      src={url}
-                      className="rounded-3xl duration-500 w-32 h-24 hover:opacity-90 cursor-pointer"
-                      alt="photos"
-                    />
-                  </div>
-                  // eslint-disable-next-line @typescript-eslint/indent
-                ))}
-            {from
-              ? moreGuest !== 25 && (
-                  <button
-                    onClick={() => setMoreGuest(moreGuest + 5)}
-                    className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
-                  >
-                    Show more reviews
-                  </button>
-                  // eslint-disable-next-line @typescript-eslint/indent
-                )
-              : moreHost !== 25 && (
-                  <button
-                    onClick={() => setMoreHost(moreHost + 5)}
-                    className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
-                  >
-                    Show more reviews
-                  </button>
-                  // eslint-disable-next-line @typescript-eslint/indent
-                )}
-          </div>
+              <div>
+                {from
+                  ? guests.splice(0, moreGuest).map((guest_) => (
+                      <div className="flex flex-row gap-5 mt-10">
+                        <Avatar className="p-6 bg-orange-500">B</Avatar>
+                        <div className="flex flex-col">
+                          <h1 className="font-bold">{guest_.name}</h1>
+                          <h1 className="text-gray-800">{guest_.date}</h1>
+                          <h1 className="w-[500px] mt-2">{guest_.review}</h1>
+                        </div>
+                        <img
+                          src={url}
+                          className="rounded-3xl duration-500 w-32 h-24 hover:opacity-90 cursor-pointer"
+                          alt="photos"
+                        />
+                      </div>
+                      // eslint-disable-next-line @typescript-eslint/indent
+                    ))
+                  : hosts.splice(0, moreHost).map((host_) => (
+                      <div className="flex flex-row gap-5 mt-10">
+                        <Avatar className="p-6 bg-orange-500">B</Avatar>
+                        <div className="flex flex-col">
+                          <h1 className="font-bold">{host_.name}</h1>
+                          <h1 className="text-gray-800">{host_.date}</h1>
+                          <h1 className="w-[500px] mt-2">{host_.review}</h1>
+                        </div>
+                        <img
+                          src={url}
+                          className="rounded-3xl duration-500 w-32 h-24 hover:opacity-90 cursor-pointer"
+                          alt="photos"
+                        />
+                      </div>
+                      // eslint-disable-next-line @typescript-eslint/indent
+                    ))}
+                {from
+                  ? moreGuest !== 25 && (
+                      <button
+                        onClick={() => setMoreGuest(moreGuest + 5)}
+                        className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                      >
+                        Show more reviews
+                      </button>
+                      // eslint-disable-next-line @typescript-eslint/indent
+                    )
+                  : moreHost !== 25 && (
+                      <button
+                        onClick={() => setMoreHost(moreHost + 5)}
+                        className="border w-60 font-semibold border-black text-black p-3 rounded-md my-16 ml-60 active:scale-90 duration-300"
+                      >
+                        Show more reviews
+                      </button>
+                      // eslint-disable-next-line @typescript-eslint/indent
+                    )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

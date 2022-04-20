@@ -97,7 +97,6 @@ export default function Search() {
           loading={loading}
           selectOnFocus
           autoHighlight
-          clearIcon
           noOptionsText="Sorry, we couldn't find."
           value={val}
           onChange={(event: any, newValue: string | null) => {
