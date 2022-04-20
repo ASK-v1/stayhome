@@ -8,6 +8,7 @@ const initialState: UserStateInterface = {
   room: {},
   cities: [],
   roomId: '',
+  coordinate: { lat: 0, lng: 0 },
 };
 
 const userSlice = createSlice({
@@ -41,10 +42,13 @@ const userSlice = createSlice({
     mark: (state, action: PayloadAction<string>) => {
       state.roomId = action.payload;
     },
+    coordinate: (state, action: PayloadAction<{ lat: number; lng: number }>) => {
+      state.coordinate = action.payload;
+    },
   },
 });
 
-export const { userAuth, userData, logout, userRooms, userRoom, cityRooms, mark } =
+export const { userAuth, userData, logout, userRooms, userRoom, cityRooms, mark, coordinate } =
   userSlice.actions;
 
 export default userSlice.reducer;

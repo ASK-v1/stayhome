@@ -15,7 +15,7 @@ export default function GMap({
 
   useEffect(() => {
     setMap(new window.google.maps.Map(mapRef.current!, {}));
-  }, []);
+  }, [center]);
 
   if (map) {
     map.setCenter(center);
@@ -23,18 +23,7 @@ export default function GMap({
   }
 
   return (
-    <div
-      ref={mapRef}
-      style={{
-        display: 'block',
-        left: '50%',
-        marginRight: '500px',
-        height: '37rem',
-        width: '77rem',
-        borderRadius: '20px',
-      }}
-      id="map"
-    >
+    <div className="left-[25vw] h-screen w-[100vw] bottom-[6rem]" ref={mapRef} id="map">
       {React.Children.map(children, (child: React.ReactElement) =>
         React.cloneElement(child, { map }),
       )}

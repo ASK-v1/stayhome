@@ -1,6 +1,15 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { userAuth, userData, logout, userRooms, userRoom, cityRooms, mark } from './userSlice';
+import {
+  userAuth,
+  userData,
+  logout,
+  userRooms,
+  userRoom,
+  cityRooms,
+  mark,
+  coordinate,
+} from './userSlice';
 import { FiltersInterface } from '../interfaces';
 
 process.env.NODE_ENV === 'production'
@@ -62,6 +71,10 @@ const roomId = (id: string) => (dispatch: Dispatch) => {
   dispatch(mark(id));
 };
 
+const setCoordinate = (c: { lat: number; lng: number }) => (dispatch: Dispatch) => {
+  dispatch(coordinate(c));
+};
+
 export {
   userLogout,
   userLogin,
@@ -73,4 +86,5 @@ export {
   getFilter,
   getCity,
   roomId,
+  setCoordinate,
 };

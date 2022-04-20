@@ -19,6 +19,7 @@ export interface UserStateInterface {
   room: any;
   cities: any;
   roomId: string;
+  coordinate: { lat: number; lng: number };
 }
 
 export interface PersonalInterface {
@@ -59,8 +60,9 @@ export interface BecomeHostLocationInterface {
   country: string;
   street: string;
   city: string;
-  state: string;
+  state: { state: string; latitude: number; longitude: number };
   apt: string;
+  coordinate: { lat: number; lng: number };
 }
 
 export interface BecomeHostGuestInterface {

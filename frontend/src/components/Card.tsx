@@ -89,8 +89,14 @@ export default function Card({ rooms }) {
                         </div>
                       </div>
                       <div className="flex flex-row gap-1 text-sm text-gray-600">
-                        {room.host.amenity.wifi === true && <h1>Wifi -</h1>}
-                        {room.host.amenity.washer === true && <h1>Washer -</h1>}
+                        {room.host.amenity.wifi === true && <h1>Wifi</h1>}
+                        {room.host.amenity.washer === true && room.host.amenity.wifi === true && (
+                          <h1>-</h1>
+                        )}
+                        {room.host.amenity.washer === true && <h1>Washer</h1>}
+                        {room.host.amenity.kitchen === true && room.host.amenity.wifi === true && (
+                          <h1>-</h1>
+                        )}
                         {room.host.amenity.kitchen === true && <h1>Kitchen</h1>}
                       </div>
                     </div>
