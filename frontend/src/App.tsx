@@ -6,9 +6,12 @@ import Personal from './pages/Personal';
 import NotFound from './pages/NotFound';
 import BecomeHost from './pages/BecomeHost';
 import Book from './pages/Book';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import store from './store';
 
 export default function App() {
+  const isAuth = store.useAppSelector((state) => state.user.isAuth);
+
   return (
     <div className="App">
       <Routes>
@@ -16,9 +19,9 @@ export default function App() {
         <Route path="/rooms/:city" element={<Rooms />} />
         <Route path="/room/:id" element={<Room />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/personal" element={<Personal />} />
+        <Route path="/personal" element={isAuth ? <Personal /> : <Navigate replace to="/" />} />
         <Route path="/book" element={<Book />} />
-        <Route path="/becomehost" element={<BecomeHost />} />
+        <Route path="/becomehost" element={isAuth ? <BecomeHost /> : <Navigate replace to="/" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

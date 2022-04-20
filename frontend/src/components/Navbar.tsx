@@ -41,15 +41,18 @@ export default function Navbar() {
           <div className="bg-logo h-16 w-52 bg-center bg-cover" />
         </Link>
         <div className="flex gap-10 items-center">
-          <Button
-            onClick={() => navigate('/becomehost')}
-            className="font-semibold p-3 border-white text-white capitalize flex gap-1 "
-            variant="outlined"
-          >
-            <h1>Become</h1>
-            <h1 className="lowercase">a</h1>
-            <h1>Host</h1>
-          </Button>
+          {isAuth && (
+            <Button
+              onClick={() => navigate('/becomehost')}
+              className="font-semibold p-3 border-white text-white capitalize flex gap-1 "
+              variant="outlined"
+            >
+              <h1>Become</h1>
+              <h1 className="lowercase">a</h1>
+              <h1>Host</h1>
+            </Button>
+          )}
+
           <div>
             <IconButton onClick={handleClick}>
               <PermIdentityIcon className="text-4xl text-white" />
