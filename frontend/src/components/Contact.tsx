@@ -6,17 +6,19 @@ import { useState } from 'react';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AlertTitle from '@mui/material/AlertTitle';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 export default function Contact({ about }) {
   const [send, setSend] = useState<boolean>(true);
   const navigate = useNavigate();
 
+  const params = useParams();
+
   return (
     <div className="flex flex-col items-center mb-20">
       <div className="border-gray-400 border-b mt-10 mb-10 w-[77rem] self-center" />
       <div className="flex flex-row gap-5 items-start">
-        <div onClick={() => navigate('/profile')}>
+        <div onClick={() => navigate(`/profiles/${params.id}`)}>
           <Avatar className="p-10 bg-orange-500 cursor-pointer text-3xl">B</Avatar>
         </div>
         <div className="flex flex-col">

@@ -188,4 +188,10 @@ router.get('/search', async (req, res) => {
   res.send({ users });
 });
 
+router.get('/profile/:id', async (req, res) => {
+  const { id } = req.params;
+  const profile = await User.findById(id);
+  res.send({ profile });
+});
+
 module.exports = router;

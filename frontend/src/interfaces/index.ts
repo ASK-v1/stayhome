@@ -20,6 +20,7 @@ export interface UserStateInterface {
   cities: any;
   roomId: string;
   coordinate: { lat: number; lng: number };
+  profiles: any;
 }
 
 export interface PersonalInterface {

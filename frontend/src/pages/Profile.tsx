@@ -71,7 +71,7 @@ export default function Profile() {
             : 'flex flex-row p-20 justify-center gap-20 h-screen'
         }
       >
-        <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem]">
+        <div className="shadow-2xl border-gray-400 p-10 flex flex-col border items-start rounded-3xl h-[35rem] w-72">
           {user.profilePhoto ? (
             <label className="self-center cursor-pointer">
               <img className="w-32 h-32 rounded-full" src={user.profilePhoto} alt="img" />
@@ -105,7 +105,7 @@ export default function Profile() {
             Update photo
           </h1>
           <div className="mt-10 flex flex-col gap-3">
-            <h1 className="font-bold text-xl text-gray-800 mb-5">Brandon confirmed</h1>
+            <h1 className="font-bold text-xl text-gray-800 mb-5">{user.firstName} confirmed</h1>
             <div className="flex flex-row gap-3">
               <CheckCircleIcon className=" text-orange-500" />
               <h1>Identity</h1>

@@ -11,13 +11,6 @@ import Menu from '@mui/material/Menu';
 import { GuestsInterface } from '../interfaces';
 import { getCity } from '../store/userAction';
 import store from '../store';
-import CircularProgress from '@mui/material/CircularProgress';
-
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 export default function Search() {
   const dispatch = store.useAppDispatch();
@@ -40,13 +33,9 @@ export default function Search() {
       return undefined;
     }
 
-    (async () => {
-      await sleep(1000);
-
-      if (active) {
-        setOptions(cities);
-      }
-    })();
+    if (active) {
+      setOptions(cities);
+    }
 
     return () => {
       active = false;
@@ -95,6 +84,7 @@ export default function Search() {
           getOptionLabel={(option) => option}
           options={options}
           loading={loading}
+          popupIcon={false}
           selectOnFocus
           autoHighlight
           noOptionsText="Sorry, we couldn't find."

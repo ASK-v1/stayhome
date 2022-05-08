@@ -9,6 +9,7 @@ import {
   cityRooms,
   mark,
   coordinate,
+  profile,
 } from './userSlice';
 import { FiltersInterface } from '../interfaces';
 
@@ -75,6 +76,11 @@ const setCoordinate = (c: { lat: number; lng: number }) => (dispatch: Dispatch) 
   dispatch(coordinate(c));
 };
 
+const getProfile = (id: string) => async (dispatch: Dispatch) => {
+  const { data } = await axios.get(`/users/profile/${id}`);
+  dispatch(profile(data));
+};
+
 export {
   userLogout,
   userLogin,
@@ -87,4 +93,5 @@ export {
   getCity,
   roomId,
   setCoordinate,
+  getProfile,
 };

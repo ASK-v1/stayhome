@@ -9,6 +9,7 @@ const initialState: UserStateInterface = {
   cities: [],
   roomId: '',
   coordinate: { lat: 0, lng: 0 },
+  profiles: null,
 };
 
 const userSlice = createSlice({
@@ -45,10 +46,22 @@ const userSlice = createSlice({
     coordinate: (state, action: PayloadAction<{ lat: number; lng: number }>) => {
       state.coordinate = action.payload;
     },
+    profile: (state, action: PayloadAction<any>) => {
+      state.profiles = action.payload;
+    },
   },
 });
 
-export const { userAuth, userData, logout, userRooms, userRoom, cityRooms, mark, coordinate } =
-  userSlice.actions;
+export const {
+  userAuth,
+  userData,
+  logout,
+  userRooms,
+  userRoom,
+  cityRooms,
+  mark,
+  coordinate,
+  profile,
+} = userSlice.actions;
 
 export default userSlice.reducer;
